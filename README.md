@@ -2,4 +2,4 @@
 
 Manuel Jesús Jerez Sánchez
 Iván Delgado Alba
-Marina SAyago Gutiérrez
+Marina Sayago Gutiérrez
