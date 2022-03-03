@@ -1,4 +1,4 @@
-# TITULIN TITULOSO
+# TITULIN TITULOSO TITULADO
 
 Manuel Jesús Jerez Sánchez
 Iván Delgado Alba
