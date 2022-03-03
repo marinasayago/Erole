@@ -1,4 +1,4 @@
-# TITULIN TITULOSO TITULADO
+# Titulo en condiciones, no como los que ponen los tontitos
 
 Manuel Jesús Jerez Sánchez
 Iván Delgado Alba
