@@ -5,7 +5,7 @@ Manuel Jesús Jerez Sánchez
 / Marina Sayago Gutiérrez
 / José Fco Artacho Martín
 / Jorge Camacho García
-/ Pablo Asterisco Friega
+/ Pablo Astudillo Fraga
 / Nacho Alba Avilés
 / Antonio Fernandez Rodriguez
 / Diego López Reduello
