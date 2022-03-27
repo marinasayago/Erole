@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new user</title>
+</head>
+<body>
+    <h1>Adding a new user</h1>
+    <form th:action="@{/user/save}" method="post" th:object="${user}">
+        <input type="hidden" id="id" th:field="*{id}">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" maxlength="50" th:field="*{email}">
+        </div>
+        <div>
+            <label for="userName">User Name</label>
+            <input type="text" maxlength="16" th:field="*{userName}">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="text" maxlength="20" th:field="*{password}">
+        </div>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" maxlength="20" th:field="*{name}">
+        </div>
+        <div>
+            <label for="surname">Surname</label>
+            <input type="text" maxlength="20" th:field="*{surname}">
+        </div>
+        <div>
+            <label for="birthDate">Birth Date</label>
+            <input type="date" th:field="*{birthdate}">
+        </div>
+        <div>
+            <label for="bio">Bio</label>
+            <textarea id="bio" th:field="*{bio}"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>

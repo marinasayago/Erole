@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+</head>
+<body>
+    <h1>User Log In</h1>
+    <form th:action="@{/user/checking}" method="post" th:object="${user}">
+        <div>
+            <label for="userName">User Name</label>
+            <input type="text" maxlength="16" th:field="*{userName}">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" maxlength="20" th:field="*{password}">
+        </div>
+        <div>
+            <input type="submit" value="Log In">
+        </div>
+    </form>
+</body>
+</html>
