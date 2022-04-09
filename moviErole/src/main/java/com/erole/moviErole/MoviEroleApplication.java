@@ -9,5 +9,4 @@ public class MoviEroleApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MoviEroleApplication.class, args);
 	}
-
 }

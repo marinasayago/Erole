@@ -1,11 +1,17 @@
 package com.erole.moviErole.model;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,9 +25,9 @@ public class User {
 	private Integer id;
 	@Column(name = "email", unique = true, nullable = false, length = 50)
 	private String email;
-	@Column(name = "userName", unique = true, nullable = false, length = 16)
-	private String userName;
-	@Column(name = "password", nullable = false, length = 20)
+	@Column(name = "username", unique = true, nullable = false, length = 16)
+	private String username;
+	@Column(name = "password", nullable = false)
 	private String password;
 	@Column(name = "name", nullable = false, length = 20)
 	private String name;
@@ -32,8 +38,27 @@ public class User {
 	private Date birthdate;
 	@Column(name = "bio", length = 200)
 	private String bio;
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(
+			name = "user_roles", 
+			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+	private Collection<Role> roles;
 	
 	public User() {}
+
+	public User(String email, String userName, String password, String name, String surname, Date birthdate,
+			String bio, Collection<Role> roles) {
+		super();
+		this.email = email;
+		this.username = userName;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.birthdate = birthdate;
+		this.bio = bio;
+		this.roles = roles;
+	}
 
 	public Integer getId() {
 		return id;
@@ -52,11 +77,11 @@ public class User {
 	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.username = userName;
 	}
 
 	public String getPassword() {
@@ -99,6 +124,14 @@ public class User {
 		this.bio = bio;
 	}
 
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,13 +146,13 @@ public class User {
 		boolean res = false;
 		if(obj instanceof User) {
 			User u = (User) obj;
-			res = this.userName.equals(u.userName) && this.password.equals(u.password);
+			res = this.username.equals(u.username) && this.password.equals(u.password);
 		}
 		return res;
 	}
 
 	@Override
 	public String toString() {
-		return "User [email=" + email + ", userName=" + userName + ", name=" + name + ", password=" + password + "]";
+		return "User [email=" + email + ", userName=" + username + ", name=" + name + ", password=" + password + "]";
 	}
 }

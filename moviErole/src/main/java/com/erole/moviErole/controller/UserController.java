@@ -3,7 +3,6 @@ package com.erole.moviErole.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,10 +20,10 @@ public class UserController {
 		return "/user/add";
 	}
 	
-	@PostMapping("/user/save")
+	@PostMapping("/user/add")
 	public String saveUser(User user) {
 		userServ.save(user);
-		return "redirect:/";
+		return "redirect:/?registration";
 	}
 	
 	@RequestMapping("/user/login")
@@ -33,21 +32,8 @@ public class UserController {
 		return "/user/login";
 	}
 	
-	@PostMapping("/user/checking")
-	public String login(User user, Model model) {
-		User dbUser = userServ.search(user);
-		if(dbUser != null) {
-			model.addAttribute("user", dbUser);
-			//return "/user/checking/index";
-			return "/app/index";
-		}else {
-			return "redirect:/user/login";
-		}
-	}
-	
-	@RequestMapping("/app/{id}")
-	public String moveToMainPage(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("user", userServ.searchById(id));
-		return "/app/index";
+	@RequestMapping("/app")
+	public String mainPage() {
+		return "app/index";
 	}
 }
