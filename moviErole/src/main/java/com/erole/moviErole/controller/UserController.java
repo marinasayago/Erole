@@ -31,4 +31,9 @@ public class UserController {
 		model.addAttribute("user", new User());
 		return "/user/login";
 	}
+	
+	@RequestMapping("/app")
+	public String mainPage() {
+		return "app/index";
+	}
 }
