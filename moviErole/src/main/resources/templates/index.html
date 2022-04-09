@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>moviErole</title>
+</head>
+<body>
+    <h1>Welcome to moviErole</h1>
+    <div th:if="${param.registration}">
+        <div class="alert alert-info">You've successfully registered!</div>
+    </div>
+    <form th:action="@{/user/login}">
+        <button type="submit">LogIn</button>
+    </form>
+    <form th:action="@{/user/add}">
+        <button type="submit">SignIn</button>
+    </form>
+</body>
+</html>
