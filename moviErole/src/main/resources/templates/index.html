@@ -6,20 +6,19 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>moviErole</title>
-  
-<meta content="" name="description">
+  <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/assets/img/favicon.png" rel="icon">
-  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet"> 
+    rel="stylesheet">
 
-<!-- Vendor CSS Files -->
+  <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -27,10 +26,9 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
- 
 
   <!-- Template Main CSS File -->
-  <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
+  <link href="assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Arsha - v4.7.1
@@ -48,8 +46,11 @@
 
       <!-- <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1> -->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo me-auto"><img src="assets/img/a.png" alt="" class="img-fluid"></a>
-
+      <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a>
+      <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1>
+      <style type="text/css">
+        h1.bienvenida {text-align:center;}
+      </style>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -74,8 +75,8 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-          <li><a class="getstarted scrollto" href="/app">Login</a></li>
-          <li><a class="getstarted scrollto" href="/user/add">Get Started</a></li>
+          <li><a class="getstarted scrollto" href="./app">Login</a></li>
+          <li><a class="getstarted scrollto" href="./user/add">Get Started</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -104,7 +105,14 @@
     </div>
 
   </section><!-- End Hero -->
-
+  
+  	<!-- Mensajes de registro y logout -->
+	<div th:if="${param.registration}">
+		<div class="alert alert-info">You've successfully registered</div>
+	</div>
+	<div th:if="${param.logout}">
+		<div class="alert alert-info">You've successfully loged out</div>
+	</div>
 
 
   <!-- ======= Footer ======= -->
@@ -131,7 +139,7 @@
           <div class="col-lg-0 col-md-15 footer-contact">
             <h3>Authors</h3>
             <p>
-              Crated by ...
+              Created by ...
             </p>
           </div>
           <div class="col-lg-auto col-md-6 footer-links">
@@ -155,19 +163,6 @@
     </div>
 
 
-	<h1>Welcome to moviErole</h1>
-    <div th:if="${param.registration}">
-        <div class="alert alert-info">You've successfully registered!</div>
-    </div>
-    <div th:if="${param.logout}">
-        <div class="alert alert-info">You've successfully loged out!</div>
-    </div>
-    <form th:action="@{/app}">
-        <button type="submit">LogIn</button>
-    </form>
-    <form th:action="@{/user/add}">
-        <button type="submit">SignIn</button>
-    </form>
 
 
     <!-- Vendor JS Files -->
