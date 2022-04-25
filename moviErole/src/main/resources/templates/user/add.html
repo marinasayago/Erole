@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Add new user</title>
 </head>
 <body>
     <h1>Adding a new user</h1>
-    <form th:action="@{/user/save}" method="post" th:object="${user}">
-        <input type="hidden" id="id" th:field="*{id}">
+    <form th:action="@{/user/add}" method="post" th:object="${user}">
+        <div>
+            <input type="hidden" th:field="*{id}">
+        </div>
         <div>
             <label for="email">Email</label>
             <input type="email" maxlength="50" th:field="*{email}">

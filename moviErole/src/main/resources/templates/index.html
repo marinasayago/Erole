@@ -75,8 +75,8 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-          <li><a class="getstarted scrollto" href="./user/login.html">Login</a></li>
-          <li><a class="getstarted scrollto" href="./user/add.html">Get Started</a></li>
+          <li><a class="getstarted scrollto" href="./app">Login</a></li>
+          <li><a class="getstarted scrollto" href="./user/add">Get Started</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -105,7 +105,14 @@
     </div>
 
   </section><!-- End Hero -->
-
+  
+  	<!-- Mensajes de registro y logout -->
+	<div th:if="${param.registration}">
+		<div class="alert alert-info">You've successfully registered</div>
+	</div>
+	<div th:if="${param.logout}">
+		<div class="alert alert-info">You've successfully loged out</div>
+	</div>
 
 
   <!-- ======= Footer ======= -->
@@ -171,5 +178,4 @@
     <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
