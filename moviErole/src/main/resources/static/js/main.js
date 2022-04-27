@@ -254,4 +254,9 @@
     });
   });
 
+
+  $('.datepicker').datepicker({
+    inline: true
+  });
+
 })()
