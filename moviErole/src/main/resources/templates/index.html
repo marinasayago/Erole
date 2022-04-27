@@ -44,37 +44,18 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <!-- <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1> -->
+      <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a>
-      <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1>
-      <style type="text/css">
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
+      <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
+      <!-- <style type="text/css">
         h1.bienvenida {text-align:center;}
-      </style>
+      </style> -->
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">Search</a></li>
           <li><a class="nav-link scrollto" href="#services">Forums</a></li>
-          <!-- <li><a class="nav-link   scrollto" href="#portfolio">Profile</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
           <li><a class="getstarted scrollto" href="./app">Login</a></li>
           <li><a class="getstarted scrollto" href="./user/add">Get Started</a></li>
 
@@ -87,24 +68,23 @@
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
-
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
-          data-aos="fade-up" data-aos-delay="200">
-          <h1>Slogan 1</h1>
-          <h2>Slogan 2</h2>
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
+          <h1>Welcome to moviErole!</h1>
+          <h2>Gei el que lo lea</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="./user/add" class="btn-get-started scrollto">Get Started</a>
           </div>
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="assets/img/a.png" class="img-fluid animated" alt="">
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+          <img th:src="@{/img/logob.png}" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
 
   </section><!-- End Hero -->
+
   
   	<!-- Mensajes de registro y logout -->
 	<div th:if="${param.registration}">
