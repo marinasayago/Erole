@@ -6,18 +6,34 @@
 </head>
 <body>
     <h1>User LogIn</h1>
-    <form th:action="@{/user/checking}" method="post" th:object="${user}">
-        <div>
-            <label for="userName">User Name</label>
-            <input type="text" maxlength="16" th:field="*{userName}">
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" maxlength="20" th:field="*{password}">
-        </div>
-        <div>
-            <input type="submit" value="LogIn">
-        </div>
-    </form>
+    			<form th:action="@{/user/login}" method="post">
+					
+					<!-- error message -->
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid username or
+							password.</div>
+					</div>
+					
+					<div class = "form-group">
+						<label for ="username"> Username </label> :
+						<input type="text" class = "form-control" id ="username" name = "username"
+						placeholder="Enter Username" autofocus="autofocus">
+					</div>
+					
+					<div class="form-group">
+						<label for="password">Password</label>: <input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Enter Password" />
+					</div>
+					
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="Log In" />
+							</div>
+						</div>
+					</div>
+				</form>
 </body>
 </html>

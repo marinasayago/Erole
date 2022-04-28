@@ -18,6 +18,15 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+/**
+ * Esta clase se correspondera con una entidad de la base de datos.
+ * Todos los atributos marcados con @column se corresponden con los atributos de la clase.
+ * El atributo primario es ID, que sera autogenerado, y los atributos unicos son: email y username.
+ * Atributos no nulos: id, email, username, password, name.
+ * @author pepes
+ * 
+ */
+
 @Entity
 public class User {
 	@Id

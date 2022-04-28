@@ -5,6 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.erole.moviErole.model.User;
 
+/**
+ * Conecta la base de datos con nuestro proyecto java permitiendonos manipularla con los metodos ofrecidos
+ * @author pepes
+ *
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 	User findByUsername(String userName);
