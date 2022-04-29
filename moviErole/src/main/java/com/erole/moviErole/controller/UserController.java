@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.erole.moviErole.APIQuery.Query;
 import com.erole.moviErole.model.User;
 import com.erole.moviErole.service.UserService;
 
@@ -62,7 +63,8 @@ public class UserController {
 	 * @return -> nos devuelve el html correspondiente a la pagina ppal
 	 */
 	@RequestMapping("/app")
-	public String mainPage() {
+	public String mainPage(Model model) {
+		model.addAttribute("query", new Query());
 		return "app/index";
 	}
 }

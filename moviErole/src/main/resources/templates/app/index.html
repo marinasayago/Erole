@@ -6,9 +6,19 @@
 </head>
 <body>
     <h1>Welcome to the Main Page</h1>
-    <h2 th:text="${user}"></h2>
     <form th:action="@{/logout}">
         <input type="submit" value="LogOut">
     </form>
+    <br>
+    
+    <form th:action="@{/app/query}" method="get" th:object="${query}">
+    	<label>Type</label>
+    	<input type="text" th:field="*{type}">
+    	
+    	<label>Key Word</label>
+    	<input type="text" th:field="*{keyWord}">
+    	
+    	<input type="submit" value="Search">
+    </form> 
 </body>
 </html>
