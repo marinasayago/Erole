@@ -59,8 +59,8 @@
       </style> -->
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Search</a></li>
+          <li><a class="nav-link scrollto active" href="..">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Forums</a></li>
           <li><a class="getstarted scrollto" href="../app">Login</a></li>
           <li><a class="getstarted scrollto" href="../user/add">Get Started</a></li>
@@ -75,7 +75,7 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <section id="breadcrumbs" class="breadcrumbs" style="background-color:rgb(186, 186, 186)">
       <div class="container">
         <h1>Let's get started!</h1>
         <h2>Please fill in the gaps to sign up.</h2>
@@ -93,12 +93,14 @@
               <label for="email">Email</label>
               <input type="email" th:field="*{email}" maxlength="50">
           </div> -->
-
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="emailForm" placeholder="name@example.com" th:field="*{email}"
-              maxlength="50">
-            <label for="emailForm">Email address*</label>
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="emailForm" placeholder="name@example.com" th:field="*{email}"
+                maxlength="50">
+              <label for="emailForm">Email address*</label>
+            </div>
           </div>
+
 
           <!-- <div class="form-floating mb-3">
             <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2" th:field="*{email}" maxlength="50">
@@ -109,13 +111,14 @@
               <label for="userName">User Name</label>
               <input type="text" maxlength="16" th:field="*{userName}">
           </div> -->
-
-          <div class="form-floating mb-3">
-            <!-- <span class="form-floating-text" id="basic-addon1">@</span> -->
-            <input type="text" class="form-control" id="usernameForm" placeholder="Username" th:field="*{userName}"
-              maxlength="16">
-            <label for="usernameForm">@Username*</label>
-            <!--               <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" maxlength="16" th:field="*{userName}"> -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <!-- <span class="form-floating-text" id="basic-addon1">@</span> -->
+              <input type="text" class="form-control" id="usernameForm" placeholder="Username" th:field="*{userName}"
+                maxlength="16">
+              <label for="usernameForm">@Username*</label>
+              <!--               <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" maxlength="16" th:field="*{userName}"> -->
+            </div>
           </div>
 
           <!-- <div>
@@ -128,12 +131,14 @@
             aria-describedby="basic-addon2" th:field="*{password}" maxlength="20">
         </div> -->
 
-
+        <div class="col-lg-4">
           <div class="form-floating mb-3">
             <input type="password" class="form-control" id="passwordForm" placeholder="Password" th:field="*{password}"
               maxlength="20">
             <label for="passwordForm">Password*</label>
           </div>
+        </div>
+
 
           <!-- <div>
               <label for="name">Name</label>
@@ -146,11 +151,12 @@
           <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon2"
             th:field="*{name}" maxlength="20">
         </div> -->
-
+        <div class="col-lg-4">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nameForm" placeholder="Name" th:field="*{name}" maxlength="20">
             <label for="nameForm">Name*</label>
           </div>
+        </div>
 
           <!-- <div>
               <label for="surname">Surname</label>
@@ -163,12 +169,13 @@
           <input type="text" class="form-control" placeholder="Surname" aria-label="Surname"
             aria-describedby="basic-addon2" th:field="*{surname}" maxlength="20">
         </div> -->
-
+        <div class="col-lg-4">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="surnameForm" placeholder="Surname" th:field="*{surname}"
               maxlength="20">
             <label for="surnameForm">Surname</label>
           </div>
+        </div>
 
 
 
@@ -176,12 +183,13 @@
               <label for="birthDate">Birth Date</label>
               <input type="date" th:field="*{birthdate}">
           </div> -->
-
+        <div class="col-lg-4">
           <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
             <label for="birthDate">Birth Date</label>
             <input placeholder="Select date" type="date" class="form-control" th:field="*{birthdate}">
             <!-- <i class="fas fa-calendar input-prefix" ></i> -->
           </div>
+        </div>
 
           <!-- <div>
               <label for="bio">Bio</label>
@@ -197,12 +205,13 @@
           <textarea class="form-control" aria-label="With textarea" id="bio" th:field="*{bio}"></textarea>
         </div> -->
 
-
+        <div class="col-lg-6">
           <div class="form-floating mb-3">
             <textarea class="form-control" placeholder="Bio" id="floatingTextarea2" style="height: 100px"
               th:field="*{bio}"></textarea>
             <label for="floatingTextarea2">Bio</label>
           </div>
+        </div>
 
 
 
@@ -216,15 +225,12 @@
 
           <script text="text/javascript">
             document.getElementById("submitButton").disabled = true;
-<<<<<<< HEAD
             
             //Goes to the top of the page when clicked
             function topFunction() {
               document.body.scrollTop = 0; // For Safari
               document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
             }
-=======
->>>>>>> bd932f473891d7e8198c565379526d83bf64e774
           </script>
 
 
@@ -235,7 +241,7 @@
 
           <h3><br>Have an account?</h3>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="../app" class="btn-get-started scrollto">Login</a>
+            <a href="../app" class="btn btn-outline-primary">Login</a>
           </div>
         </form>
       </div>
@@ -263,11 +269,7 @@
   </footer><!-- End Footer -->
 
 
-<<<<<<< HEAD
   <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
-=======
-  <a href="./user/add" class="back-to-top d-flex align-items-center justify-content-center"><i
->>>>>>> bd932f473891d7e8198c565379526d83bf64e774
       class="bi bi-arrow-up-short"></i></a>
 
 

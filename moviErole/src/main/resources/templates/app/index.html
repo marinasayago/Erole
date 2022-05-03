@@ -1,24 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Main Page</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet" type="text/css">
+  <!-- Ajustar a pantalla -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+  <!-- Iconos de Github -->
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+  <!-- Template Main CSS File -->
+  <link href="css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.7.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
+
 <body>
-    <h1>Welcome to the Main Page</h1>
-    <form th:action="@{/logout}">
-        <input type="submit" value="LogOut">
-    </form>
-    <br>
-    
-    <form th:action="@{/app/query}" method="get" th:object="${query}">
-    	<label>Type</label>
-    	<input type="text" th:field="*{type}">
-    	
-    	<label>Key Word</label>
-    	<input type="text" th:field="*{keyWord}">
-    	
-    	<input type="submit" value="Search">
-    </form> 
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
+      <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
+      <!-- <style type="text/css">
+        h1.bienvenida {text-align:center;}
+      </style> -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="..">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Forums</a></li>
+          <li><a class="getstarted scrollto" href="../app">Login</a></li>
+          <li><a class="getstarted scrollto" href="../user/add">Get Started</a></li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
+          <h1>Your profile</h1>
+        </div>
+      </div>
+        <br>
+        <form th:action="@{/app/query}" method="get" th:object="${query}">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Search Movie</a>
+                        <a class="dropdown-item" href="#">Search Series</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Search All</a>
+                      </div>
+                </div>
+                <input type="text" th:field="*{type}">
+            </div>
+
+            
+            <label>Key Word</label>
+            <input type="text" th:field="*{keyWord}">
+            
+            <input type="submit" value="Search">
+        </form> 
+        <br>
+        <form th:action="@{/logout}">
+            <input type="submit" value="LogOut" class="btn-get-started scrollto">
+        </form>
+    </div>
+
+  </section><!-- End Hero -->
+
+  
+  	<!-- Mensajes de registro y logout -->
+	<div th:if="${param.registration}">
+		<div class="alert alert-info">You've successfully registered</div>
+	</div>
+	<div th:if="${param.logout}">
+		<div class="alert alert-info">You've successfully loged out</div>
+	</div>
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-0 col-md-15 footer-contact">
+            <h3>Authors</h3>
+            <p>
+              Created by ...    Erole
+            </p>
+          </div>
+          <div class="col-lg-auto col-md-6 footer-links">
+            <h4>Our Githubs</h4>
+            <div class="social-links mt-3">
+              <a href="https://github.com/artachojf" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/AstudilloUMA" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/4ntoniofr" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/NachoA15" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/C4m4ch0" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/marinasayago" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/IvanUma" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/ManuJerezUMA" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/diegolrUMA" class="github"><i class="bx bxl-github"></i></a>
+              <a href="https://github.com/MarioMerZap" class="github"><i class="bx bxl-github"></i></a>
+            </div>
+          </div>
+        </div> <a href="https://pbs.twimg.com/ext_tw_video_thumb/1382627727409356804/pu/img/GdGmoTLvnJw63kpO.jpg" style="color:white">Coronel</a>
+      </div>
+    </div>
+
+
+
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
 </body>
 </html>
