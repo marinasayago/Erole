@@ -79,19 +79,15 @@
                 <form th:action="@{/app/query}" method="get" th:object="${query}">
 
                       <div class="input-group mb-3">
-                        <select class="btn btn-secondary dropdown-toggle" id="inlineFormCustomSelectPref">
-                          <option value="1">Search All</option>
-                          <option value="2">Search Movie</option>
-                          <option value="3">Search Series</option>
-                          <input type="text" th:field="*{type}">
+                        <select class="btn btn-secondary dropdown-toggle" th:field="*{type}" id="inlineFormCustomSelectPref">
+                          <option value="1" th:value="Search">Search All</option>
+                          <option value="2" th:value="SearchMovie">Search Movie</option>
+                          <option value="3" th:value="SearchSeries">Search Series</option>
                         </select>
-                      </div>
-                  
-                    <label>Key Word</label>
-                    <input type="text" th:field="*{keyWord}">
+                        <input type="text" th:field="*{keyWord}">
                     
-                    <input type="submit" value="Search" class="getstarted scrollto">
-
+                        <input type="submit" value="Search" class="getstarted scrollto">
+                      </div>
                 </form> 
             </div>
           </div>
