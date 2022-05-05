@@ -6,9 +6,12 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.erole.moviErole.APIQuery.Query;
 import com.erole.moviErole.APIQuery.QueryController;
+import com.erole.moviErole.APIQuery.model.contentQuery.ContentQuery;
 import com.erole.moviErole.APIQuery.model.titleQuery.Result;
 
 /**
@@ -40,5 +43,12 @@ public class MainController {
 			model.addAttribute("lista", result);
 		}
 		return "/app/searchResult";
+	}
+	
+	@RequestMapping("/app/content/{id}")
+	public String contentPage(@PathVariable("id") String id, Model model) {
+		ContentQuery result = QueryController.contentQuery(id);
+		model.addAttribute("result", result);
+		return "app/content";
 	}
 }

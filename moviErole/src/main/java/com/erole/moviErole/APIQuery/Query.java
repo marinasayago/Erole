@@ -1,5 +1,11 @@
 package com.erole.moviErole.APIQuery;
 
+/**
+ * Clase para recoger los campos de la peticion del usuario
+ * y poder realizar la correspondiente consulta
+ * @author pepes
+ *
+ */
 public class Query {
 	private String type;
 	private String keyWord;

@@ -1,6 +1,11 @@
 
 package com.erole.moviErole.APIQuery.model.titleQuery;
 
+/**
+ * Clase autogenerada por jsonschema2pojo.com.
+ * Aqui se almacenaran los resultados de la consulta a la API
+ * @author pepes
+ */
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;

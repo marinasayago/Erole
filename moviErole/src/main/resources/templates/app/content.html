@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+    <h1>Search Result</h1>
+    
+    <div>
+        <label for="id">ID: </label>
+        <span th:text="${result.id}"></span>
+    </div>
+    <div>
+        <label for="title">Title:   </label>
+        <span th:text="${result.title}"></span>
+    </div>
+    <div>
+        <label for="originalTitle">Original Title:  </label>
+        <span th:text="${result.originalTitle}"></span>
+    </div>
+    <div>
+        <label for="type">Type: </label>
+        <span th:text="${result.type}"></span>
+    </div>
+    <div>
+        <label for="year">Year: </label>
+        <span th:text="${result.year}"></span>
+    </div>
+    <div>
+        <label for="releaseDate">Release Date:  </label>
+        <span th:text="${result.releaseDate}"></span>
+    </div>
+    <div>
+        <img th:src=${result.image} width="160" height="240">
+    </div>
+
+</body>
+</html>
