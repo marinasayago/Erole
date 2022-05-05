@@ -72,28 +72,31 @@
           <h1>Your profile</h1>
         </div>
       </div>
-        <br>
-        <form th:action="@{/app/query}" method="get" th:object="${query}">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Search Movie</a>
-                        <a class="dropdown-item" href="#">Search Series</a>
-                        <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Search All</a>
-                      </div>
-                </div>
-                <input type="text" th:field="*{type}">
-            </div>
+      <br>
+        <div class="row">
+          <div class="card" style="background-color:white">
+            <div class="card-body">
+                <form th:action="@{/app/query}" method="get" th:object="${query}">
 
-            
-            <label>Key Word</label>
-            <input type="text" th:field="*{keyWord}">
-            
-            <input type="submit" value="Search">
-        </form> 
-        <br>
+                      <div class="input-group mb-3">
+                        <select class="btn btn-secondary dropdown-toggle" id="inlineFormCustomSelectPref">
+                          <option value="1">Search All</option>
+                          <option value="2">Search Movie</option>
+                          <option value="3">Search Series</option>
+                          <input type="text" th:field="*{type}">
+                        </select>
+                      </div>
+                  
+                    <label>Key Word</label>
+                    <input type="text" th:field="*{keyWord}">
+                    
+                    <input type="submit" value="Search" class="getstarted scrollto">
+
+                </form> 
+            </div>
+          </div>
+        </div>
+      <br>
         <form th:action="@{/logout}">
             <input type="submit" value="LogOut" class="btn-get-started scrollto">
         </form>
@@ -140,9 +143,6 @@
         </div> <a href="https://pbs.twimg.com/ext_tw_video_thumb/1382627727409356804/pu/img/GdGmoTLvnJw63kpO.jpg" style="color:white">Coronel</a>
       </div>
     </div>
-
-
-
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/aos/aos.js"></script>
