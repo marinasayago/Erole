@@ -288,18 +288,24 @@
   <script th:src="@{/vendor/php-email-form/validate.js}"></script>
 
   <script type="text/javascript">
-    document.getElementById("emailForm").addEventListener(
-      "change", () => {
-        if (document.getElementById("emailForm").value == "" || document.getElementById("emailForm").value == null) {
-          alert("The email field can't be empty")
-          document.getElementById("submitButton").disabled = true;
-        } else {
-          document.getElementById("submitButton").disabled = false;
-        }
+    const isNotValidFields = (email, username, password, name) => {
+      return (email.value == "" || email.value == null || username.value == "" || username.value == null
+        || password.value == "" || password.value == null || name.value == "" || name.value == null)
+    }
 
-
+    const handle = () => {
+      if (isNotValidFields(document.getElementById("emailForm"), document.getElementById("usernameForm"),
+      document.getElementById("passwordForm"), document.getElementById("nameForm"))) {
+        document.getElementById("submitButton").disabled = true;
+      } else {
+        document.getElementById("submitButton").disabled = false;
       }
-    )
+    }
+
+    document.getElementById("emailForm").addEventListener("change",handle)
+    document.getElementById("usernameForm").addEventListener("change",handle)
+    document.getElementById("passwordForm").addEventListener("change",handle)
+    document.getElementById("nameForm").addEventListener("change",handle)
   </script>
 
   <!-- Template Main JS File -->
