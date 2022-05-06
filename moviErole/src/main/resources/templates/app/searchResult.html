@@ -1,25 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Search Result</title>
-	<script type="text/javascript">
-	</script>
+    <script type="text/javascript">
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet" type="text/css">
+    <!-- Ajustar a pantalla -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+    <!-- Iconos de Github -->
+    <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+
 </head>
+
 <body>
-    <h1>Search Result</h1>
-    <table>
-		<thead>
-			<tr><td>ID</td><td>Title</td><td>Description</td><td></td></tr>
-		</thead>
-		<tbody>
-			<tr th:each="r : ${lista}">
-				<td th:text="${r.id}"></td>
-				<td th:text="${r.title}"></td>
-				<td th:text="${r.description}"></td>
-				<td><img th:src=${r.image} width="80" height="120"></td>
-			</tr>
-		</tbody>
-	</table>
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
+            <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
+            <!-- <style type="text/css">
+			h1.bienvenida {text-align:center;}
+		  </style> -->
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="..">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Forums</a></li>
+                    <li><a class="getstarted scrollto" href="../app">Login</a></li>
+                    <li><a class="getstarted scrollto" href="../user/add">Get Started</a></li>
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <h1>Search Result</h1>
+        </div>
+    </section>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Title</td>
+                <td>Description</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="r : ${lista}">
+                <td th:text="${r.id}"></td>
+                <td th:text="${r.title}"></td>
+                <td th:text="${r.description}"></td>
+                <td><img th:src=${r.image} width="80" height="120"></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- End Hero -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-0 col-md-15 footer-contact">
+                        <h3>Authors</h3>
+                        <p>
+                            Created by ... Erole
+                        </p>
+                    </div>
+                    <div class="col-lg-auto col-md-6 footer-links">
+                        <h4>Our Githubs</h4>
+                        <div class="social-links mt-3">
+                            <a href="https://github.com/artachojf" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/AstudilloUMA" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/4ntoniofr" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/NachoA15" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/C4m4ch0" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/marinasayago" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/IvanUma" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/ManuJerezUMA" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/diegolrUMA" class="github"><i class="bx bxl-github"></i></a>
+                            <a href="https://github.com/MarioMerZap" class="github"><i class="bx bxl-github"></i></a>
+                        </div>
+                    </div>
+                </div> <a href="https://pbs.twimg.com/ext_tw_video_thumb/1382627727409356804/pu/img/GdGmoTLvnJw63kpO.jpg" style="color:white">Coronel</a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
