@@ -73,7 +73,6 @@
             <tr th:each="r : ${lista}">
                 <td th:text="${r.id}"></td>
                 <td><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
-                <!--<td th:text="${r.title}"></td>-->
                 <td th:text="${r.description}"></td>
                 <td><img th:src=${r.image} width="80" height="120"></td>
             </tr>
