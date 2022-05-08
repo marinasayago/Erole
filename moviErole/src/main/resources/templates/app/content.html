@@ -1,41 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Search Result</title>
-	<script type="text/javascript">
-	</script>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <div id="message"></div>
+
+  <title th:text="${result.title}"></title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet" type="text/css">
+  <!-- Ajustar a pantalla -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+  <!-- Iconos de Github -->
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+
+
+  <!--Comprobar campos-->
+
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.7.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
+
 <body>
-    <h1>Search Result</h1>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
+      <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
+      <!-- <style type="text/css">
+        h1.bienvenida {text-align:center;}
+      </style> -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="..">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Forums</a></li>
+          <li><a class="getstarted scrollto" href="..">Return</a></li>
+          <li><a class="getstarted scrollto" href="../../user/add">Get Started</a></li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs" style="background-color:#37517e">
+      <div class="container">
+            <h1 th:text="${result.title}" style="color:whitesmoke"></h1>
+            <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2>
+      </div>
+    </section><!-- End Breadcrumbs -->
     
-    <div>
-        <label for="id">ID: </label>
-        <span th:text="${result.id}"></span>
-    </div>
-    <div>
-        <label for="title">Title:   </label>
-        <span th:text="${result.title}"></span>
-    </div>
-    <div>
-        <label for="originalTitle">Original Title:  </label>
-        <span th:text="${result.originalTitle}"></span>
-    </div>
-    <div>
-        <label for="type">Type: </label>
-        <span th:text="${result.type}"></span>
-    </div>
-    <div>
-        <label for="year">Year: </label>
-        <span th:text="${result.year}"></span>
-    </div>
-    <div>
-        <label for="releaseDate">Release Date:  </label>
-        <span th:text="${result.releaseDate}"></span>
-    </div>
-    <div>
-        <img th:src=${result.image} width="160" height="240">
+    <!-- ====== Main Page ======-->
+    <section class="inner-page" style="background-color:rgb(222, 222, 222)">
+        <div class="container">
+
+            <div class="row gy-4">
+    
+              <div class="col-lg-8">
+                <div>
+                    <label for="id">ID: </label>
+                    <span th:text="${result.id}"></span>
+                </div>
+                <div>
+                    <label for="title">Title:   </label>
+                    <span th:text="${result.title}"></span>
+                </div>
+                <div>
+                    <label for="originalTitle">Original Title:  </label>
+                    <span th:text="${result.originalTitle}"></span>
+                </div>
+                <div>
+                    <label for="type">Type: </label>
+                    <span th:text="${result.type}"></span>
+                </div>
+                <div>
+                    <label for="year">Year: </label>
+                    <span th:text="${result.year}"></span>
+                </div>
+                <div>
+                    <label for="releaseDate">Release Date:  </label>
+                    <span th:text="${result.releaseDate}"></span>
+                </div>
+              </div>
+    
+              <div class="col-lg-4">
+                <div class="image">
+                    <img style="border:15px solid; color:whitesmoke" th:src=${result.image} 
+                    onmouseout="width=300; height=450" onmouseover="width=400;height=580"
+                    width="300" height="450">
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+    </section>
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h4>Join Our Newsletter</h4>
+            <p>Filho da puta agora sim entendo</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+          <div class="col-lg-4">
+          </div>
+          <div class="col">
+            <img th:src="@{/img/logonegro.png}" alt="" width="120" height="120">
+          </div>
+        </div>
+      </div>
     </div>
 
+  </footer><!-- End Footer -->
+
+
+  <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script th:src="@{/vendor/aos/aos.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
+  <script th:src="@{/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+  <script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{/vendor/waypoints/noframework.waypoints.js}"></script>
+  <script th:src="@{/vendor/php-email-form/validate.js}"></script>
+
+
+  <!-- Template Main JS File -->
+  <script th:src="@{/js/main.js}"></script>
+
+
 </body>
+
 </html>
