@@ -26,7 +26,7 @@ import com.erole.moviErole.APIQuery.model.titleQuery.Result;
  */
 public class QueryController {
 	private static HttpsURLConnection connection;
-	private static final String[] APIKey = {"k_92xgf69t"};	//"k_97ji7chr", 
+	private static final String[] APIKey = {"k_97ji7chr","k_92xgf69t"};
 	private static final String URL = "https://imdb-api.com/en/API/";
 	
 	/**
@@ -72,7 +72,8 @@ public class QueryController {
 		} catch (IOException e) {
 
 		}finally {
-			connection.disconnect();			
+			connection.disconnect();
+			System.out.println(responseContent.toString());
 			list = parseToResultList("[" + responseContent.toString().split("\\[")[1]);
 		}
 		
