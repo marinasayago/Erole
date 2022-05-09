@@ -26,7 +26,7 @@ import com.erole.moviErole.APIQuery.model.titleQuery.Result;
  */
 public class QueryController {
 	private static HttpsURLConnection connection;
-	private static final String[] APIKey = {"k_97ji7chr","k_92xgf69t"};
+	private static final String[] APIKey = {"k_97ji7chr","k_92xgf69t","k_6xmd9wpr"};
 	private static final String URL = "https://imdb-api.com/en/API/";
 	
 	/**

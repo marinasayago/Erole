@@ -89,30 +89,81 @@
             <div class="row gy-4">
     
               <div class="col-lg-8">
-                <div>
+                <!--<div>
                     <label for="id">ID: </label>
                     <span th:text="${result.id}"></span>
+                </div>-->
+                <div>
+                    <h3><label for="title">Title:   </label>
+                    <span th:text="${result.title}"></span></h3>
                 </div>
                 <div>
-                    <label for="title">Title:   </label>
-                    <span th:text="${result.title}"></span>
+                  <h3><label for="year">Year: </label>
+                  <span th:text="${result.year}"></span></h3>
+                </div>
+                <br>
+                <div>
+                  <h4><label for="directors">Director/s:  </label>
+                  <span th:text="${result.directors}"></span></h4>
                 </div>
                 <div>
-                    <label for="originalTitle">Original Title:  </label>
-                    <span th:text="${result.originalTitle}"></span>
+                  <h4><label for="stars">Main cast:  </label>
+                  <span th:text="${result.stars}"></span></h4>
+                </div>
+                <br>
+                <div>
+                    <h5><label for="originalTitle">Original Title:  </label>
+                    <span th:text="${result.originalTitle}"></span></h5>
                 </div>
                 <div>
-                    <label for="type">Type: </label>
-                    <span th:text="${result.type}"></span>
+                    <h5><label for="type">Type: </label>
+                    <span th:text="${result.type}"></span></h5>
                 </div>
                 <div>
-                    <label for="year">Year: </label>
-                    <span th:text="${result.year}"></span>
+                  <h5><label for="genres">Genre:  </label>
+                  <span th:text="${result.genres}"></span></h5>
                 </div>
                 <div>
-                    <label for="releaseDate">Release Date:  </label>
-                    <span th:text="${result.releaseDate}"></span>
+                    <h5><label for="releaseDate">Release Date:  </label>
+                    <span th:text="${result.releaseDate}"></span></h5>
                 </div>
+                <div>
+                  <h5><label for="runtimeMins">Runtime (mins):  </label>
+                  <span th:text="${result.runtimeMins}"></span></h5>
+                </div>
+                <br>
+                <div class="card">
+                  <div class="card-body" style="background-color:whitesmoke">
+                    <div>
+                      <!--<h6><label for="plot">Plot:  </label>-->
+                      <h6><span th:text="${result.plot}"></span></h6>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div>
+                  <h5><label for="awards"></label>
+                  <span th:text="${result.awards}"></span></h5>
+                </div>
+                <br><br>
+                <h3>Ratings:</h3><br>
+                <div>
+                  <h5><label for="imDbRating"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating:</p></label>
+                  <span th:text="${result.imDbRating}"></span></h5>
+                </div>
+                <div>
+                  <h5><label for="imDbRatingVotes"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMDB Rating Votes:</p></label>
+                  <span th:text="${result.imDbRatingVotes}"></span></h5>
+                </div>
+                <div>
+                  <h5><label for="metacriticRating"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.metacritic.com">Metacritic </a>Rating: </p></label>
+                    <span th:text="${result.metacriticRating}"></span></h5>
+                </div>
+                <!-- El trailer no sale en ninguna XD
+                <div>
+                  <h5><label for="trailer">Trailer:  </label>
+                  <span th:text="${result.trailer}"></span></h5>
+                </div>-->
               </div>
     
               <div class="col-lg-4">
