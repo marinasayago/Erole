@@ -222,13 +222,13 @@ public class QueryController {
 	}
 	
 	
-	public static List<MostPopularQuery> topMoviesQuery() {
+	public static List<MostPopularQuery> topMoviesQuery(boolean movie) {
 		BufferedReader reader;
 		String line;
 		StringBuffer responseContent = new StringBuffer();
 		Random rnd = new Random();
 		List<MostPopularQuery> list;
-		String finalURL = URL + "MostPopularMovies/" + APIKey[rnd.nextInt(APIKey.length)];
+		String finalURL = URL +  "MostPopular" + (movie ? "Movies/" : "TVs/") + APIKey[rnd.nextInt(APIKey.length)];
 		System.out.println(finalURL);
 		try {
 			URL url = new URL(finalURL);

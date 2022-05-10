@@ -55,7 +55,14 @@ public class MainController {
 	
 	@RequestMapping("/app/topMovies")
 	public String topMovies(Model model) {
-		List<MostPopularQuery> list = QueryController.topMoviesQuery();
+		List<MostPopularQuery> list = QueryController.topMoviesQuery(true);
+		model.addAttribute("list", list);
+		return "app/topMovies";
+	}
+	
+	@RequestMapping("/app/topSeries")
+	public String topSeries(Model model) {
+		List<MostPopularQuery> list = QueryController.topMoviesQuery(false);
 		model.addAttribute("list", list);
 		return "app/topMovies";
 	}
