@@ -44,8 +44,8 @@
                     <li><a class="nav-link scrollto" href="/">Home</a></li>
                     <li><a class="nav-link scrollto active" href="/app">Search</a></li>
                     <li><a class="nav-link scrollto" href="#">Forums</a></li>
-                    <li><a class="getstarted scrollto" href="..">Return</a></li>
-                    <li><a class="getstarted scrollto" href="/user/add">Get Started</a></li>
+                    <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
+                    <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -61,31 +61,35 @@
             <h1>Search Result</h1>
         </div>
     </section>
+    <div class="table-responsive">
+        <table class="table table-dark table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <!--  <td class="text-center">ID</td> -->
+                    <td class="text-center">Rank</td>
+                    <td class="text-center">RankUpDown</td>
+                    <td class="text-center">Title</td>
+                    <td class="text-center">Year</td>
+                    <td class="text-center">Cover</td>
+                    <td class="text-center">ImDb Rating</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="r : ${list}">
+                    <!-- <td class="text-center" th:text="${r.id}"></td> -->
+                    <td class="text-center" th:text="${r.rank}"></td>
+                    <td class="text-center" th:text="${r.rankUpDown}"></td>
+                    <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
+                    <td class="text-center" th:text="${r.year}"></td>
+                    <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image}
+                                width="80" height="120"></a></td>
+                    <td class="text-center" th:text="${r.imDbRating}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <table class="table table-dark">
-        <thead>
-            <tr>
-                <td>ID</td>
-                <td>Rank</td>
-                <td>RankUpDown</td>
-                <td>Title</td>
-                <td>Year</td>
-                <td></td>
-                <td>ImDb Rating</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="r : ${list}">
-                <td th:text="${r.id}"></td>
-                <td th:text="${r.rank}"></td>
-                <td th:text="${r.rankUpDown}"></td>
-                <td><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
-                <td th:text="${r.year}"></td>
-                <td><img th:src=${r.image} width="80" height="120"></td>
-                <td th:text="${r.imDbRating}"></td>
-            </tr>
-        </tbody>
-    </table>
+
     <!-- End Hero -->
     <!-- ======= Footer ======= -->
     <footer id="footer">
