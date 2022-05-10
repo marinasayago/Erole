@@ -62,26 +62,27 @@
         </div>
     </section>
 
-    <table class="table table-dark">
-        <thead>
-            <tr>
-                <td>ID</td>
-                <td>Title</td>
-                <td>Description</td>
-                <td></td>
-                <td>Link</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="r : ${lista}">
-                <td th:text="${r.id}"></td>
-                <td><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
-                <td th:text="${r.description}"></td>
-                <td><img th:src=${r.image} width="80" height="120"></td>
-                <td><a th:href="@{/app/content/{id}(id=${r.id})}">Display All</a></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive"   >
+        <table class="table table-dark table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <!-- <td class="text-center">ID</td> -->
+                    <td class="text-center">Title</td>
+                    <td class="text-center">Description</td>
+                    <td class="text-center">Cover</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="r : ${lista}">
+                    <!-- <td class="text-center" th:text="${r.id}"></td> -->
+                    <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
+                    <td class="text-center" th:text="${r.description}"></td>
+                    <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
+                    <!-- <td><a th:href="@{/app/content/{id}(id=${r.id})}">Display All</a></td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <!-- End Hero -->
     <!-- ======= Footer ======= -->
     <footer id="footer">
