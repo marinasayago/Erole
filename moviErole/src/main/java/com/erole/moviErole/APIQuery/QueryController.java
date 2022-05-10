@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import com.erole.moviErole.APIQuery.model.contentQuery.Actor;
 import com.erole.moviErole.APIQuery.model.contentQuery.ContentQuery;
 import com.erole.moviErole.APIQuery.model.contentQuery.Similar;
+import com.erole.moviErole.APIQuery.model.mostPopularQuery.MostPopularQuery;
 import com.erole.moviErole.APIQuery.model.titleQuery.Result;
 
 /**
@@ -26,7 +27,7 @@ import com.erole.moviErole.APIQuery.model.titleQuery.Result;
  */
 public class QueryController {
 	private static HttpsURLConnection connection;
-	private static final String[] APIKey = {"k_92xgf69t","k_6xmd9wpr","k_wostrryl","k_53ahgski","k_9eekuzyy"};	//"k_97ji7chr",
+	private static final String[] APIKey = {"k_97ji7chr","k_92xgf69t","k_6xmd9wpr","k_wostrryl","k_53ahgski","k_9eekuzyy"};
 	private static final String URL = "https://imdb-api.com/en/API/";
 	
 	/**
@@ -43,9 +44,9 @@ public class QueryController {
 		
 		
 		try {
-			String cositas = URL + query.getType() + "/" + APIKey[rnd.nextInt(APIKey.length)] + "/" + query.getKeyWord();
-			System.out.println(cositas);
-			URL url = new URL(cositas);
+			String finalURL = URL + query.getType() + "/" + APIKey[rnd.nextInt(APIKey.length)] + "/" + query.getKeyWord();
+			System.out.println(finalURL);
+			URL url = new URL(finalURL);
 			connection = (HttpsURLConnection) url.openConnection();
 			
 			/*establece los parametros de la conexion
@@ -186,31 +187,106 @@ public class QueryController {
 	    List<Similar> similars = new ArrayList<Similar>();
 	    //String errorMessage = obj.optString("errorMessage");
 	    
-	    JSONArray actorsJSON = obj.getJSONArray("actorList");
-	    for(int i = 0; i < actorsJSON.length(); i++) {
-	    	JSONObject act = actorsJSON.getJSONObject(i);
-	    	String actId = act.optString("id");
-	    	String actImage = act.optString("image");
-	    	String actName = act.optString("name");
-	    	String actAsCharacter = act.optString("asCharacter");
-	    	Actor actor = new Actor(actId, actImage, actName, actAsCharacter);
-	    	actorList.add(actor);
+	    JSONArray actorsJSON = obj.optJSONArray("actorList");
+	    if(actorsJSON == null) actorList = null;
+	    else {
+	    	for(int i = 0; i < actorsJSON.length(); i++) {
+		    	JSONObject act = actorsJSON.getJSONObject(i);
+		    	String actId = act.optString("id");
+		    	String actImage = act.optString("image");
+		    	String actName = act.optString("name");
+		    	String actAsCharacter = act.optString("asCharacter");
+		    	Actor actor = new Actor(actId, actImage, actName, actAsCharacter);
+		    	actorList.add(actor);
+		    }
 	    }
 	    
-	    JSONArray similarJSON = obj.getJSONArray("similars");
-	    for(int i = 0; i < similarJSON.length(); i++) {
-	    	JSONObject sim = similarJSON.getJSONObject(i);
-	    	String simId = sim.optString("id");
-	    	String simTitle = sim.optString("title");
-	    	String simImage = sim.optString("image");
-	    	String simimDbRating = sim.optString("imDbRating");
-	    	Similar similar = new Similar(simId, simTitle, simImage, simimDbRating);
-	    	similars.add(similar);
+	    JSONArray similarJSON = obj.optJSONArray("similars");
+	    if(similarJSON == null) similars = null;
+	    else {
+	    	for(int i = 0; i < similarJSON.length(); i++) {
+		    	JSONObject sim = similarJSON.getJSONObject(i);
+		    	String simId = sim.optString("id");
+		    	String simTitle = sim.optString("title");
+		    	String simImage = sim.optString("image");
+		    	String simimDbRating = sim.optString("imDbRating");
+		    	Similar similar = new Similar(simId, simTitle, simImage, simimDbRating);
+		    	similars.add(similar);
+		    }
 	    }
 	    
 	    ContentQuery content = new ContentQuery(id, title, originalTitle, type, year, image, releaseDate, runtimeMins, plot, awards, directors, writers, stars, actorList, genres, companies, countries, languages, contentRating, imDbRating, imDbRatingVotes, metacriticRating, null, null, keywords, similars, null);
 		
 		
 		return content;
+	}
+	
+	
+	public static List<MostPopularQuery> topMoviesQuery() {
+		BufferedReader reader;
+		String line;
+		StringBuffer responseContent = new StringBuffer();
+		Random rnd = new Random();
+		List<MostPopularQuery> list;
+		String finalURL = URL + "MostPopularMovies/" + APIKey[rnd.nextInt(APIKey.length)];
+		System.out.println(finalURL);
+		try {
+			URL url = new URL(finalURL);
+			connection = (HttpsURLConnection) url.openConnection();
+			
+			/*establece los parametros de la conexion
+			 * GET porque lo que queremos es obtener el resultado de la busqueda
+			 * y 5000 ms para que si a los 5 segundos no se establece la conexion, directamente se corte y mostremos mensaje de error
+			 */
+			connection.setRequestMethod("GET");
+			connection.setConnectTimeout(5000);
+			connection.setReadTimeout(5000);
+			
+			int status = connection.getResponseCode();	//200 representa conexion establecida
+			
+			if(status > 299) {
+				//en caso de error, leemos el error que obtenemos
+				reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+			}else {
+				//en otro caso, leemos el resultado obtenido de la consulta
+				reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			}
+			while((line = reader.readLine()) != null)
+				responseContent.append(line);
+			
+			reader.close();
+		} catch (MalformedURLException e) {
+			
+		} catch (IOException e) {
+
+		}
+		
+		System.out.println(responseContent.toString());
+		list = parseToMostPopular("[" + responseContent.toString().split("\\[")[1]);
+		System.out.println(list.toString());
+		
+		return list;
+	}
+	
+	public static List<MostPopularQuery> parseToMostPopular(String response) {
+		List<MostPopularQuery> list = new ArrayList<MostPopularQuery>();
+		JSONArray array = new JSONArray(response);
+		for(int i = 0; i < array.length(); i++) {
+			JSONObject object = array.getJSONObject(i);
+			String id = object.optString("id");
+			String rank = object.optString("rank");
+			String rankUpDown = object.optString("rankUpDown");
+			String title = object.optString("title");
+			String fullTitle = object.optString("fullTitle");
+			String year = object.optString("year");
+			String image = object.optString("image");
+			String crew = object.optString("crew");
+			String imDbRating = object.optString("imDbRating");
+			String imDbRatingCount = object.optString("imDbRatingCount");
+			
+			MostPopularQuery mostPop = new MostPopularQuery(id, rank, rankUpDown, title, fullTitle, year, image, crew, imDbRating, imDbRatingCount);
+			list.add(mostPop);
+		}
+		return list;
 	}
 }

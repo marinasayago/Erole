@@ -66,17 +66,23 @@
         <thead>
             <tr>
                 <td>ID</td>
+                <td>Rank</td>
+                <td>RankUpDown</td>
                 <td>Title</td>
-                <td>Description</td>
+                <td>Year</td>
                 <td></td>
+                <td>ImDb Rating</td>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="r : ${lista}">
+            <tr th:each="r : ${list}">
                 <td th:text="${r.id}"></td>
+                <td th:text="${r.rank}"></td>
+                <td th:text="${r.rankUpDown}"></td>
                 <td><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
-                <td th:text="${r.description}"></td>
+                <td th:text="${r.year}"></td>
                 <td><img th:src=${r.image} width="80" height="120"></td>
+                <td th:text="${r.imDbRating}"></td>
             </tr>
         </tbody>
     </table>

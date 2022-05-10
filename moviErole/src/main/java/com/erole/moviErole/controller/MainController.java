@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.erole.moviErole.APIQuery.Query;
 import com.erole.moviErole.APIQuery.QueryController;
 import com.erole.moviErole.APIQuery.model.contentQuery.ContentQuery;
+import com.erole.moviErole.APIQuery.model.mostPopularQuery.MostPopularQuery;
 import com.erole.moviErole.APIQuery.model.titleQuery.Result;
 
 /**
@@ -50,5 +51,12 @@ public class MainController {
 		ContentQuery result = QueryController.contentQuery(id);
 		model.addAttribute("result", result);
 		return "app/content";
+	}
+	
+	@RequestMapping("/app/topMovies")
+	public String topMovies(Model model) {
+		List<MostPopularQuery> list = QueryController.topMoviesQuery();
+		model.addAttribute("list", list);
+		return "app/topMovies";
 	}
 }
