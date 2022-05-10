@@ -67,6 +67,7 @@
                 <td>Title</td>
                 <td>Description</td>
                 <td></td>
+                <td>Link</td>
             </tr>
         </thead>
         <tbody>
@@ -75,6 +76,7 @@
                 <td th:text="${r.title}"></td>
                 <td th:text="${r.description}"></td>
                 <td><img th:src=${r.image} width="80" height="120"></td>
+                <td><a th:href="@{/app/content/{id}(id=${r.id})}">Display All</a></td>
             </tr>
         </tbody>
     </table>
