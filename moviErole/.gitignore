@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -35,4 +34,3 @@ build/
 =======
 /bin/
 /target/
->>>>>>> 032fbf321ea6791f80f0127d4292fec56928a438
