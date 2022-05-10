@@ -26,7 +26,7 @@ import com.erole.moviErole.APIQuery.model.titleQuery.Result;
  */
 public class QueryController {
 	private static HttpsURLConnection connection;
-	private static final String[] APIKey = {"k_97ji7chr","k_92xgf69t"};
+	private static final String[] APIKey = {"k_92xgf69t","k_6xmd9wpr","k_wostrryl","k_53ahgski","k_9eekuzyy"};	//"k_97ji7chr",
 	private static final String URL = "https://imdb-api.com/en/API/";
 	
 	/**
@@ -43,7 +43,9 @@ public class QueryController {
 		
 		
 		try {
-			URL url = new URL(URL + query.getType() + "/" + APIKey[rnd.nextInt()%APIKey.length] + "/" + query.getKeyWord());
+			String cositas = URL + query.getType() + "/" + APIKey[rnd.nextInt(APIKey.length)] + "/" + query.getKeyWord();
+			System.out.println(cositas);
+			URL url = new URL(cositas);
 			connection = (HttpsURLConnection) url.openConnection();
 			
 			/*establece los parametros de la conexion
@@ -76,7 +78,7 @@ public class QueryController {
 			System.out.println(responseContent.toString());
 			list = parseToResultList("[" + responseContent.toString().split("\\[")[1]);
 		}
-		
+		System.out.println(responseContent.toString());
 		return list;
 	}
 	
@@ -91,11 +93,11 @@ public class QueryController {
 		List<Result> list = new ArrayList<Result>();
 		for(int i = 0; i < results.length(); i++) {
 			JSONObject obj = results.getJSONObject(i);
-			String id = obj.getString("id");
-			String resultType = obj.getString("resultType");
-			String image = obj.getString("image");
-			String title = obj.getString("title");
-			String desc = obj.getString("description");
+			String id = obj.optString("id");
+			String resultType = obj.optString("resultType");
+			String image = obj.optString("image");
+			String title = obj.optString("title");
+			String desc = obj.optString("description");
 			
 			Result newObj = new Result(id, resultType, image, title, desc);
 			list.add(newObj);
@@ -111,7 +113,8 @@ public class QueryController {
 		StringBuffer responseContent = new StringBuffer();
 		Random rnd = new Random();
 		
-		String URI = URL + "Title/" + APIKey[rnd.nextInt()%APIKey.length] + "/" + id;
+		String URI = URL + "Title/" + APIKey[rnd.nextInt(APIKey.length)] + "/" + id;
+		System.out.println(URI);
 		
 		try {
 			URL url = new URL(URI);
@@ -152,44 +155,44 @@ public class QueryController {
 	
 	public static ContentQuery parseToContentQuery(String result) {
 		JSONObject obj = new JSONObject(result);
-		String id = obj.getString("id");
-		String title = obj.getString("title");
-		String originalTitle = obj.getString("originalTitle");
-		String type = obj.getString("type");
-		String year = obj.getString("year");
-		String image = obj.getString("image");
-		String releaseDate = obj.getString("releaseDate");
+		String id = obj.optString("id");
+		String title = obj.optString("title");
+		String originalTitle = obj.optString("originalTitle");
+		String type = obj.optString("type");
+		String year = obj.optString("year");
+		String image = obj.optString("image");
+		String releaseDate = obj.optString("releaseDate");
 		String runtimeMins = null;
 		if(type.contentEquals("Movie")) {
-			runtimeMins = obj.getString("runtimeMins");
+			runtimeMins = obj.optString("runtimeMins");
 		}
-	    String plot = obj.getString("plot");
-	    String awards = obj.getString("awards");
-	    String directors = obj.getString("directors");
-	    String writers = obj.getString("writers");
-	    String stars = obj.getString("stars");
+	    String plot = obj.optString("plot");
+	    String awards = obj.optString("awards");
+	    String directors = obj.optString("directors");
+	    String writers = obj.optString("writers");
+	    String stars = obj.optString("stars");
 	    List<Actor> actorList = new ArrayList<Actor>();
-	    String genres = obj.getString("genres");
-	    String companies = obj.getString("companies");
-	    String countries = obj.getString("countries");
-	    String languages = obj.getString("languages");
-	    String contentRating = obj.getString("contentRating");
-	    String imDbRating = obj.getString("imDbRating");
-	    String imDbRatingVotes = obj.getString("imDbRatingVotes");
-	    String metacriticRating = obj.getString("metacriticRating");
-	    //Object trailer = obj.getString("trailer");
-	    //Object tagline = obj.getString("tagline");
-	    String keywords = obj.getString("keywords");
+	    String genres = obj.optString("genres");
+	    String companies = obj.optString("companies");
+	    String countries = obj.optString("countries");
+	    String languages = obj.optString("languages");
+	    String contentRating = obj.optString("contentRating");
+	    String imDbRating = obj.optString("imDbRating");
+	    String imDbRatingVotes = obj.optString("imDbRatingVotes");
+	    String metacriticRating = obj.optString("metacriticRating");
+	    //Object trailer = obj.optString("trailer");
+	    //Object tagline = obj.optString("tagline");
+	    String keywords = obj.optString("keywords");
 	    List<Similar> similars = new ArrayList<Similar>();
-	    //String errorMessage = obj.getString("errorMessage");
+	    //String errorMessage = obj.optString("errorMessage");
 	    
 	    JSONArray actorsJSON = obj.getJSONArray("actorList");
 	    for(int i = 0; i < actorsJSON.length(); i++) {
 	    	JSONObject act = actorsJSON.getJSONObject(i);
-	    	String actId = act.getString("id");
-	    	String actImage = act.getString("image");
-	    	String actName = act.getString("name");
-	    	String actAsCharacter = act.getString("asCharacter");
+	    	String actId = act.optString("id");
+	    	String actImage = act.optString("image");
+	    	String actName = act.optString("name");
+	    	String actAsCharacter = act.optString("asCharacter");
 	    	Actor actor = new Actor(actId, actImage, actName, actAsCharacter);
 	    	actorList.add(actor);
 	    }
@@ -197,10 +200,10 @@ public class QueryController {
 	    JSONArray similarJSON = obj.getJSONArray("similars");
 	    for(int i = 0; i < similarJSON.length(); i++) {
 	    	JSONObject sim = similarJSON.getJSONObject(i);
-	    	String simId = sim.getString("id");
-	    	String simTitle = sim.getString("title");
-	    	String simImage = sim.getString("image");
-	    	String simimDbRating = sim.getString("imDbRating");
+	    	String simId = sim.optString("id");
+	    	String simTitle = sim.optString("title");
+	    	String simImage = sim.optString("image");
+	    	String simimDbRating = sim.optString("imDbRating");
 	    	Similar similar = new Similar(simId, simTitle, simImage, simimDbRating);
 	    	similars.add(similar);
 	    }

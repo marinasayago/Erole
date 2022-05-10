@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Main Page</title>
+  <title>Movierole - Search</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -51,11 +51,11 @@
       </style> -->
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="..">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto active" href="#">Search</a></li>
           <li><a class="nav-link scrollto" href="#services">Forums</a></li>
-          <li><a class="getstarted scrollto" href="../app">Login</a></li>
-          <li><a class="getstarted scrollto" href="../user/add">Get Started</a></li>
+          <li><a class="getstarted scrollto" href="#">Login</a></li>
+          <li><a class="getstarted scrollto" href="#">Get Started</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -73,25 +73,29 @@
         </div>
       </div>
       <br>
-        <div class="row">
-          <div class="card" style="background-color:white">
-            <div class="card-body">
+      <br>
+      <br>
+        <!-- <div class="row">
+          <div class="card">
+            <div class="card-body"> -->
                 <form th:action="@{/app/query}" method="get" th:object="${query}">
 
-                      <div class="input-group mb-3">
+                      <div class="input-group mb-3 input-group-lg">
                         <select class="btn btn-secondary dropdown-toggle" th:field="*{type}" id="inlineFormCustomSelectPref">
-                          <option value="1" th:value="Search">Search All</option>
-                          <option value="2" th:value="SearchMovie">Search Movie</option>
-                          <option value="3" th:value="SearchSeries">Search Series</option>
+                          <option class="text-start" value="1" th:value="Search">Search All</option>
+                          <option class="text-start" value="2" th:value="SearchMovie">Search Movie</option>
+                          <option class="text-start" value="3" th:value="SearchSeries">Search Series</option>
                         </select>
-                        <input type="text" th:field="*{keyWord}">
+                        
+                        <input th:field="*{keyWord}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        
                     
-                        <input type="submit" value="Search" class="getstarted scrollto">
                       </div>
                 </form> 
-            </div>
+           <!--  </div>
           </div>
-        </div>
+        </div> -->
       <br>
         <form th:action="@{/logout}">
             <input type="submit" value="LogOut" class="btn-get-started scrollto">

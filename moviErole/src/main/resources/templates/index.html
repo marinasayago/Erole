@@ -51,11 +51,11 @@
       </style> -->
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href=".">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Forums</a></li>
-          <li><a class="getstarted scrollto" href="./app">Login</a></li>
-          <li><a class="getstarted scrollto" href="./user/add">Get Started</a></li>
+          <li><a class="nav-link scrollto active" href="#">Home</a></li>
+          <li><a class="nav-link scrollto" href="/app">Search</a></li>
+          <li><a class="nav-link scrollto" href="#">Forums</a></li>
+          <li><a class="getstarted scrollto" href="/user/login">Login</a></li>
+          <li><a class="getstarted scrollto" href="/user/add">Get Started</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -130,16 +130,16 @@
 
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script th:src="@{/vendor/aos/aos.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
+    <script th:src="@{/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
+    <script th:src="@{/vendor/waypoints/noframework.waypoints.js}"></script>
+    <script th:src="@{/vendor/php-email-form/validate.js}"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script th:src="@{/js/main.js}"></script>
 
 </body>
 </html>
