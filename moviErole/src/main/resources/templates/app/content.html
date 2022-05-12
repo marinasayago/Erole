@@ -31,6 +31,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+  <link href="http://fonts.cdnfonts.com/css/afterglow" rel="stylesheet">
 
 
   <!--Comprobar campos-->
@@ -75,10 +76,10 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs" style="background-color:#37517e">
+    <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
       <div class="container">
-            <h1 th:text="${result.title}" style="color:whitesmoke"></h1>
-            <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2>
+            <b><h1 th:text="${result.title}" style="color:whitesmoke; font-family:'Afterglow', sans-serif; font-size: 65px;" class="text-center"></h1></b>
+            <!-- <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2> -->
       </div>
     </section><!-- End Breadcrumbs -->
     
@@ -152,7 +153,7 @@
                   <span th:text="${result.imDbRating}"></span></h5>
                 </div>
                 <div>
-                  <h5><label for="imDbRatingVotes"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMDB Rating Votes:</p></label>
+                  <h5><label for="imDbRatingVotes"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating Votes:</p></label>
                   <span th:text="${result.imDbRatingVotes}"></span></h5>
                 </div>
                 <div>
