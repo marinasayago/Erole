@@ -46,6 +46,11 @@ public class MainController {
 		return "/app/searchResult";
 	}
 	
+	/**
+	 * Recoge la peticion de trasladarnos a la pagina con toda la informacion de una pelicula
+	 * @param id Identificador del contenido en la API
+	 * @return La direccion del HTML a cargar en navegador
+	 */
 	@RequestMapping("/app/content/{id}")
 	public String contentPage(@PathVariable("id") String id, Model model) {
 		ContentQuery result = QueryController.contentQuery(id);
@@ -53,6 +58,10 @@ public class MainController {
 		return "app/content";
 	}
 	
+	/**
+	 * Recoge peticion de mostrar la pagina con el top de peliculas
+	 * @return Direccion del HTML en cuestion
+	 */
 	@RequestMapping("/app/topMovies")
 	public String topMovies(Model model) {
 		List<MostPopularQuery> list = QueryController.topMoviesQuery(true);
@@ -60,6 +69,10 @@ public class MainController {
 		return "app/topMovies";
 	}
 	
+	/**
+	 * Recoge peticion de mostrar la pagina con el top de series
+	 * @return Direccion del HTML en cuestion
+	 */
 	@RequestMapping("/app/topSeries")
 	public String topSeries(Model model) {
 		List<MostPopularQuery> list = QueryController.topMoviesQuery(false);

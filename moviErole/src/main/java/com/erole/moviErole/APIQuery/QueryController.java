@@ -108,6 +108,11 @@ public class QueryController {
 		return list;
 	}
 	
+	/**
+	 * Dado un id de un elemento de la API realiza la busqueda y muestra los resultados de esta
+	 * @param id String identificador del contenido
+	 * @return Un objeto del tip ContentQuery con toda la informacion del contenido en cuestion
+	 */
 	public static ContentQuery contentQuery(String id) {
 		BufferedReader reader;
 		String line;
@@ -154,6 +159,12 @@ public class QueryController {
 		return content;
 	}
 	
+	/**
+	 * Dado un String en formato JSON con el contenido de una pelicula, campo a campo lo almacena
+	 * en un objeto del tipo ContentQuery y lo devuelve
+	 * @param result String en formato JSON con toda la informacion de la pelicula
+	 * @return Objeto de la clase ContentQuery con toda la informacion
+	 */
 	public static ContentQuery parseToContentQuery(String result) {
 		JSONObject obj = new JSONObject(result);
 		String id = obj.optString("id");
@@ -221,7 +232,11 @@ public class QueryController {
 		return content;
 	}
 	
-	
+	/**
+	 * Realiza en la API la busqueda del top de peliculas o series del momento
+	 * @param movie Booleano para distinguir entre top de peliculas o series
+	 * @return Lista con todo el contenido de las peliculas o series del momento
+	 */
 	public static List<MostPopularQuery> topMoviesQuery(boolean movie) {
 		BufferedReader reader;
 		String line;
@@ -268,6 +283,11 @@ public class QueryController {
 		return list;
 	}
 	
+	/**
+	 * Dado un String JSON con el formato esperado devuelve una lista de peliculas o series
+	 * @param response String en formato JSON
+	 * @return Lista de peliculas o series
+	 */
 	public static List<MostPopularQuery> parseToMostPopular(String response) {
 		List<MostPopularQuery> list = new ArrayList<MostPopularQuery>();
 		JSONArray array = new JSONArray(response);
