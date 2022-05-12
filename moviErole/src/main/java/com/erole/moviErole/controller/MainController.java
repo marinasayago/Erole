@@ -3,6 +3,7 @@ package com.erole.moviErole.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,8 @@ import com.erole.moviErole.APIQuery.QueryController;
 import com.erole.moviErole.APIQuery.model.contentQuery.ContentQuery;
 import com.erole.moviErole.APIQuery.model.mostPopularQuery.MostPopularQuery;
 import com.erole.moviErole.APIQuery.model.titleQuery.Result;
+import com.erole.moviErole.model.Comment;
+import com.erole.moviErole.service.CommentService;
 
 /**
  * Esta clase servira para gestionar las peticiones del usuario en el navegador que se realicen dentro de la pagina ppal,
@@ -27,6 +30,8 @@ import com.erole.moviErole.APIQuery.model.titleQuery.Result;
 
 @Controller
 public class MainController {
+	@Autowired
+	CommentService commentServ;
 	
 	/**
 	 * recibe la consulta a realizar, ejecuta su llamada y muestra los resultados
@@ -55,6 +60,9 @@ public class MainController {
 	public String contentPage(@PathVariable("id") String id, Model model) {
 		ContentQuery result = QueryController.contentQuery(id);
 		model.addAttribute("result", result);
+		model.addAttribute("newComment", new Comment());
+		model.addAttribute("commentList", commentServ.getCommentsFromContent(id));
+		
 		return "app/content";
 	}
 	

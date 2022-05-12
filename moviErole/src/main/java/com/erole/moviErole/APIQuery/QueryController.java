@@ -21,7 +21,7 @@ import com.erole.moviErole.APIQuery.model.mostPopularQuery.MostPopularQuery;
 import com.erole.moviErole.APIQuery.model.titleQuery.Result;
 
 /**
- * Esta clase sera la encargada de gestionar todas las peticiones que se quieran hacer a la api
+ * Esta clase sera la encargada de gestionar todas las peticiones que se quieran hacer a la API
  * @author pepes
  *
  */
