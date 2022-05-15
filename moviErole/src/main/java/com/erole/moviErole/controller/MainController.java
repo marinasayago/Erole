@@ -1,8 +1,10 @@
 package com.erole.moviErole.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,9 @@ import com.erole.moviErole.APIQuery.QueryController;
 import com.erole.moviErole.APIQuery.model.contentQuery.ContentQuery;
 import com.erole.moviErole.APIQuery.model.mostPopularQuery.MostPopularQuery;
 import com.erole.moviErole.APIQuery.model.titleQuery.Result;
+import com.erole.moviErole.model.User;
+import com.erole.moviErole.service.UserService;
+import com.erole.moviErole.service.UserServiceImp;
 
 /**
  * Esta clase servira para gestionar las peticiones del usuario en el navegador que se realicen dentro de la pagina ppal,
@@ -27,6 +32,8 @@ import com.erole.moviErole.APIQuery.model.titleQuery.Result;
 
 @Controller
 public class MainController {
+	@Autowired
+	private UserServiceImp userServ;
 	
 	/**
 	 * recibe la consulta a realizar, ejecuta su llamada y muestra los resultados
@@ -65,5 +72,17 @@ public class MainController {
 		List<MostPopularQuery> list = QueryController.topMoviesQuery(false);
 		model.addAttribute("list", list);
 		return "app/topMovies";
+	}
+	
+	@GetMapping("/app/user/{usr}")
+	public String userProfilePage(@PathVariable("usr") String username, Model model) {
+		User usuario = userServ.searchByUsername(username);
+		model.addAttribute("usr", usuario);
+		return "app/profile";
+	}
+	
+	@RequestMapping("/app/about")
+	public String about(Model model) {
+		return "app/about";
 	}
 }

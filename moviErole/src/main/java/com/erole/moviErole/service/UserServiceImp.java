@@ -78,4 +78,10 @@ public class UserServiceImp implements UserService{
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
+	
+	
+
+	public User searchByUsername(String username) {
+		return userRep.findByUsername(username);
+	}
 }
