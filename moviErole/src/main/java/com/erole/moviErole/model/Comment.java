@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,28 +19,28 @@ public class Comment {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	//RELACION DE UNO A MUCHOS
-	@Column(name = "userId", nullable = false)
-	private String userId;
+	@ManyToOne()
+	@JoinColumn(name = "userId", nullable = false)
+	private User user;
 	@Column(name = "contentId", nullable = false)
 	private String contentId;
 	@Column(name = "date", nullable = false)
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE)
 	private Date date;
-	@Column(name = "comment", length = 500)
-	private String comment;
+	@Column(name = "text", length = 500)
+	private String text;
 	@Column(name = "rating", nullable = false)
 	private int rating;
 	
 	public Comment() {}
 	
-	public Comment(String userId, String contentId, String comment, int rating) {
+	public Comment(User user, String contentId, String comment, int rating) {
 		super();
-		this.userId = userId;
+		this.user = user;
 		this.contentId = contentId;
 		this.date = new Date();
-		this.comment = comment;
+		this.text = comment;
 		this.rating = rating;
 	}
 	
@@ -48,11 +50,11 @@ public class Comment {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public String getContentId() {
 		return contentId;
@@ -66,11 +68,11 @@ public class Comment {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getComment() {
-		return comment;
+	public String getText() {
+		return text;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setText(String comment) {
+		this.text = comment;
 	}
 	public int getRating() {
 		return rating;
@@ -78,6 +80,10 @@ public class Comment {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", user=" + user + ", contentId=" + contentId + ", date=" + date + ", text="
+				+ text + ", rating=" + rating + "]";
+	}
 }

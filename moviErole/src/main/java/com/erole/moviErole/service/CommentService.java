@@ -1,5 +1,6 @@
 package com.erole.moviErole.service;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import com.erole.moviErole.repository.CommentRepository;
 public class CommentService {
 	@Autowired
 	CommentRepository commentRep;
+	@Autowired
+	UserServiceImp userServ;
 	
 	public List<Comment> getCommentsFromContent(String id){
 		List<Comment> comments = new LinkedList<Comment>();
@@ -23,6 +26,7 @@ public class CommentService {
 	}
 	
 	public void saveComment(Comment comment) {
+		comment.setDate(new Date());
 		commentRep.saveAndFlush(comment);
 	}
 }

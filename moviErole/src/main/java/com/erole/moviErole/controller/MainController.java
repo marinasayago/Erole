@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.erole.moviErole.MoviEroleApplication;
 import com.erole.moviErole.APIQuery.Query;
 import com.erole.moviErole.APIQuery.QueryController;
 import com.erole.moviErole.APIQuery.model.contentQuery.ContentQuery;
@@ -18,6 +19,8 @@ import com.erole.moviErole.APIQuery.model.mostPopularQuery.MostPopularQuery;
 import com.erole.moviErole.APIQuery.model.titleQuery.Result;
 import com.erole.moviErole.model.Comment;
 import com.erole.moviErole.service.CommentService;
+import com.erole.moviErole.model.User;
+import com.erole.moviErole.service.UserServiceImp;
 
 /**
  * Esta clase servira para gestionar las peticiones del usuario en el navegador que se realicen dentro de la pagina ppal,
@@ -32,7 +35,9 @@ import com.erole.moviErole.service.CommentService;
 @Controller
 public class MainController {
 	@Autowired
-	CommentService commentServ;
+	private CommentService commentServ;
+	@Autowired
+	private UserServiceImp userServ;
 	
 	/**
 	 * recibe la consulta a realizar, ejecuta su llamada y muestra los resultados
@@ -69,6 +74,8 @@ public class MainController {
 	
 	@PostMapping("/app/comment")
 	public String addComment(Comment newComment) {
+		User loggedUser = userServ.searchByUsername(MoviEroleApplication.getLoggedUser());
+		newComment.setUser(loggedUser);
 		commentServ.saveComment(newComment);
 		return "redirect:/app/content/" + newComment.getContentId();
 	}
@@ -93,5 +100,17 @@ public class MainController {
 		List<MostPopularQuery> list = QueryController.topMoviesQuery(false);
 		model.addAttribute("list", list);
 		return "app/topMovies";
+	}
+	
+	@GetMapping("/app/user/{usr}")
+	public String userProfilePage(@PathVariable("usr") String username, Model model) {
+		User usuario = userServ.searchByUsername(username);
+		model.addAttribute("usr", usuario);
+		return "app/profile";
+	}
+	
+	@RequestMapping("/app/about")
+	public String about(Model model) {
+		return "app/about";
 	}
 }

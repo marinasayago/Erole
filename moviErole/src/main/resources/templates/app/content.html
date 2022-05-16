@@ -62,7 +62,7 @@
         <ul>
           <!-- <li><a class="nav-link scrollto" href="/">Home</a></li> -->
           <li><a class="nav-link scrollto active" href="/app">Search</a></li>
-          <li><a class="nav-link scrollto" href="#">Forums</a></li>
+          <li><a class="nav-link scrollto" href="#">About</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
 
@@ -78,11 +78,8 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
       <div class="container">
-        <b>
-          <h1 th:text="${result.title}" style="color:whitesmoke; font-family:'Afterglow', sans-serif; font-size: 65px;"
-            class="text-center"></h1>
-        </b>
-        <!-- <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2> -->
+            <b><h1 th:text="${result.title}" style="color:whitesmoke"></h1></b>
+            <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2>
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -188,16 +185,40 @@
                   <span th:text="${result.trailer}"></span></h5>
                 </div>-->
           </div>
+          <div class="col-lg-4">
+            <div class="image">
+              <img style="border:15px solid; color:whitesmoke" th:src=${result.image} onmouseout="width=300; height=450"
+                onmouseover="width=400;height=580" width="300" height="450">
+            </div>
+          </div>
 
-          <form th:action="@{/app/content}" method="post" th:object="${newComment}">
+          <table class="table table-dark table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <!-- <td class="text-center">ID</td> -->
+                    <td class="text-center">User</td>
+                    <td class="text-center">Rating</td>
+                    <td class="text-center">Comment</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="c : ${commentList}">
+                    <td class="text-center" th:text="${c.user.userName}"></td>
+                    <td class="text-center" th:text="${c.rating}"></td>
+                    <td class="text-center" th:text="${c.text}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+          <form th:action="@{/app/comment}" method="post" th:object="${newComment}">
             <div>
               <input type="hidden" th:field="*{id}">
             </div>
             <div>
-              <input id="pito" type="hidden" th:field="*{userId}" th:value="${principal.id}">
+              <input id="pito" type="hidden" th:field="*{user}">
             </div>
             <div>
-              <input type="hidden" th:field="*{contentId}">
+              <input type="hidden" th:field="*{contentId}" th:value="${result.id}">
             </div>
             <div>
               <span>Rating</span>
@@ -205,19 +226,12 @@
             </div>
             <div>
               <span>Comment</span>
-              <input type="text" maxlength="500" th:field="*{comment}">
+              <input type="text" maxlength="500" th:field="*{text}">
             </div>
             <div>
               <input type="submit" value="Comment">
             </div>
           </form>
-
-          <div class="col-lg-4">
-            <div class="image">
-              <img style="border:15px solid; color:whitesmoke" th:src=${result.image} onmouseout="width=300; height=450"
-                onmouseover="width=400;height=580" width="300" height="450">
-            </div>
-          </div>
 
         </div>
 
