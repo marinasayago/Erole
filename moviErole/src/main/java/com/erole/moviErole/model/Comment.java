@@ -17,6 +17,7 @@ public class Comment {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	//RELACION DE UNO A MUCHOS
 	@Column(name = "userId", nullable = false)
 	private String userId;
 	@Column(name = "contentId", nullable = false)

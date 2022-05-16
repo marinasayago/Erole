@@ -11,7 +11,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  
+
 
   <!-- Google Fonts -->
   <link
@@ -78,108 +78,155 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
       <div class="container">
-            <b><h1 th:text="${result.title}" style="color:whitesmoke; font-family:'Afterglow', sans-serif; font-size: 65px;" class="text-center"></h1></b>
-            <!-- <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2> -->
+        <b>
+          <h1 th:text="${result.title}" style="color:whitesmoke; font-family:'Afterglow', sans-serif; font-size: 65px;"
+            class="text-center"></h1>
+        </b>
+        <!-- <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2> -->
       </div>
     </section><!-- End Breadcrumbs -->
-    
+
     <!-- ====== Main Page ======-->
     <section class="inner-page" style="background-color:rgb(222, 222, 222)">
-        <div class="container">
+      <div class="container">
 
-            <div class="row gy-4">
-    
-              <div class="col-lg-8">
-                <!--<div>
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <!--<div>
                     <label for="id">ID: </label>
                     <span th:text="${result.id}"></span>
                 </div>-->
+            <div>
+              <h3><label for="title">Title: </label>
+                <span th:text="${result.title}"></span>
+              </h3>
+            </div>
+            <div>
+              <h3><label for="year">Year: </label>
+                <span th:text="${result.year}"></span>
+              </h3>
+            </div>
+            <br>
+            <div>
+              <h4><label for="directors">Director/s: </label>
+                <span th:text="${result.directors}"></span>
+              </h4>
+            </div>
+            <div>
+              <h4><label for="stars">Main cast: </label>
+                <span th:text="${result.stars}"></span>
+              </h4>
+            </div>
+            <br>
+            <div>
+              <h5><label for="originalTitle">Original Title: </label>
+                <span th:text="${result.originalTitle}"></span>
+              </h5>
+            </div>
+            <div>
+              <h5><label for="type">Type: </label>
+                <span th:text="${result.type}"></span>
+              </h5>
+            </div>
+            <div>
+              <h5><label for="genres">Genre: </label>
+                <span th:text="${result.genres}"></span>
+              </h5>
+            </div>
+            <div>
+              <h5><label for="releaseDate">Release Date: </label>
+                <span th:text="${result.releaseDate}"></span>
+              </h5>
+            </div>
+            <div>
+              <h5><label for="runtimeMins">Runtime (mins): </label>
+                <span th:text="${result.runtimeMins}"></span>
+              </h5>
+            </div>
+            <br>
+            <div class="card">
+              <div class="card-body" style="background-color:whitesmoke">
                 <div>
-                    <h3><label for="title">Title:   </label>
-                    <span th:text="${result.title}"></span></h3>
+                  <!--<h6><label for="plot">Plot:  </label>-->
+                  <h6><span th:text="${result.plot}"></span></h6>
                 </div>
-                <div>
-                  <h3><label for="year">Year: </label>
-                  <span th:text="${result.year}"></span></h3>
-                </div>
-                <br>
-                <div>
-                  <h4><label for="directors">Director/s:  </label>
-                  <span th:text="${result.directors}"></span></h4>
-                </div>
-                <div>
-                  <h4><label for="stars">Main cast:  </label>
-                  <span th:text="${result.stars}"></span></h4>
-                </div>
-                <br>
-                <div>
-                    <h5><label for="originalTitle">Original Title:  </label>
-                    <span th:text="${result.originalTitle}"></span></h5>
-                </div>
-                <div>
-                    <h5><label for="type">Type: </label>
-                    <span th:text="${result.type}"></span></h5>
-                </div>
-                <div>
-                  <h5><label for="genres">Genre:  </label>
-                  <span th:text="${result.genres}"></span></h5>
-                </div>
-                <div>
-                    <h5><label for="releaseDate">Release Date:  </label>
-                    <span th:text="${result.releaseDate}"></span></h5>
-                </div>
-                <div>
-                  <h5><label for="runtimeMins">Runtime (mins):  </label>
-                  <span th:text="${result.runtimeMins}"></span></h5>
-                </div>
-                <br>
-                <div class="card">
-                  <div class="card-body" style="background-color:whitesmoke">
-                    <div>
-                      <!--<h6><label for="plot">Plot:  </label>-->
-                      <h6><span th:text="${result.plot}"></span></h6>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <div>
-                  <h5><label for="awards"></label>
-                  <span th:text="${result.awards}"></span></h5>
-                </div>
-                <br><br>
-                <h3>Ratings:</h3><br>
-                <div>
-                  <h5><label for="imDbRating"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating:</p></label>
-                  <span th:text="${result.imDbRating}"></span></h5>
-                </div>
-                <div>
-                  <h5><label for="imDbRatingVotes"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating Votes:</p></label>
-                  <span th:text="${result.imDbRatingVotes}"></span></h5>
-                </div>
-                <div>
-                  <h5><label for="metacriticRating"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.metacritic.com">Metacritic </a>Rating: </p></label>
-                    <span th:text="${result.metacriticRating}"></span></h5>
-                </div>
-                <!-- El trailer no sale en ninguna XD
+              </div>
+            </div>
+            <br>
+            <div>
+              <h5><label for="awards"></label>
+                <span th:text="${result.awards}"></span>
+              </h5>
+            </div>
+            <br><br>
+            <h3>Ratings:</h3><br>
+            <div>
+              <h5><label for="imDbRating">
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating:</p>
+                </label>
+                <span th:text="${result.imDbRating}"></span>
+              </h5>
+            </div>
+            <div>
+              <h5><label for="imDbRatingVotes">
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating Votes:</p>
+                </label>
+                <span th:text="${result.imDbRatingVotes}"></span>
+              </h5>
+            </div>
+            <div>
+              <h5><label for="metacriticRating">
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.metacritic.com">Metacritic </a>Rating: </p>
+                </label>
+                <span th:text="${result.metacriticRating}"></span>
+              </h5>
+            </div>
+            <!-- El trailer no sale en ninguna XD
                 <div>
                   <h5><label for="trailer">Trailer:  </label>
                   <span th:text="${result.trailer}"></span></h5>
                 </div>-->
-              </div>
-    
-              <div class="col-lg-4">
-                <div class="image">
-                    <img style="border:15px solid; color:whitesmoke" th:src=${result.image} 
-                    onmouseout="width=300; height=450" onmouseover="width=400;height=580"
-                    width="300" height="450">
-                </div>
-              </div>
-    
-            </div>
-    
           </div>
+
+          <form th:action="@{/app/content}" method="post" th:object="${newComment}">
+            <div>
+              <input type="hidden" th:field="*{id}">
+            </div>
+            <div>
+              <input id="pito" type="hidden" th:field="*{userId}" th:value="${principal.id}">
+            </div>
+            <div>
+              <input type="hidden" th:field="*{contentId}">
+            </div>
+            <div>
+              <span>Rating</span>
+              <input type="number" th:field="*{rating}">
+            </div>
+            <div>
+              <span>Comment</span>
+              <input type="text" maxlength="500" th:field="*{comment}">
+            </div>
+            <div>
+              <input type="submit" value="Comment">
+            </div>
+          </form>
+
+          <div class="col-lg-4">
+            <div class="image">
+              <img style="border:15px solid; color:whitesmoke" th:src=${result.image} onmouseout="width=300; height=450"
+                onmouseover="width=400;height=580" width="300" height="450">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </section>
 
+    <script>
+      console.log(document.getElementById("pito").value)
+    </script>
 
   </main><!-- End #main -->
 

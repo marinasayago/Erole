@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.erole.moviErole.APIQuery.Query;
@@ -60,10 +61,16 @@ public class MainController {
 	public String contentPage(@PathVariable("id") String id, Model model) {
 		ContentQuery result = QueryController.contentQuery(id);
 		model.addAttribute("result", result);
-		model.addAttribute("newComment", new Comment());
+		model.addAttribute("newComment", new Comment(null, id, null, 0));
 		model.addAttribute("commentList", commentServ.getCommentsFromContent(id));
-		
+
 		return "app/content";
+	}
+	
+	@PostMapping("/app/comment")
+	public String addComment(Comment newComment) {
+		commentServ.saveComment(newComment);
+		return "redirect:/app/content/" + newComment.getContentId();
 	}
 	
 	/**
