@@ -78,8 +78,10 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
       <div class="container">
-            <b><h1 th:text="${result.title}" style="color:whitesmoke"></h1></b>
-            <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2>
+        <b>
+          <h1 th:text="${result.title}" style="color:whitesmoke"></h1>
+        </b>
+        <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2>
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -145,7 +147,6 @@
             <div class="card">
               <div class="card-body" style="background-color:whitesmoke">
                 <div>
-                  <!--<h6><label for="plot">Plot:  </label>-->
                   <h6><span th:text="${result.plot}"></span></h6>
                 </div>
               </div>
@@ -192,23 +193,27 @@
             </div>
           </div>
 
+          <h2>Comments:</h2>
+
           <table class="table table-dark table-striped table-hover align-middle">
             <thead>
-                <tr>
-                    <!-- <td class="text-center">ID</td> -->
-                    <td class="text-center">User</td>
-                    <td class="text-center">Rating</td>
-                    <td class="text-center">Comment</td>
-                </tr>
+              <tr>
+                <!-- <td class="text-center">ID</td> -->
+                <td class="text-center">User</td>
+                <td class="text-center">Rating</td>
+                <td class="text-center">Comment</td>
+              </tr>
             </thead>
             <tbody>
-                <tr th:each="c : ${commentList}">
-                    <td class="text-center" th:text="${c.user.userName}"></td>
-                    <td class="text-center" th:text="${c.rating}"></td>
-                    <td class="text-center" th:text="${c.text}"></td>
-                </tr>
+              <tr th:each="c : ${commentList}">
+                <td class="text-center" th:text="${c.user.userName}"></td>
+                <td class="text-center" th:text="${c.rating}"></td>
+                <td class="text-start" th:text="${c.text}"></td>
+              </tr>
             </tbody>
-        </table>
+          </table>
+
+          <h3>Add a comment:</h3>
 
           <form th:action="@{/app/comment}" method="post" th:object="${newComment}">
             <div>
@@ -220,14 +225,26 @@
             <div>
               <input type="hidden" th:field="*{contentId}" th:value="${result.id}">
             </div>
-            <div>
-              <span>Rating</span>
-              <input type="number" th:field="*{rating}">
+
+
+            <div class="col-lg-4">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="ratingForm" th:field="*{rating}" min="0" max="10"
+                  onchange="validateRating(this.value)">
+                <label for="ratingForm">Rating</label>
+              </div>
             </div>
-            <div>
+
+           <!--  <div>
               <span>Comment</span>
-              <input type="text" maxlength="500" th:field="*{text}">
+              <textarea type="text" maxlength="500" th:field="*{text}"></textarea>
+            </div> -->
+
+            <div class="input-group">
+              <span class="input-group-text">Comment</span>
+              <textarea class="form-control" maxlength="500" th:field="*{text}"></textarea>
             </div>
+
             <div>
               <input type="submit" value="Comment">
             </div>
@@ -237,6 +254,17 @@
 
       </div>
     </section>
+
+    <script>
+      const validateRating = (val) => {
+        if (val < 0) {
+          document.getElementById("ratingForm").value = 0
+        } else if (val > 10) {
+          document.getElementById("ratingForm").value = 10
+        }
+
+      }
+    </script>
 
     <script>
       console.log(document.getElementById("pito").value)
