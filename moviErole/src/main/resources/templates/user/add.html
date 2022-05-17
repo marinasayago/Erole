@@ -220,7 +220,7 @@
         </div> -->
 
           <div>
-            <input class="btn btn-outline-primary" type="submit" value="Submit" id="submitButton">
+            <abbr title="You must fill in all the obligatory fields (the ones with *) before proceeding"><input class="btn btn-outline-primary" type="submit" value="Submit" id="submitButton"></abbr>
           </div>
 
           <script text="text/javascript">
@@ -297,6 +297,7 @@
       if (isNotValidFields(document.getElementById("emailForm"), document.getElementById("usernameForm"),
       document.getElementById("passwordForm"), document.getElementById("nameForm"))) {
         document.getElementById("submitButton").disabled = true;
+        
       } else {
         document.getElementById("submitButton").disabled = false;
       }
