@@ -75,7 +75,50 @@
 
   <main id="main">
 
-    
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
+      <div class="container">
+       
+            <b> <h1 th:text="${usr.userName}" style="color:whitesmoke"></h1>  </b>
+            <h2 th:text="${usr.birthdate}" style="color:rgb(200, 200, 200)">Birthday: </h2>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ====== Main Page ======-->
+    <section class="inner-page" style="background-color:rgb(222, 222, 222)">
+      <div class="container">
+
+
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <!--<div>
+                    <label for="id">ID: </label>
+                    <span th:text="${result.id}"></span>
+                </div>-->
+
+            <div>
+              
+            </div>
+
+            <br>
+            
+            <br>
+            <div class="card">
+              <div class="card-body" style="background-color:whitesmoke">
+                <div>
+                  <!--<h6><label for="plot">Plot:  </label>-->
+                  <h6><span th:text="${usr.bio}"></span></h6>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
 
   <!-- Vendor JS Files -->
