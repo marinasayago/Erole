@@ -1,3 +1,6 @@
+<!-- ================= GET STARTED ==================== -->
+<!-- Formulario para crear y registrar un nuevo usuario -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +13,6 @@
   <title>MoviErole - Sign Up</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-  
 
   <!-- Google Fonts -->
   <link
@@ -32,10 +33,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
 
-
-  <!--Comprobar campos-->
-
-
   <!-- =======================================================
   * Template Name: Arsha - v4.7.1
   * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
@@ -45,54 +42,50 @@
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
+  <!-- ================================== HEADER ==================================== -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-
       <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
-      <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
-      <!-- <style type="text/css">
-        h1.bienvenida {text-align:center;}
-      </style> -->
+      <!-- ========= NAVBAR ========= -->
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/app">Search</a></li>
-          <li><a class="nav-link scrollto" href="#services">About</a></li>
+          <li><a class="nav-link scrollto" href="/app/about">About</a></li>
           <li><a class="getstarted scrollto" href="/user/login">Login</a></li>
-          <li><a class="getstarted scrollto" href="#">Get Started</a></li>
-
+          <li><a class="getstarted scrollto" href="./add">Get Started</a></li>
+          <li><a href=".."><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+      </nav>
+      <!-- ======= END NAVBAR ======= -->
     </div>
-  </header><!-- End Header -->
+  </header>
+  <!-- ================================ END HEADER ================================== -->
 
+
+  <!-- =================================== MAIN ===================================== -->
   <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
+    <!-- ======= BREADCRUMBS ======= -->
     <section id="breadcrumbs" class="breadcrumbs" style="background-color:rgb(186, 186, 186)">
       <div class="container">
         <h1>Let's get started!</h1>
         <h2>Please fill the gaps to sign up.</h2>
       </div>
-    </section><!-- End Breadcrumbs -->
+    </section>
+    <!-- ======= END BREADCRUMBS ======= -->
 
+    <!-- ======= INNER PAGE ======= -->
     <section class="inner-page">
       <div class="container">
+
+        <!-- === FORM === -->
         <form th:action="@{/user/add}" method="post" th:object="${user}">
           <div>
             <input type="hidden" th:field="*{id}">
           </div>
 
-          <!-- <div>
-              <label for="email">Email</label>
-              <input type="email" th:field="*{email}" maxlength="50">
-          </div> -->
+          <!-- Rellenar campo 'Email' *OBLIGATORIO* -->
           <div class="col-lg-4">
             <div class="form-floating mb-3">
               <input type="email" class="form-control" id="emailForm" placeholder="name@example.com" th:field="*{email}"
@@ -101,126 +94,68 @@
             </div>
           </div>
 
-
-          <!-- <div class="form-floating mb-3">
-            <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2" th:field="*{email}" maxlength="50">
-          </div> -->
-
-
-          <!-- <div>
-              <label for="userName">User Name</label>
-              <input type="text" maxlength="16" th:field="*{userName}">
-          </div> -->
+          <!-- Rellenar campo 'Username' *OBLIGATORIO* -->
           <div class="col-lg-4">
             <div class="form-floating mb-3">
-              <!-- <span class="form-floating-text" id="basic-addon1">@</span> -->
               <input type="text" class="form-control" id="usernameForm" placeholder="Username" th:field="*{userName}"
                 maxlength="16">
               <label for="usernameForm">@Username*</label>
-              <!--               <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" maxlength="16" th:field="*{userName}"> -->
             </div>
           </div>
 
-          <!-- <div>
-              <label for="password">Password</label>
-              <input type="password" maxlength="20" th:field="*{password}">
-          </div> -->
-
-          <!-- <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Password" aria-label="Password"
-            aria-describedby="basic-addon2" th:field="*{password}" maxlength="20">
-        </div> -->
-
-        <div class="col-lg-4">
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="passwordForm" placeholder="Password" th:field="*{password}"
-              maxlength="20">
-            <label for="passwordForm">Password*</label>
+          <!-- Rellenar campo 'Password' *OBLIGATORIO* -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="passwordForm" placeholder="Password" th:field="*{password}"
+                maxlength="20">
+              <label for="passwordForm">Password*</label>
+            </div>
           </div>
-        </div>
 
-
-          <!-- <div>
-              <label for="name">Name</label>
-              <input type="text" maxlength="20" th:field="*{name}">
-          </div> -->
-
-
-          <!-- ESTO ES LA FORMA BONITA ANTERIOR -->
-          <!-- <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon2"
-            th:field="*{name}" maxlength="20">
-        </div> -->
-        <div class="col-lg-4">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nameForm" placeholder="Name" th:field="*{name}" maxlength="20">
-            <label for="nameForm">Name*</label>
+          <!-- Rellenar campo 'Name' *OBLIGATORIO* -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nameForm" placeholder="Name" th:field="*{name}" maxlength="20">
+              <label for="nameForm">Name*</label>
+            </div>
           </div>
-        </div>
 
-          <!-- <div>
-              <label for="surname">Surname</label>
-              <input type="text" maxlength="20" th:field="*{surname}">
-          </div> -->
-
-          <!-- ESTO ES LA FORMA BONITA ANTERIOR -->
-
-          <!-- <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Surname" aria-label="Surname"
-            aria-describedby="basic-addon2" th:field="*{surname}" maxlength="20">
-        </div> -->
-        <div class="col-lg-4">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="surnameForm" placeholder="Surname" th:field="*{surname}"
-              maxlength="20">
-            <label for="surnameForm">Surname</label>
+          <!-- Rellenar campo 'Surname' *OBLIGATORIO* -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="surnameForm" placeholder="Surname" th:field="*{surname}"
+                maxlength="20">
+              <label for="surnameForm">Surname</label>
+            </div>
           </div>
-        </div>
 
-
-
-          <!-- <div>
+          <!-- Rellenar campo 'Birth Date' (OPCIONAL) -->
+          <div class="col-lg-4">
+            <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
               <label for="birthDate">Birth Date</label>
-              <input type="date" th:field="*{birthdate}">
-          </div> -->
-        <div class="col-lg-4">
-          <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
-            <label for="birthDate">Birth Date</label>
-            <input placeholder="Select date" type="date" class="form-control" th:field="*{birthdate}">
-            <!-- <i class="fas fa-calendar input-prefix" ></i> -->
+              <input placeholder="Select date" type="date" class="form-control" th:field="*{birthdate}">
+            </div>
           </div>
-        </div>
 
-          <!-- <div>
-              <label for="bio">Bio</label>
-              <textarea id="bio" th:field="*{bio}"></textarea>
-          </div> -->
           <br>
 
-
-          <!-- ESTO ES LA FORMA BONITA ANTERIOR -->
-
-          <!-- <div class="input-group">
-          <span class="input-group-text">Bio</span>
-          <textarea class="form-control" aria-label="With textarea" id="bio" th:field="*{bio}"></textarea>
-        </div> -->
-
-        <div class="col-lg-6">
-          <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="Bio" id="floatingTextarea2" style="height: 100px"
-              th:field="*{bio}"></textarea>
-            <label for="floatingTextarea2">Bio</label>
+          <!-- Rellenar campo 'Bio' (OPCIONAL) -->
+          <div class="col-lg-6">
+            <div class="form-floating mb-3">
+              <textarea class="form-control" placeholder="Bio" id="floatingTextarea2" style="height: 100px"
+                th:field="*{bio}"></textarea>
+              <label for="floatingTextarea2">Bio</label>
+            </div>
           </div>
-        </div>
 
-
-
-          <!-- <div>
-          <input type="submit" value="Submit">
-        </div> -->
-
+          <!-- Botón SUBMIT que completa el registro del usuario -->
+          <!-- El botón se activa cuando se hayan rellenado todos los campos obligatorios, en
+          caso contrario permanecerá desactivado -->
+          <!-- Si se pasa el cursor por encima del botón salta una ventana de aviso de que 
+          se han de rellenar todos los campos obligatorios para que se active -->
           <div>
-            <abbr title="You must fill in all the obligatory fields (the ones with *) before proceeding"><input class="btn btn-outline-primary" type="submit" value="Submit" id="submitButton"></abbr>
+            <abbr title="You must fill in all the obligatory fields (the ones with *) before proceeding">
+              <input class="btn btn-outline-primary" type="submit" value="Submit" id="submitButton"></abbr>
           </div>
 
           <script text="text/javascript">
@@ -233,25 +168,25 @@
             }
           </script>
 
-
-          <!-- ESTO ES LO ULTIMO QUE PROBO ANTONIO QUE SE VE EXACTAMENTE IGUAL QUE EL NORMAL    -->
-          <!-- <div class="d-flex justify-content-center justify-content-lg-start">
-          <input type="submit" value="Submit" class="btn-get-started scrollto">
-        </div> -->
-
+          <!-- Botón para redireccionar a la página del Login -->
           <h3><br>Have an account?</h3>
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="../app" class="btn btn-outline-primary">Login</a>
           </div>
+
         </form>
+        <!-- === END FORM === -->
+
       </div>
     </section>
+    <!-- ======= END INNER PAGE ======= -->
 
-  </main><!-- End #main -->
+  </main>
+  <!-- ================================== END MAIN ==================================== -->
 
-  <!-- ======= Footer ======= -->
+
+  <!-- =================================== FOOTER ===================================== -->
   <footer id="footer">
-
     <div class="footer-newsletter">
       <div class="container">
         <div class="row">
@@ -264,15 +199,17 @@
           </div>
           <div class="col-lg-4">
           </div>
+
+          <!-- Imagen logo Erole -->
           <div class="col">
             <img th:src="@{/img/logonegro.png}" alt="" width="120" height="120">
           </div>
+          
         </div>
       </div>
     </div>
-
-  </footer><!-- End Footer -->
-
+  </footer>
+  <!-- =============================== END FOOTER ================================= -->
 
   <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
@@ -287,6 +224,10 @@
   <script th:src="@{/vendor/waypoints/noframework.waypoints.js}"></script>
   <script th:src="@{/vendor/php-email-form/validate.js}"></script>
 
+
+  <!-- =================================== SCRIPT ===================================== -->
+  <!-- El botón SUBMIT no se activa hasta que se rellenen todos los campos obligatorios -->
+  <!-- Si en algún momento se borra algún campo obligatorio, el botón SUBMIT se desactiva -->
   <script type="text/javascript">
     const isNotValidFields = (email, username, password, name) => {
       return (email.value == "" || email.value == null || username.value == "" || username.value == null
@@ -308,11 +249,11 @@
     document.getElementById("passwordForm").addEventListener("change",handle)
     document.getElementById("nameForm").addEventListener("change",handle)
   </script>
+  <!-- ================================ FIN SCRIPT ===================================== -->
+
 
   <!-- Template Main JS File -->
   <script th:src="@{/js/main.js}"></script>
-
-
 </body>
 
 </html>

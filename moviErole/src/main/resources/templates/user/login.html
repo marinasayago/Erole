@@ -1,3 +1,6 @@
+<!-- ============================== LOGIN ================================= -->
+<!-- Para que los usuarios registrados puedan acceder al servicio de la web -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +13,6 @@
   <title>MoviErole - Login</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
-  
 
   <!-- Google Fonts -->
   <link
@@ -32,10 +33,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
 
-
-  <!--Comprobar campos-->
-
-
   <!-- =======================================================
   * Template Name: Arsha - v4.7.1
   * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
@@ -45,88 +42,96 @@
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
+  <!-- ================================== HEADER ==================================== -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-
       <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
-      <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
-      <!-- <style type="text/css">
-        h1.bienvenida {text-align:center;}
-      </style> -->
+      <!-- ========= NAVBAR ========= -->
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/app">Search</a></li>
-          <li><a class="nav-link scrollto" href="#">About</a></li>
-          <li><a class="getstarted scrollto" href="#">Login</a></li>
+          <li><a class="nav-link scrollto" href="/app/about">About</a></li>
+          <li><a class="getstarted scrollto" href="/user/login">Login</a></li>
           <li><a class="getstarted scrollto" href="/user/add">Get Started</a></li>
-
+          <li><a href=".."><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
+      <!-- ======= END NAVBAR ======= -->
     </div>
-  </header><!-- End Header -->
+  </header>
+  <!-- ================================ END HEADER ================================== -->
 
+
+  <!-- =================================== MAIN ===================================== -->
   <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
+    <!-- ======= BREADCRUMBS ======= -->
     <section id="breadcrumbs" class="breadcrumbs" style="background-color:rgb(186, 186, 186)">
       <div class="container">
         <h1>Login</h1>
       </div>
-    </section><!-- End Breadcrumbs -->
+    </section>
+    <!-- ======= END BREADCRUMBS ======= -->
 
+    <!-- ======= INNER PAGE ======= -->
     <section class="inner-page">
       <div class="container">
-		<form th:action="@{/user/login}" method="post">
-					
-			<!-- error message -->
-			<div th:if="${param.error}">
-				<div class="alert alert-danger">Invalid username or
-					password.</div>
-			</div>
-			
-		<div class="col-lg-4">
-			<div class = "form-floating mb-3">
-				<input type="text" class = "form-control" id ="usernameLogin" name = "username"
-				placeholder="Username"maxlength="16">
-        <label for="usernameLogin">Username</label>
-			</div>
-		</div>
 
-		<div class="col-lg-4">
-			<div class = "form-floating mb-3">
-				<input type="password" class = "form-control" id ="passwordLogin" name = "password"
-				placeholder="Password"maxlength="20">
-        <label for="passwordLogin">Password</label>
-			</div>
-		</div>
+        <!-- === FORM === -->
+        <form th:action="@{/user/login}" method="post">
+              
+          <!-- Mensaje de error si hay algún error en los parámetros -->
+          <div th:if="${param.error}">
+            <div class="alert alert-danger">Invalid username or password.</div>
+          </div>
+            
+          <!-- Introducir campo 'Username' -->
+          <div class="col-lg-4">
+            <div class = "form-floating mb-3">
+              <input type="text" class = "form-control" id ="usernameLogin" name = "username"
+              placeholder="Username"maxlength="16">
+              <label for="usernameLogin">Username</label>
+            </div>
+          </div>
 
-			<br>
-			<div class="form-group">
-				<div>
-					<input class="btn btn-outline-primary" type="submit" value="Login" id="submitButton">
-				</div>
-			</div>
+          <!-- Introducir campo 'Password' -->
+          <div class="col-lg-4">
+            <div class = "form-floating mb-3">
+              <input type="password" class = "form-control" id ="passwordLogin" name = "password"
+              placeholder="Password"maxlength="20">
+              <label for="passwordLogin">Password</label>
+            </div>
+          </div>
 
-			<h3><br><br>If you don't have an account please sign up before logging in</h3><br>
-			<div class="d-flex justify-content-center justify-content-lg-start">
-			  <a class="btn btn-outline-primary" href="../user/add">Sign Up</a>
-			</div>
+          <br>
 
-		</form>
+          <!-- Botón SUBMIT -->
+          <div class="form-group">
+            <div>
+              <input class="btn btn-outline-primary" type="submit" value="Login" id="submitButton">
+            </div>
+          </div>
+
+          <!-- Botón para redireccionar al Sign Up -->
+          <h3><br><br>If you don't have an account please sign up before logging in</h3><br>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a class="btn btn-outline-primary" href="../user/add">Sign Up</a>
+          </div>
+
+        </form>
+        <!-- === END FORM === -->
+
       </div>
     </section>
+    <!-- ======= END INNER PAGE ======= -->
 
-  </main><!-- End #main -->
+  </main>
+  <!-- ================================== END MAIN ==================================== -->
 
-  <!-- ======= Footer ======= -->
+
+  <!-- =================================== FOOTER ===================================== -->
   <footer id="footer">
-
     <div class="footer-newsletter">
       <div class="container">
         <div class="row">
@@ -139,13 +144,17 @@
           </div>
           <div class="col-lg-4">
           </div>
+
+          <!-- Imagen logo Erole -->
           <div class="col">
             <img th:src="@{/img/logonegro.png}" alt="" width="120" height="120">
           </div>
+
+        </div>
       </div>
     </div>
-
-  </footer><!-- End Footer -->
+  </footer>
+  <!-- =============================== END FOOTER ================================= -->
 
 
   <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
@@ -161,25 +170,8 @@
   <script th:src="@{/vendor/waypoints/noframework.waypoints.js}"></script>
   <script th:src="@{/vendor/php-email-form/validate.js}"></script>
 
-  <script type="text/javascript">
-    document.getElementById("emailForm").addEventListener(
-      "change", () => {
-        if (document.getElementById("emailForm").value == "" || document.getElementById("emailForm").value == null) {
-          alert("The email field can't be empty")
-          document.getElementById("submitButton").disabled = true;
-        } else {
-          document.getElementById("submitButton").disabled = false;
-        }
-
-
-      }
-    )
-  </script>
-
   <!-- Template Main JS File -->
   <script th:src="@{/js/main.js}"></script>
-
-
 </body>
 
 </html>

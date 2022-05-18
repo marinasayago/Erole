@@ -1,3 +1,7 @@
+<!-- ============================== MAIN PAGE ================================= -->
+<!-- Página principal de la página. Para acceder a los servicios habrá primero que
+registrarse (Get Started) y posteriormente entrar con tu usuario (Login) -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,18 +41,11 @@
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
+  <!-- ================================== HEADER ==================================== -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-
       <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
-      <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
-      <!-- <style type="text/css">
-        h1.bienvenida {text-align:center;}
-      </style> -->
+      <!-- ========= NAVBAR ========= -->
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href=".">Home</a></li>
@@ -56,46 +53,58 @@
           <li><a class="nav-link scrollto" href="/app/about">About</a></li>
           <li><a class="getstarted scrollto" href="/app">Login</a></li>
           <li><a class="getstarted scrollto" href="/user/add">Get Started</a></li>
+          <li><a href=".."><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+      </nav>
+      <!-- ======= END NAVBAR ======= -->
     </div>
-  </header><!-- End Header -->
+  </header>
+  <!-- ================================ END HEADER ================================== -->
 
-  <!-- ======= Hero Section ======= -->
+  <!-- =================================== HERO ===================================== -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
+
+          <!-- Texto en la página -->
           <h1>Welcome to moviErole!</h1>
           <h2>Search for multimedia content and interact with other people!</h2>
+
+          <!-- Botón para redireccionar al Sign Up -->
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="./user/add" class="btn-get-started scrollto">Get Started</a>
           </div>
+
+          <!-- Botón para redireccionar al Login -->
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="./app" class="btn-get-started scrollto">Login</a>
           </div>
+
         </div>
+
+        <!-- Imagen del logo de Erole con efecto animado (fluid animated effect) -->
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
           <img th:src="@{/img/logob3.png}" class="img-fluid animated" alt="" width="250" height="250">
         </div>
+
       </div>
     </div>
+  </section>
+  <!-- ================================== END HERO ==================================== -->
 
-  </section><!-- End Hero -->
-
-  
-  	<!-- Mensajes de registro y logout -->
+  <!-- Mensaje de registro con éxito -->
 	<div th:if="${param.registration}">
 		<div class="alert alert-info">You've successfully registered</div>
 	</div>
+
+  <!-- Mensaje de logout con éxito -->
 	<div th:if="${param.logout}">
 		<div class="alert alert-info">You've successfully loged out</div>
 	</div>
 
-
-  <!-- ======= Footer ======= -->
+  <!-- =================================== FOOTER ===================================== -->
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -106,6 +115,8 @@
               Created by ...    Erole
             </p>
           </div>
+
+          <!-- Enlaces a nuestros Githubs -->
           <div class="col-lg-auto col-md-6 footer-links">
             <h4>Our Githubs</h4>
             <div class="social-links mt-3">
@@ -121,11 +132,13 @@
               <a href="https://github.com/MarioMerZap" class="github"><i class="bx bxl-github"></i></a>
             </div>
           </div>
+
+               <!-- Qué habrá aquí??? -->
         </div> <a href="https://pbs.twimg.com/ext_tw_video_thumb/1382627727409356804/pu/img/GdGmoTLvnJw63kpO.jpg" style="color:white">Coronel</a>
       </div>
     </div>
-
-
+  </footer>
+  <!-- =============================== END FOOTER ================================= -->
 
 
     <!-- Vendor JS Files -->
@@ -139,6 +152,6 @@
 
     <!-- Template Main JS File -->
     <script th:src="@{/js/main.js}" type="text/javascript"></script>
-
 </body>
+
 </html>

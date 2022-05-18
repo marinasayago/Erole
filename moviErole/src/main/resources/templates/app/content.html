@@ -1,3 +1,6 @@
+<!-- =================================== CONTENT ====================================== -->
+<!-- Página donde encontramos toda la información relacionada con un contenido concreto -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,10 +36,6 @@
   <link href="assets/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
   <link href="http://fonts.cdnfonts.com/css/afterglow" rel="stylesheet">
 
-
-  <!--Comprobar campos-->
-
-
   <!-- =======================================================
   * Template Name: Arsha - v4.7.1
   * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
@@ -46,36 +45,31 @@
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
+  <!-- ================================== HEADER ==================================== -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-
       <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
-      <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
-      <!-- <style type="text/css">
-        h1.bienvenida {text-align:center;}
-      </style> -->
+      <!-- ========= NAVBAR ========= -->
       <nav id="navbar" class="navbar">
         <ul>
-          <!-- <li><a class="nav-link scrollto" href="/">Home</a></li> -->
           <li><a class="nav-link scrollto active" href="/app">Search</a></li>
-          <li><a class="nav-link scrollto" href="#">About</a></li>
+          <li><a class="nav-link scrollto" href="/app/about">About</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
-
+          <li><a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+      </nav>
+      <!-- ======= END NAVBAR ======= -->
     </div>
-  </header><!-- End Header -->
+  </header>
+  <!-- ================================ END HEADER ================================== -->
 
+
+  <!-- =================================== MAIN ===================================== -->
   <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
+    <!-- ======= BREADCRUMBS ======= -->
     <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
       <div class="container">
         <b>
@@ -83,67 +77,89 @@
         </b>
         <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2>
       </div>
-    </section><!-- End Breadcrumbs -->
+    </section>
+    <!-- ======= END BREADCRUMBS ======= -->
 
-    <!-- ====== Main Page ======-->
+    <!-- ======= INNER PAGE ======= -->
+    <!-- Aquí se encuentran los datos del contenido -->
     <section class="inner-page" style="background-color:rgb(222, 222, 222)">
       <div class="container">
 
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            <!--<div>
-                    <label for="id">ID: </label>
-                    <span th:text="${result.id}"></span>
-                </div>-->
+            
+            <!-- Título -->
             <div>
               <h3><label for="title">Title: </label>
                 <span th:text="${result.title}"></span>
               </h3>
             </div>
+
+            <!-- Año -->
             <div>
               <h3><label for="year">Year: </label>
                 <span th:text="${result.year}"></span>
               </h3>
             </div>
+
             <br>
+
+            <!-- Director/es -->
             <div>
               <h4><label for="directors">Director/s: </label>
                 <span th:text="${result.directors}"></span>
               </h4>
             </div>
+
+            <!-- Cast principal -->
             <div>
               <h4><label for="stars">Main cast: </label>
                 <span th:text="${result.stars}"></span>
               </h4>
             </div>
+
             <br>
+
+            <!-- Título original -->
             <div>
               <h5><label for="originalTitle">Original Title: </label>
                 <span th:text="${result.originalTitle}"></span>
               </h5>
             </div>
+
+            <!-- Tipo (película o serie) -->
             <div>
               <h5><label for="type">Type: </label>
                 <span th:text="${result.type}"></span>
               </h5>
             </div>
+
+            <!-- Género -->
             <div>
               <h5><label for="genres">Genre: </label>
                 <span th:text="${result.genres}"></span>
               </h5>
             </div>
+
+            <!-- Fecha de estreno -->
             <div>
               <h5><label for="releaseDate">Release Date: </label>
                 <span th:text="${result.releaseDate}"></span>
               </h5>
             </div>
+
+            <!-- Duración -->
             <div>
               <h5><label for="runtimeMins">Runtime (mins): </label>
                 <span th:text="${result.runtimeMins}"></span>
               </h5>
             </div>
+
             <br>
+
+            <!-- Argumento-->
+            <!-- Mostrado dentro de un card -->
             <div class="card">
               <div class="card-body" style="background-color:whitesmoke">
                 <div>
@@ -151,41 +167,50 @@
                 </div>
               </div>
             </div>
+
             <br>
+
+            <!-- Premios/Nominaciones -->
             <div>
               <h5><label for="awards"></label>
                 <span th:text="${result.awards}"></span>
               </h5>
             </div>
+
             <br><br>
+
+            <!-- Puntuaciones -->
             <h3>Ratings:</h3><br>
+            <!-- En IMDB -->
             <div>
               <h5><label for="imDbRating">
+                  <!-- Enlace a la página de IMDB -->
                   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating:</p>
                 </label>
                 <span th:text="${result.imDbRating}"></span>
               </h5>
             </div>
+            <!-- Votos en IMDB -->
             <div>
               <h5><label for="imDbRatingVotes">
+                  <!-- Enlace a la página de IMDB -->
                   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating Votes:</p>
                 </label>
                 <span th:text="${result.imDbRatingVotes}"></span>
               </h5>
             </div>
+            <!-- En Metacritic -->
             <div>
               <h5><label for="metacriticRating">
+                  <!-- Enlace a la página de Metacritic -->
                   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.metacritic.com">Metacritic </a>Rating: </p>
                 </label>
                 <span th:text="${result.metacriticRating}"></span>
               </h5>
             </div>
-            <!-- El trailer no sale en ninguna XD
-                <div>
-                  <h5><label for="trailer">Trailer:  </label>
-                  <span th:text="${result.trailer}"></span></h5>
-                </div>-->
           </div>
+
+          <!-- Imagen de la carátula -->
           <div class="col-lg-4">
             <div class="image">
               <img style="border:15px solid; color:whitesmoke" th:src=${result.image} onmouseout="width=300; height=450"
@@ -193,17 +218,20 @@
             </div>
           </div>
 
+          <!-- ======= COMMENTS ======= -->
           <h2>Comments:</h2>
 
+          <!-- ========= TABLE ========= -->
           <table class="table table-dark table-striped table-hover align-middle">
+            <!-- Etiquetas de las columnas -->
             <thead>
               <tr>
-                <!-- <td class="text-center">ID</td> -->
                 <td class="text-center">User</td>
                 <td class="text-center">Rating</td>
                 <td class="text-center">Comment</td>
               </tr>
             </thead>
+            <!-- Contenido de la tabla -->
             <tbody>
               <tr th:each="c : ${commentList}">
                 <td class="text-center" th:text="${c.user.userName}"></td>
@@ -212,21 +240,28 @@
               </tr>
             </tbody>
           </table>
+          <!-- ========= TABLE ========= -->
 
           <h3>Add a comment:</h3>
 
+          <!-- === FORM === -->
           <form th:action="@{/app/comment}" method="post" th:object="${newComment}">
             <div>
               <input type="hidden" th:field="*{id}">
             </div>
+
+            <!-- Este usuario corresponde al que está loggeado en ese momento -->
+            <!-- No es un campo que se rellene-->
             <div>
               <input id="pito" type="hidden" th:field="*{user}">
             </div>
+
             <div>
               <input type="hidden" th:field="*{contentId}" th:value="${result.id}">
             </div>
 
-
+            <!-- Puntuación -->
+            <!-- Con un script controlaremos que esté entre 0 y 10 -->
             <div class="col-lg-4">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="ratingForm" th:field="*{rating}" min="0" max="10"
@@ -235,46 +270,34 @@
               </div>
             </div>
 
-           <!--  <div>
-              <span>Comment</span>
-              <textarea type="text" maxlength="500" th:field="*{text}"></textarea>
-            </div> -->
-
+            <!-- Texto (el comentario en sí) -->
             <div class="input-group">
               <span class="input-group-text">Comment</span>
               <textarea class="form-control" maxlength="500" th:field="*{text}"></textarea>
             </div>
 
+            <br>
+
+            <!-- Botón de SUBMIT para guardar el comentario -->
             <div>
               <input type="submit" value="Comment">
             </div>
+
           </form>
+          <!-- === END FORM === -->
+
+          <!-- =======  END COMMENTS ======= -->
 
         </div>
-
       </div>
     </section>
+    <!-- ======= END INNER PAGE ======= -->
 
-    <script>
-      const validateRating = (val) => {
-        if (val < 0) {
-          document.getElementById("ratingForm").value = 0
-        } else if (val > 10) {
-          document.getElementById("ratingForm").value = 10
-        }
+  </main>
+  <!-- ================================== END MAIN ==================================== -->
 
-      }
-    </script>
-
-    <script>
-      console.log(document.getElementById("pito").value)
-    </script>
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
+  <!-- =================================== FOOTER ===================================== -->
   <footer id="footer">
-
     <div class="footer-newsletter">
       <div class="container">
         <div class="row">
@@ -287,19 +310,48 @@
           </div>
           <div class="col-lg-4">
           </div>
+
+          <!-- Imagen logo Erole -->
           <div class="col">
             <img th:src="@{/img/logonegro.png}" alt="" width="120" height="120">
           </div>
+
         </div>
       </div>
     </div>
 
-  </footer><!-- End Footer -->
+  </footer>
+  <!-- =============================== END FOOTER ================================= -->
+
+
+    <!-- =================================== SCRIPT ===================================== -->
+    <!-- Controla que la puntuación se encuentre entre 0 y 10 -->
+    <!-- Si la puntuación introducida no está en el rango se pone automáticamente la 
+    puntuación válida más cercana -->
+    <script>
+      const validateRating = (val) => {
+        if (val < 0) {
+          document.getElementById("ratingForm").value = 0;
+        } else if (val > 10) {
+          document.getElementById("ratingForm").value = 10
+        }
+  
+      }
+    </script>
+    <!-- ================================ FIN SCRIPT ===================================== -->
+  
+  
+
+    <!-- =================================== SCRIPT ===================================== -->
+    <!-- Script para obtener el usuario que está registrado en ese momento a partir de su ID -->
+    <script>
+      console.log(document.getElementById("pito").value)
+    </script>
+    <!-- ================================ FIN SCRIPT ===================================== -->
 
 
   <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
-
 
   <!-- Vendor JS Files -->
   <script th:src="@{/vendor/aos/aos.js}"></script>
@@ -310,11 +362,8 @@
   <script th:src="@{/vendor/waypoints/noframework.waypoints.js}"></script>
   <script th:src="@{/vendor/php-email-form/validate.js}"></script>
 
-
   <!-- Template Main JS File -->
   <script th:src="@{/js/main.js}"></script>
-
-
 </body>
 
 </html>

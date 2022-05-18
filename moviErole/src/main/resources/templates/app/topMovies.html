@@ -1,12 +1,18 @@
+<!-- ================================== TOP MOVIES ===================================== -->
+<!-- Página donde se muestra el contenido más buscados en la API de IMDB últimamente -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
     <title>Search Result</title>
+
     <script type="text/javascript">
     </script>
+
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -29,43 +35,42 @@
 </head>
 
 <body>
+    <!-- ================================== HEADER ==================================== -->
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
-
             <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logob.png" alt="" class="img-fluid" width="200" heigth="300"></a> -->
-            <!-- <h1 class="bienvenida" style="color:white">Welcome to moviErole!</h1> -->
-            <!-- <style type="text/css">
-			h1.bienvenida {text-align:center;}
-		  </style> -->
+            <!-- ========= NAVBAR ========= -->
             <nav id="navbar" class="navbar">
                 <ul>
-                    <!-- <li><a class="nav-link scrollto" href="/app">Home</a></li> -->
                     <li><a class="nav-link scrollto active" href="/app">Search</a></li>
                     <li><a class="nav-link scrollto" href="./about">About</a></li>
                     <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
                     <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
-
+                    <li><a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
-            <!-- .navbar -->
-
+            <!-- ======= END NAVBAR ======= -->
         </div>
     </header>
-    <!-- End Header -->
+    <!-- ================================ END HEADER ================================== -->
 
+    <!-- =================================== HERO ===================================== -->
+
+    <!-- Sección pre-tabla -->
     <section id="hero2" class="d-flex align-items-center">
         <div class="container">
             <h1>Search Result</h1>
         </div>
     </section>
+
+    <!-- Tabla donde se muestran los resultados de la búsqueda -->
+    <!-- ========= TABLE ========= -->
     <div class="table-responsive">
         <table class="table table-dark table-striped table-hover align-middle">
+            <!-- Etiquetas de las columnas -->
             <thead>
                 <tr>
-                    <!--  <td class="text-center">ID</td> -->
                     <td class="text-center">Rank</td>
                     <td class="text-center">RankUpDown</td>
                     <td class="text-center">Title</td>
@@ -74,9 +79,11 @@
                     <td class="text-center">ImDb Rating</td>
                 </tr>
             </thead>
+            <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
+            <!-- Con un for-each vamos iterando por los diferentes resultados y mostrando los campos
+            que nos interesan (en sus respectivas etiquetas) -->
             <tbody>
                 <tr th:each="r : ${list}">
-                    <!-- <td class="text-center" th:text="${r.id}"></td> -->
                     <td class="text-center" th:text="${r.rank}"></td>
                     <td class="text-center" th:text="${r.rankUpDown}"></td>
                     <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
@@ -88,10 +95,11 @@
             </tbody>
         </table>
     </div>
+    <!-- ======= END TABLE ======= -->
 
+    <!-- ================================== END HERO ==================================== -->
 
-    <!-- End Hero -->
-    <!-- ======= Footer ======= -->
+    <!-- =================================== FOOTER ===================================== -->
     <footer id="footer">
         <div class="footer-top">
             <div class="container">
@@ -102,6 +110,8 @@
                             Created by ... Erole
                         </p>
                     </div>
+
+                    <!-- Enlaces a nuestros Githubs -->
                     <div class="col-lg-auto col-md-6 footer-links">
                         <h4>Our Githubs</h4>
                         <div class="social-links mt-3">
@@ -117,12 +127,12 @@
                             <a href="https://github.com/MarioMerZap" class="github"><i class="bx bxl-github"></i></a>
                         </div>
                     </div>
-                </div> <a
-                    href="https://pbs.twimg.com/ext_tw_video_thumb/1382627727409356804/pu/img/GdGmoTLvnJw63kpO.jpg"
-                    style="color:white">Coronel</a>
+
+                </div> <a href="https://pbs.twimg.com/ext_tw_video_thumb/1382627727409356804/pu/img/GdGmoTLvnJw63kpO.jpg" style="color:white">Coronel</a>
             </div>
         </div>
     </footer>
+    <!-- =============================== END FOOTER ================================= -->
 </body>
 
 </html>
