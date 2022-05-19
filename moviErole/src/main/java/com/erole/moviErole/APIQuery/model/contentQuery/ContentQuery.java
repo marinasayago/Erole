@@ -283,4 +283,9 @@ public class ContentQuery {
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
+
+	@Override
+	public String toString() {
+		return "[" + id + ", " + title + ", " + year + "]";
+	}
 }

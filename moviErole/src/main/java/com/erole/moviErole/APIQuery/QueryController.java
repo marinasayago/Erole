@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.net.MalformedURLException;
@@ -307,6 +308,15 @@ public class QueryController {
 			MostPopularQuery mostPop = new MostPopularQuery(id, rank, rankUpDown, title, fullTitle, year, image, crew, imDbRating, imDbRatingCount);
 			list.add(mostPop);
 		}
+		return list;
+	}
+	
+	public static List<ContentQuery> getContentList(String ids){
+		List<ContentQuery> list = new LinkedList<>();
+		for(String id : ids.split(";")) {
+			list.add(contentQuery(id));
+		}
+		
 		return list;
 	}
 }

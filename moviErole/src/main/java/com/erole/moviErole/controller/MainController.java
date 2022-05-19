@@ -106,6 +106,12 @@ public class MainController {
 	public String userProfilePage(@PathVariable("usr") String username, Model model) {
 		User usuario = userServ.searchByUsername(username);
 		model.addAttribute("usr", usuario);
+		List<ContentQuery> wl = QueryController.getContentList(usuario.getWatchLater());
+		System.out.println(wl.toString());
+		model.addAttribute("watchLater", wl);
+		List<ContentQuery> mm = QueryController.getContentList(usuario.getMyMovies());
+		System.out.println(mm.toString());
+		model.addAttribute("myMovies", mm);
 		return "app/profile";
 	}
 	
