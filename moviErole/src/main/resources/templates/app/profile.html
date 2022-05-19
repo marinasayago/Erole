@@ -54,8 +54,8 @@
       <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="/app">Search</a></li>
-          <li><a class="nav-link scrollto" href="#">About</a></li>
+          <li><a class="nav-link scrollto" href="/app">Search</a></li>
+          <li><a class="nav-link scrollto" href="/app/about">About</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
           <li><a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
@@ -73,13 +73,13 @@
     <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
       <div class="container">
        
-            <b> <h1 th:text="${usr.userName}" style="color:whitesmoke"></h1>  </b>
-            <h2 th:text="${usr.birthdate}" style="color:rgb(200, 200, 200)">Birthday: </h2>
+            <h1 th:text="@{{name} {surname}(name=${usr.Name}, surname=${usr.Surname})}" style="color:whitesmoke; text-align: center; font-size: 75px;"></h1>
+            <h2 th:text="@{{username}(username=${usr.userName})}" style="color:rgb(200, 200, 200); text-align: center; font-size: 30px;"></h2>
       </div>
     </section><!-- End Breadcrumbs -->
 
     <!-- ====== Main Page ======-->
-    <section class="inner-page" style="background-color:rgb(222, 222, 222)">
+    <section class="inner-page" style="background-color:rgb(222, 222, 222);">
       <div class="container">
 
 
@@ -87,27 +87,23 @@
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            <!--<div>
-                    <label for="id">ID: </label>
-                    <span th:text="${result.id}"></span>
-                </div>-->
-
             <div>
-              
+              <h3><label for="birthday">Birthday: </label>
+                <span th:text="${usr.birthdate}"></span>
+              </h3>
             </div>
-
-            <br>
-            
-            <br>
-            <div class="card">
-              <div class="card-body" style="background-color:whitesmoke">
-                <div>
-                  <!--<h6><label for="plot">Plot:  </label>-->
-                  <h6><span th:text="${usr.bio}"></span></h6>
+            <div>
+              <h3><label for="bio">Bio: </label>
+                <div class="card">
+                  <div class="card-body" style="background-color:whitesmoke">
+                    <div>
+                      <h6><span th:text="${usr.bio}" style="font-size: 20px;"></span></h6>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </h3>
             </div>
-            <br>
+            
           </div>
         </div>
 
