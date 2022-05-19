@@ -222,20 +222,20 @@
           <h2>Comments:</h2>
 
           <!-- ========= TABLE ========= -->
-          <table class="table table-dark table-striped table-hover align-middle">
+          <table class="table table-light table-hover  table-responsive">
             <!-- Etiquetas de las columnas -->
-            <thead>
+            <!-- <thead>
               <tr>
                 <td class="text-center">User</td>
                 <td class="text-center">Rating</td>
                 <td class="text-center">Comment</td>
               </tr>
-            </thead>
+            </thead> -->
             <!-- Contenido de la tabla -->
             <tbody>
               <tr th:each="c : ${commentList}">
-                <td class="text-center" th:text="${c.user.userName}"></td>
-                <td class="text-center" th:text="${c.rating}"></td>
+                <td> <a th:href="@{/app/user/{usr}(usr=${c.user.userName})}" class="text-center" th:text="${c.user.userName}"></a></td>
+                <td class="text-center" th:text="${c.rating}"></td></a>
                 <td class="text-start" th:text="${c.text}"></td>
               </tr>
             </tbody>
