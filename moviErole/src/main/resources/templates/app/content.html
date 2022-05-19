@@ -218,6 +218,14 @@
             </div>
           </div>
 
+          <!-- Botones para añadir a listas de contenido -->
+          <form th:action="@{/app/myMovies/{id}(id=${result.id})}">
+            <input type="submit" value="Add to MyMovies" class="btn-get-started scrollto">
+          </form>
+          <form th:action="@{/app/watchLater/{id}(id=${result.id})}">
+            <input type="submit" value="Add to Watch Later" class="btn-get-started scrollto">
+          </form>
+
           <!-- ======= COMMENTS ======= -->
           <h2>Comments:</h2>
 
