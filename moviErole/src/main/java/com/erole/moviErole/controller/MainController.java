@@ -113,4 +113,16 @@ public class MainController {
 	public String about(Model model) {
 		return "app/about";
 	}
+	
+	@RequestMapping("/app/watchLater/{id}")
+	public String saveMovieToWatchLater(@PathVariable("id") String id) {
+		userServ.addMovieToWatchLater(id);
+		return "redirect:/app/content/" + id;
+	}
+	
+	@RequestMapping("/app/myMovies/{id}")
+	public String saveMovieToMyMovies(@PathVariable("id") String id) {
+		userServ.addMovieToMyMovies(id);
+		return "redirect:/app/content/" + id;
+	}
 }

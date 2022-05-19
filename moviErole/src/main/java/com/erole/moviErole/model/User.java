@@ -47,6 +47,10 @@ public class User {
 	private Date birthdate;
 	@Column(name = "bio", length = 200)
 	private String bio;
+	@Column(name = "watchLater")
+	private String watchLater;
+	@Column(name = "myMovies")
+	private String myMovies;
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "user_roles", 
@@ -57,7 +61,7 @@ public class User {
 	public User() {}
 
 	public User(String email, String userName, String password, String name, String surname, Date birthdate,
-			String bio, Collection<Role> roles) {
+			String bio, Collection<Role> roles, String watchLater, String myMovies) {
 		super();
 		this.email = email;
 		this.username = userName;
@@ -67,6 +71,8 @@ public class User {
 		this.birthdate = birthdate;
 		this.bio = bio;
 		this.roles = roles;
+		this.watchLater = watchLater;
+		this.myMovies = myMovies;
 	}
 
 	public Integer getId() {
@@ -131,6 +137,22 @@ public class User {
 
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+	
+	public String getWatchLater() {
+		return this.watchLater;
+	}
+	
+	public void setWatchLater(String watchLater) {
+		this.watchLater = watchLater;
+	}
+	
+	public String getMyMovies() {
+		return this.myMovies;
+	}
+	
+	public void setMyMovies(String myMovies) {
+		this.myMovies = myMovies;
 	}
 
 	public Collection<Role> getRoles() {

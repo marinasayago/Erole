@@ -47,7 +47,7 @@ class UserTest {
 		roles = new LinkedList<Role>();
 		roles.add(rol);
 		user = new User("email", "userName", "password", "name", "surname", date,
-				"bio", roles);
+				"bio", roles, "", "");
 		/*public User(String email, String userName, String password, String name, String surname, Date birthdate,
 				String bio, Collection<Role> roles)*/
 		assertEquals(false, user.getEmail().isEmpty());
@@ -71,7 +71,7 @@ class UserTest {
 		roles = new LinkedList<Role>();
 		roles.add(rol);
 		user = new User("email", "userName", "password", "name", "surname", date,
-				"bio", roles);
+				"bio", roles, "", "");
 		User auxUser = user;
 		auxUser.setBio("bio2");
 		auxUser.setBirthdate(date2);

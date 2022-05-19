@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.erole.moviErole.MoviEroleApplication;
 import com.erole.moviErole.model.Role;
 import com.erole.moviErole.model.User;
 import com.erole.moviErole.repository.UserRepository;
@@ -83,5 +84,41 @@ public class UserServiceImp implements UserService{
 
 	public User searchByUsername(String username) {
 		return userRep.findByUsername(username);
+	}
+	
+	public boolean addMovieToWatchLater(String id) {
+		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
+		try {
+			String[] ids = user.getWatchLater().split(";");
+			System.out.println("Entro por aqui");
+			for(String s : ids) {
+				if(s.equals(id)) return false;
+			}
+			System.out.println("No esta en la lista");
+			user.setWatchLater(user.getWatchLater() + id + ";");
+		} catch (NullPointerException e) {
+			user.setWatchLater(id + ";");
+		}
+		
+		System.out.println(user.getWatchLater());
+		userRep.saveAndFlush(user);
+		return true;
+	}
+	
+	public boolean addMovieToMyMovies(String id) {
+		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
+		try {
+			String[] ids = user.getMyMovies().split(";");
+			for(String s : ids) {
+				if(s.equals(id)) return false;
+			}
+			user.setMyMovies(user.getMyMovies() + id + ";");
+		} catch (NullPointerException e) {
+			user.setMyMovies(id + ";");
+		}
+		
+		System.out.println(user.getMyMovies());
+		userRep.saveAndFlush(user);
+		return true;
 	}
 }
