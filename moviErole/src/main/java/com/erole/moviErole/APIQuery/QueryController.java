@@ -313,9 +313,12 @@ public class QueryController {
 	
 	public static List<ContentQuery> getContentList(String ids){
 		List<ContentQuery> list = new LinkedList<>();
-		for(String id : ids.split(";")) {
-			list.add(contentQuery(id));
+		if (ids != null) {
+			for(String id : ids.split(";")) {
+				list.add(contentQuery(id));
+			}
 		}
+
 		
 		return list;
 	}
