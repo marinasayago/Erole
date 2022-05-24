@@ -50,16 +50,15 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-
-      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1>
+      <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a><p>&nbsp;&nbsp;&nbsp;
+      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1></p>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="/app">Search</a></li>
           <li><a class="nav-link scrollto" href="/app/about">About</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
-          <li><a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
-
+          <li><a class="getstarted scrollto" href="/app/user/edit">Edit Profile</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -71,14 +70,26 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
-      <div class="container">
+      <div class="row">
 
         <div th:if="${param.edit}">
           <div class="alert alert-info" style="font-size: 20px;">Changes successfully saved!</div>
         </div>
-       
-            <h1 th:text="@{{name} {surname}(name=${usr.Name}, surname=${usr.Surname})}" style="color:whitesmoke; text-align: center; font-size: 75px;"></h1>
-            <h2 th:text="@{{username}(username=${usr.userName})}" style="color:rgb(200, 200, 200); text-align: center; font-size: 30px;"></h2>
+
+        <div class="col-lg-1">
+
+        </div>
+
+        <div class="col-lg-8">
+          <h1 th:text="@{{name} {surname}(name=${usr.Name}, surname=${usr.Surname})}" style="color:whitesmoke; font-size: 75px;"></h1>
+          <h2 th:text="@{{username}(username=${usr.userName})}" style="color:rgb(200, 200, 200); font-size: 30px;"></h2>
+          <h5><a href="/app/user/edit">Edit</a></h5>
+        </div>
+        
+        <div class="col-lg-2">
+          <img th:src="@{{img}(img=${usr.img})}" width="140" height="140" class="circular_square">
+        </div>
+          
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -160,6 +171,8 @@
           </div>
         </div>
 
+        <br><br>
+        <h3><a href="/app/user/edit">Edit your Profile</a></h3>
       
 
       <!-- ====== Listas de contenido ====== -->

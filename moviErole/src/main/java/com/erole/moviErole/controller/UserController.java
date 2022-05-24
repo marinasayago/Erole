@@ -66,6 +66,7 @@ public class UserController {
 	@RequestMapping("/app")
 	public String mainPage(Model model) {
 		model.addAttribute("query", new Query());
+		model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
 		return "app/index";
 	}
 	

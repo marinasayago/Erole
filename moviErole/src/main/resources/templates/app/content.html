@@ -48,7 +48,8 @@
   <!-- ================================== HEADER ==================================== -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1>
+      <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a><p>&nbsp;&nbsp;&nbsp;
+      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1></p>
       <!-- ========= NAVBAR ========= -->
       <nav id="navbar" class="navbar">
         <ul>
@@ -56,7 +57,9 @@
           <li><a class="nav-link scrollto" href="/app/about">About</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
-          <li><a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
+          <li><a th:href="@{/app/user/{usr}(usr=${loggedUser.userName})}" th:text="${loggedUser.userName}" style="color:#73c5eb"></a></li>
+          <li><a th:href="@{/app/user/{usr}(usr=${loggedUser.userName})}"><img th:src="@{{img}(img=${loggedUser.img})}" width="40" height="40" class="circular_square"></a></li>
+          <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="30" height="30"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -72,6 +75,8 @@
     <!-- ======= BREADCRUMBS ======= -->
     <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
       <div class="container">
+        <h1></h1>
+        <h2></h2>
         <b>
           <h1 th:text="${result.title}" style="color:whitesmoke"></h1>
         </b>
@@ -210,21 +215,23 @@
             </div>
           </div>
 
-          <!-- Imagen de la carátula -->
+          
           <div class="col-lg-4">
+            <!-- Imagen de la carátula -->
             <div class="image">
               <img style="border:15px solid; color:whitesmoke" th:src=${result.image} onmouseout="width=300; height=450"
                 onmouseover="width=400;height=580" width="300" height="450">
             </div>
+            <br>
+            <!-- Botones para añadir a listas de contenido -->
+            <form th:action="@{/app/myMovies/{id}(id=${result.id})}">
+              <input type="submit" value="Add to MyMovies" class="btn btn-primary"> <!-- Antes estaba puesto btn-success -->
+            </form>
+            <br>
+            <form th:action="@{/app/watchLater/{id}(id=${result.id})}">
+              <input type="submit" value="Add to Watch Later" class="btn btn-primary">
+            </form>
           </div>
-
-          <!-- Botones para añadir a listas de contenido -->
-          <form th:action="@{/app/myMovies/{id}(id=${result.id})}">
-            <input type="submit" value="Add to MyMovies" class="btn btn-success">
-          </form>
-          <form th:action="@{/app/watchLater/{id}(id=${result.id})}">
-            <input type="submit" value="Add to Watch Later" class="btn btn-warning">
-          </form>
 
           <!-- ======= COMMENTS ======= -->
           <h2>Comments:</h2>
@@ -232,13 +239,6 @@
           <!-- ========= TABLE ========= -->
           <table class="table table-light table-hover  table-responsive">
             <!-- Etiquetas de las columnas -->
-            <!-- <thead>
-              <tr>
-                <td class="text-center">User</td>
-                <td class="text-center">Rating</td>
-                <td class="text-center">Comment</td>
-              </tr>
-            </thead> -->
             <!-- Contenido de la tabla -->
             <tbody>
               <tr th:each="c : ${commentList}">
@@ -270,7 +270,7 @@
             <p>Rating:</p>
             <!-- Puntuación -->
             <!-- Con un script controlaremos que esté entre 0 y 10 -->
-            <div class="col-lg-4">
+            <div class="col-lg-1">
               <select class="form-select" aria-label="Default select example" id="rating">
                 <option selected value="0">0</option>
                 <option value="1">1</option>
@@ -323,33 +323,6 @@
 
   </main>
   <!-- ================================== END MAIN ==================================== -->
-
-  <!-- =================================== FOOTER ===================================== -->
-  <footer id="footer">
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Filho da puta agora sim entendo</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-          <div class="col-lg-4">
-          </div>
-
-          <!-- Imagen logo Erole -->
-          <div class="col">
-            <img th:src="@{/img/logonegro.png}" alt="" width="120" height="120">
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </footer>
-  <!-- =============================== END FOOTER ================================= -->
 
 
     <!-- =================================== SCRIPT ===================================== -->

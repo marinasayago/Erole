@@ -45,7 +45,8 @@
   <!-- ================================== HEADER ==================================== -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-      <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
+      <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a><p>&nbsp;&nbsp;&nbsp;
+      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1></p>
       <!-- ========= NAVBAR ========= -->
       <nav id="navbar" class="navbar">
         <ul>
@@ -54,7 +55,6 @@
           <li><a class="nav-link scrollto" href="/app/about">About</a></li>
           <li><a class="getstarted scrollto" href="/user/login">Login</a></li>
           <li><a class="getstarted scrollto" href="./add">Get Started</a></li>
-          <li><a href=".."><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -191,11 +191,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Filho da puta agora sim entendo</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
+            <h4>You can read some info about this website here: </h4>
+            <h3><a href="/app/about">About MoviErole</a></h3>
           </div>
           <div class="col-lg-4">
           </div>

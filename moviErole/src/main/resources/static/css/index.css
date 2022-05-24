@@ -34,6 +34,10 @@ h6 {
     font-family: "Jost", sans-serif;
 }
 
+.circular_square {
+    border-radius:50%;
+}
+
 
 /*--------------------------------------------------------------
 # Preloader

@@ -38,7 +38,8 @@
     <!-- ================================== HEADER ==================================== -->
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
-            <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1>
+            <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a><p>&nbsp;&nbsp;&nbsp;
+            <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1></p>
             <!-- ========= NAVBAR ========= -->
             <nav id="navbar" class="navbar">
                 <ul>
@@ -46,7 +47,9 @@
                     <li><a class="nav-link scrollto" href="#">About</a></li>
                     <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
                     <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
-                    <li><a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
+                    <li><a th:href="@{/app/user/{usr}(usr=${loggedUser.userName})}" th:text="${loggedUser.userName}" style="color:#73c5eb"></a></li>
+                    <li><a th:href="@{/app/user/{usr}(usr=${loggedUser.userName})}"><img th:src="@{{img}(img=${loggedUser.img})}" width="40" height="40" class="circular_square"></a></li>
+                    <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="30" height="30"></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>

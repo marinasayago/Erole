@@ -53,6 +53,7 @@ public class MainController {
 		}else {
 			System.out.println(result.toString());
 			model.addAttribute("lista", result);
+			model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
 		}
 		return "/app/searchResult";
 	}
@@ -68,6 +69,7 @@ public class MainController {
 		model.addAttribute("result", result);
 		model.addAttribute("newComment", new Comment(null, id, null, 0));
 		model.addAttribute("commentList", commentServ.getCommentsFromContent(id));
+		model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
 
 		return "app/content";
 	}
@@ -94,6 +96,7 @@ public class MainController {
 	public String topMovies(Model model) {
 		List<MostPopularQuery> list = QueryController.topMoviesQuery(true);
 		model.addAttribute("list", list);
+		model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
 		return "app/topMovies";
 	}
 	
@@ -105,6 +108,7 @@ public class MainController {
 	public String topSeries(Model model) {
 		List<MostPopularQuery> list = QueryController.topMoviesQuery(false);
 		model.addAttribute("list", list);
+		model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
 		return "app/topMovies";
 	}
 	
@@ -123,6 +127,7 @@ public class MainController {
 	
 	@RequestMapping("/app/about")
 	public String about(Model model) {
+		model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
 		return "app/about";
 	}
 	
