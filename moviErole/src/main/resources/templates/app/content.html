@@ -267,17 +267,37 @@
             <div>
               <input type="hidden" th:field="*{contentId}" th:value="${result.id}">
             </div>
-
+            <p>Rating:</p>
             <!-- Puntuación -->
             <!-- Con un script controlaremos que esté entre 0 y 10 -->
             <div class="col-lg-4">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="ratingForm" th:field="*{rating}" min="0" max="10"
-                  onchange="validateRating(this.value)">
-                <label for="ratingForm">Rating</label>
-              </div>
+              <select class="form-select" aria-label="Default select example" id="rating">
+                <option selected value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
             </div>
 
+            <div>
+              <input type="hidden" th:field="*{rating}" id="aux">
+            </div>
+
+            <script>
+              const handler = (event) => {
+                document.getElementById("aux").value = document.getElementById("rating").value
+              }
+              document.getElementById("rating").addEventListener("change", handler)
+            </script>
+
+            <br>
             <!-- Texto (el comentario en sí) -->
             <div class="input-group">
               <span class="input-group-text">Comment</span>
@@ -288,7 +308,7 @@
 
             <!-- Botón de SUBMIT para guardar el comentario -->
             <div>
-              <input type="submit" value="Comment">
+              <input type="submit" class="btn btn-primary" value="Comment">
             </div>
 
           </form>
