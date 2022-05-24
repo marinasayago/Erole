@@ -80,6 +80,12 @@ public class MainController {
 		return "redirect:/app/content/" + newComment.getContentId();
 	}
 	
+	/*@RequestMapping("/app/deleteComment/{id}")
+	public String deleteComment(@PathVariable("id") Integer id) {
+		
+		return "redirect:/app/content/";
+	}*/
+	
 	/**
 	 * Recoge peticion de mostrar la pagina con el top de peliculas
 	 * @return Direccion del HTML en cuestion

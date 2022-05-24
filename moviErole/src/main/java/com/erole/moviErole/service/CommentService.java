@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.erole.moviErole.model.Comment;
+import com.erole.moviErole.model.User;
 import com.erole.moviErole.repository.CommentRepository;
 
 @Service
@@ -28,5 +29,19 @@ public class CommentService {
 	public void saveComment(Comment comment) {
 		comment.setDate(new Date());
 		commentRep.saveAndFlush(comment);
+	}
+	
+	public void deleteAllComments(User user) {
+		List<Comment> comments = commentRep.findAll();
+		for(int i = 0; i < comments.size(); i++) {
+			Comment c = comments.get(i);
+			if (c.getUser().equals(user)) {
+				commentRep.delete(c);
+			}
+		}
+	}
+	
+	public void deleteComment(Integer id) {
+		commentRep.deleteById(id);
 	}
 }

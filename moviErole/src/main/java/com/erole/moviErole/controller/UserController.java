@@ -6,9 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.erole.moviErole.MoviEroleApplication;
 import com.erole.moviErole.APIQuery.Query;
 import com.erole.moviErole.model.User;
-import com.erole.moviErole.service.UserService;
+import com.erole.moviErole.service.UserServiceImp;
 
 /**
  * Esta clase servira para gestionar las peticiones del usuario en el navegador, es decir,
@@ -23,7 +24,7 @@ import com.erole.moviErole.service.UserService;
 @Controller
 public class UserController {
 	@Autowired
-	private UserService userServ;
+	private UserServiceImp userServ;
 	
 	/**
 	 * Cuando se solicite la direccion /user/add, nos dirigira al formulario de registro
@@ -66,5 +67,23 @@ public class UserController {
 	public String mainPage(Model model) {
 		model.addAttribute("query", new Query());
 		return "app/index";
+	}
+	
+	@RequestMapping("/app/user/edit")
+	public String editProfile(Model model) {
+		model.addAttribute("user", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
+		return "user/edit";
+	}
+	
+	@RequestMapping("/user/edit")
+	public String saveChanges(User user) {
+		userServ.save(user);
+		return "redirect:/app/user/"+user.getUserName()+"?edit";
+	}
+	
+	@RequestMapping("/app/user/delete")
+	public String deleteProfile() {
+		userServ.deleteUser(userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
+		return "redirect:/?delete";
 	}
 }
