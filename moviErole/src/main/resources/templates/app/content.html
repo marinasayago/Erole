@@ -220,10 +220,10 @@
 
           <!-- Botones para añadir a listas de contenido -->
           <form th:action="@{/app/myMovies/{id}(id=${result.id})}">
-            <input type="submit" value="Add to MyMovies" class="btn-get-started scrollto">
+            <input type="submit" value="Add to MyMovies" class="btn btn-success">
           </form>
           <form th:action="@{/app/watchLater/{id}(id=${result.id})}">
-            <input type="submit" value="Add to Watch Later" class="btn-get-started scrollto">
+            <input type="submit" value="Add to Watch Later" class="btn btn-warning">
           </form>
 
           <!-- ======= COMMENTS ======= -->
