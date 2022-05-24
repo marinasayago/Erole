@@ -92,8 +92,9 @@
                 <span th:text="${usr.birthdate}"></span>
               </h3>
             </div>
+            <br>
             <div>
-              <h3><label for="bio">Bio: </label>
+              <h3>
                 <div class="card">
                   <div class="card-body" style="background-color:whitesmoke">
                     <div>
@@ -103,57 +104,66 @@
                 </div>
               </h3>
             </div>
+
+          
+          <br>
+    
+              <h3>MyMovies</h3>
+              <div class="table-responsive">
+                <table class="table table-dark table-striped table-hover align-middle px-5">
+                    <!-- Etiquetas de las columnas -->
+                    <thead>
+                        <tr>
+                            <td class="text-center">Title</td>
+                            <td class="text-center">Cover</td>
+                        </tr>
+                    </thead>
+                    <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
+                    <!-- Con un for-each vamos iterando por los diferentes resultados y mostrando los campos
+                    que nos interesan (en sus respectivas etiquetas) -->
+                    <tbody>
+                        <tr th:each="r : ${myMovies}">
+                            <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
+                            <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+              <br>
+              <h3>Watch Later</h3>
+              <div class="table-responsive">
+                <table class="table table-dark table-striped table-hover align-middle">
+                    <!-- Etiquetas de las columnas -->
+                    <thead>
+                        <tr>
+                            <td class="text-center">Title</td>
+                            <td class="text-center">Cover</td>
+                        </tr>
+                    </thead>
+                    <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
+                    <!-- Con un for-each vamos iterando por los diferentes resultados y mostrando los campos
+                    que nos interesan (en sus respectivas etiquetas) -->
+                    <tbody>
+                        <tr th:each="r : ${watchLater}">
+                            <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
+                            <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             
           </div>
         </div>
 
-      </div>
+      
+
+      <!-- ====== Listas de contenido ====== -->
+    
+
     </section>
 
-    <!-- ====== Listas de contenido ====== -->
-    <div class="table-responsive">
-      <h3>MyMovies</h3>
-      <table class="table table-dark table-striped table-hover align-middle">
-          <!-- Etiquetas de las columnas -->
-          <thead>
-              <tr>
-                  <td class="text-center">Title</td>
-                  <td class="text-center">Cover</td>
-              </tr>
-          </thead>
-          <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
-          <!-- Con un for-each vamos iterando por los diferentes resultados y mostrando los campos
-          que nos interesan (en sus respectivas etiquetas) -->
-          <tbody>
-              <tr th:each="r : ${myMovies}">
-                  <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
-                  <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
-              </tr>
-          </tbody>
-      </table>
-    </div>
-
-    <div class="table-responsive">
-      <h3>Watch Later</h3>
-      <table class="table table-dark table-striped table-hover align-middle">
-          <!-- Etiquetas de las columnas -->
-          <thead>
-              <tr>
-                  <td class="text-center">Title</td>
-                  <td class="text-center">Cover</td>
-              </tr>
-          </thead>
-          <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
-          <!-- Con un for-each vamos iterando por los diferentes resultados y mostrando los campos
-          que nos interesan (en sus respectivas etiquetas) -->
-          <tbody>
-              <tr th:each="r : ${watchLater}">
-                  <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
-                  <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
+    
 
 
   <!-- Vendor JS Files -->
