@@ -30,6 +30,8 @@ public class UserServiceImp implements UserService{
 	private BCryptPasswordEncoder passEncoder;
 	@Autowired
 	RoleService roleServ;
+	@Autowired
+	CommentService comServ;
 	
 	/**
 	 * Recibe la orden de guardar un usuario en la base de datos.
@@ -120,5 +122,11 @@ public class UserServiceImp implements UserService{
 		System.out.println(user.getMyMovies());
 		userRep.saveAndFlush(user);
 		return true;
+	}
+	
+	public void deleteUser(User user) {
+		comServ.deleteAllComments(user);
+		user.setRoles(null);
+		userRep.delete(user);
 	}
 }

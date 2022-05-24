@@ -72,6 +72,10 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
       <div class="container">
+
+        <div th:if="${param.edit}">
+          <div class="alert alert-info" style="font-size: 20px;">Changes successfully saved!</div>
+        </div>
        
             <h1 th:text="@{{name} {surname}(name=${usr.Name}, surname=${usr.Surname})}" style="color:whitesmoke; text-align: center; font-size: 75px;"></h1>
             <h2 th:text="@{{username}(username=${usr.userName})}" style="color:rgb(200, 200, 200); text-align: center; font-size: 30px;"></h2>

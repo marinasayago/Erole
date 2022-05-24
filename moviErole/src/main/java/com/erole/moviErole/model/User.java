@@ -47,6 +47,8 @@ public class User {
 	private Date birthdate;
 	@Column(name = "bio", length = 200)
 	private String bio;
+	@Column(name = "img")
+	private String img;
 	@Column(name = "watchLater")
 	private String watchLater;
 	@Column(name = "myMovies")
@@ -58,7 +60,9 @@ public class User {
 			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Collection<Role> roles;
 	
-	public User() {}
+	public User() {
+		this.img = "https://mercatmollet.aprop.online/5372-large_default/bote-garbanzos-cocidos.jpg";
+	}
 
 	public User(String email, String userName, String password, String name, String surname, Date birthdate,
 			String bio, Collection<Role> roles, String watchLater, String myMovies) {
@@ -73,6 +77,7 @@ public class User {
 		this.roles = roles;
 		this.watchLater = watchLater;
 		this.myMovies = myMovies;
+		this.img = "https://mercatmollet.aprop.online/5372-large_default/bote-garbanzos-cocidos.jpg";
 	}
 
 	public Integer getId() {
@@ -137,6 +142,14 @@ public class User {
 
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+	
+	public String getImg() {
+		return this.img;
+	}
+	
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 	public String getWatchLater() {

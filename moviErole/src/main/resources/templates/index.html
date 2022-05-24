@@ -104,6 +104,10 @@ registrarse (Get Started) y posteriormente entrar con tu usuario (Login) -->
 		<div class="alert alert-info">You've successfully loged out</div>
 	</div>
 
+  <div th:if="${param.delete}">
+		<div class="alert alert-info">You've successfully deleted your account</div>
+	</div>
+
   <!-- =================================== FOOTER ===================================== -->
   <footer id="footer">
     <div class="footer-top">
