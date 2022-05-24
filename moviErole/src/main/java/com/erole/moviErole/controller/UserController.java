@@ -85,6 +85,6 @@ public class UserController {
 	@RequestMapping("/app/user/delete")
 	public String deleteProfile() {
 		userServ.deleteUser(userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
-		return "redirect:/?delete";
+		return "redirect:/logout?delete";
 	}
 }

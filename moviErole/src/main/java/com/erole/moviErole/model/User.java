@@ -60,8 +60,10 @@ public class User {
 			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Collection<Role> roles;
 	
+	public static final String DEFAULTIMG = "https://mercatmollet.aprop.online/5372-large_default/bote-garbanzos-cocidos.jpg"; 
+	
 	public User() {
-		this.img = "https://mercatmollet.aprop.online/5372-large_default/bote-garbanzos-cocidos.jpg";
+		this.img = DEFAULTIMG;
 	}
 
 	public User(String email, String userName, String password, String name, String surname, Date birthdate,
@@ -77,7 +79,7 @@ public class User {
 		this.roles = roles;
 		this.watchLater = watchLater;
 		this.myMovies = myMovies;
-		this.img = "https://mercatmollet.aprop.online/5372-large_default/bote-garbanzos-cocidos.jpg";
+		this.img = DEFAULTIMG;
 	}
 
 	public Integer getId() {

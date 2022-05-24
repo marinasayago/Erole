@@ -46,6 +46,9 @@ public class UserServiceImp implements UserService{
 		if(role == null) { role = new Role("USER"); } 
 		u.setPassword(passEncoder.encode(u.getPassword()));
 		u.setRoles(Arrays.asList(role));
+		if(u.getImg() == null || u.getImg().equals("")) {
+			u.setImg(u.DEFAULTIMG);
+		}
 		return userRep.saveAndFlush(u);
 	}
 	
