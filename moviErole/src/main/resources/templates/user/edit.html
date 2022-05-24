@@ -1,0 +1,260 @@
+<!-- ================= GET STARTED ==================== -->
+<!-- Formulario para crear y registrar un nuevo usuario -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <div id="message"></div>
+
+  <title>MoviErole - Sign Up</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet" type="text/css">
+  <!-- Ajustar a pantalla -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+  <!-- Iconos de Github -->
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.7.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- ================================== HEADER ==================================== -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="/">MoviErole</a></h1>
+      <!-- ========= NAVBAR ========= -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/app">Search</a></li>
+          <li><a class="nav-link scrollto" href="/app/about">About</a></li>
+          <li><a class="getstarted scrollto" href="/user/login">Login</a></li>
+          <li><a class="getstarted scrollto" href="./add">Get Started</a></li>
+          <li><a href=".."><img th:src="@{/img/logoblanco2.png}" alt="" width="30" height="30"></a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- ======= END NAVBAR ======= -->
+    </div>
+  </header>
+  <!-- ================================ END HEADER ================================== -->
+
+
+  <!-- =================================== MAIN ===================================== -->
+  <main id="main">
+    <!-- ======= BREADCRUMBS ======= -->
+    <section id="breadcrumbs" class="breadcrumbs" style="background-color:rgb(186, 186, 186)">
+      <div class="container">
+        <h1>Edit your profile</h1>
+      </div>
+    </section>
+    <!-- ======= END BREADCRUMBS ======= -->
+
+    <!-- ======= INNER PAGE ======= -->
+    <section class="inner-page">
+      <div class="container">
+
+        <!-- === FORM === -->
+        <form th:action="@{/user/edit}" method="post" th:object="${user}">
+          <div>
+            <input type="hidden" th:field="*{id}">
+          </div>
+
+          <!-- Rellenar campo 'Email' *OBLIGATORIO* -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="emailForm" placeholder="name@example.com" th:field="*{email}"
+                maxlength="50">
+              <label for="emailForm">Email address*</label>
+            </div>
+          </div>
+
+          <!-- Rellenar campo 'Username' *OBLIGATORIO* -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="usernameForm" placeholder="Username" th:field="*{userName}"
+                maxlength="16">
+              <label for="usernameForm">@Username*</label>
+            </div>
+          </div>
+
+          <!-- Rellenar campo 'Password' *OBLIGATORIO* -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="passwordForm" placeholder="Password" th:field="*{password}"
+                maxlength="20">
+              <label for="passwordForm">Password*</label>
+            </div>
+          </div>
+
+          <!-- Rellenar campo 'Name' *OBLIGATORIO* -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nameForm" placeholder="Name" th:field="*{name}" maxlength="20">
+              <label for="nameForm">Name*</label>
+            </div>
+          </div>
+
+          <!-- Rellenar campo 'Surname' *OBLIGATORIO* -->
+          <div class="col-lg-4">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="surnameForm" placeholder="Surname" th:field="*{surname}"
+                maxlength="20">
+              <label for="surnameForm">Surname</label>
+            </div>
+          </div>
+
+          <!-- Rellenar campo 'Birth Date' (OPCIONAL) -->
+          <div class="col-lg-4">
+            <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+              <label for="birthDate">Birth Date</label>
+              <input placeholder="Select date" type="date" class="form-control" th:field="*{birthdate}">
+            </div>
+          </div>
+
+          <br>
+
+          <!-- Rellenar campo 'Bio' (OPCIONAL) -->
+          <div class="col-lg-6">
+            <div class="form-floating mb-3">
+              <textarea class="form-control" placeholder="Bio" id="floatingTextarea2" style="height: 100px"
+                th:field="*{bio}"></textarea>
+              <label for="floatingTextarea2">Bio</label>
+            </div>
+          </div>
+
+          <!-- Rellenar con foto de perfil (OPCIONAL) -->
+          <div class="col-lg-6">
+            <div class="form-floating mb-3">
+              <textarea class="form-control" placeholder="img" id="img" style="height: 100px"
+                th:field="*{img}"></textarea>
+              <label for="profilePicture">URL for Profile Picture</label>
+            </div>
+          </div>
+
+          <!-- Botón SUBMIT que completa el registro del usuario -->
+          <!-- El botón se activa cuando se hayan rellenado todos los campos obligatorios, en
+          caso contrario permanecerá desactivado -->
+          <!-- Si se pasa el cursor por encima del botón salta una ventana de aviso de que 
+          se han de rellenar todos los campos obligatorios para que se active -->
+          <div>
+            <abbr title="You must fill in all the obligatory fields (the ones with *) before proceeding">
+              <input class="btn btn-outline-primary" type="submit" value="Submit" id="submitButton"></abbr>
+          </div>
+
+          <script text="text/javascript">
+            document.getElementById("submitButton").disabled = true;
+            
+            //Goes to the top of the page when clicked
+            function topFunction() {
+              document.body.scrollTop = 0; // For Safari
+              document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+          </script>
+        </form>
+        <!-- === END FORM === -->
+
+      </div>
+    </section>
+    <!-- ======= END INNER PAGE ======= -->
+
+  </main>
+  <!-- ================================== END MAIN ==================================== -->
+
+
+  <!-- =================================== FOOTER ===================================== -->
+  <footer id="footer">
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h4>Join Our Newsletter</h4>
+            <p>Filho da puta agora sim entendo</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+          <div class="col-lg-4">
+          </div>
+
+          <!-- Imagen logo Erole -->
+          <div class="col">
+            <img th:src="@{/img/logonegro.png}" alt="" width="120" height="120">
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- =============================== END FOOTER ================================= -->
+
+  <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script th:src="@{/vendor/aos/aos.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
+  <script th:src="@{/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+  <script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{/vendor/waypoints/noframework.waypoints.js}"></script>
+  <script th:src="@{/vendor/php-email-form/validate.js}"></script>
+
+
+  <!-- =================================== SCRIPT ===================================== -->
+  <!-- El botón SUBMIT no se activa hasta que se rellenen todos los campos obligatorios -->
+  <!-- Si en algún momento se borra algún campo obligatorio, el botón SUBMIT se desactiva -->
+  <script type="text/javascript">
+    const isNotValidFields = (email, username, password, name) => {
+      return (email.value == "" || email.value == null || username.value == "" || username.value == null
+        || password.value == "" || password.value == null || name.value == "" || name.value == null)
+    }
+
+    const handle = () => {
+      if (isNotValidFields(document.getElementById("emailForm"), document.getElementById("usernameForm"),
+      document.getElementById("passwordForm"), document.getElementById("nameForm"))) {
+        document.getElementById("submitButton").disabled = true;
+        
+      } else {
+        document.getElementById("submitButton").disabled = false;
+      }
+    }
+
+    document.getElementById("emailForm").addEventListener("change",handle)
+    document.getElementById("usernameForm").addEventListener("change",handle)
+    document.getElementById("passwordForm").addEventListener("change",handle)
+    document.getElementById("nameForm").addEventListener("change",handle)
+  </script>
+  <!-- ================================ FIN SCRIPT ===================================== -->
+
+
+  <!-- Template Main JS File -->
+  <script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>
