@@ -54,7 +54,7 @@
           <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
           <li><a th:href="@{/app/user/{usr}(usr=${loggedUser.userName})}" th:text="${loggedUser.userName}" style="color:#73c5eb"></a></li>
           <li><a th:href="@{/app/user/{usr}(usr=${loggedUser.userName})}"><img th:src="@{{img}(img=${loggedUser.img})}" width="40" height="40" class="circular_square"></a></li>
-          <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="30" height="30"></a></li>
+          <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="25" height="25"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>

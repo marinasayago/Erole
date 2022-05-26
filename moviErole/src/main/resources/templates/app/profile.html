@@ -59,6 +59,7 @@
           <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
           <li><a class="getstarted scrollto" href="/app/user/edit">Edit Profile</a></li>
+          <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="25" height="25"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -83,7 +84,7 @@
         <div class="col-lg-8">
           <h1 th:text="@{{name} {surname}(name=${usr.Name}, surname=${usr.Surname})}" style="color:whitesmoke; font-size: 75px;"></h1>
           <h2 th:text="@{{username}(username=${usr.userName})}" style="color:rgb(200, 200, 200); font-size: 30px;"></h2>
-          <h5><a href="/app/user/edit">Edit</a></h5>
+          <h5><a href="/app/user/edit">Edit your profile</a></h5>
         </div>
         
         <div class="col-lg-2">
@@ -131,6 +132,7 @@
                         <tr>
                             <td class="text-center">Title</td>
                             <td class="text-center">Cover</td>
+                            <td></td>
                         </tr>
                     </thead>
                     <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
@@ -140,6 +142,11 @@
                         <tr th:each="r : ${myMovies}">
                             <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
                             <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
+                            <td class="text-center">
+                              <form th:action="@{/app/deleteMyMovies/{id}(id=${r.id})}">
+                                <input type="submit" value="Delete" class="btn btn-danger"> 
+                              </form>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -153,6 +160,7 @@
                         <tr>
                             <td class="text-center">Title</td>
                             <td class="text-center">Cover</td>
+                            <td></td>
                         </tr>
                     </thead>
                     <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
@@ -162,6 +170,11 @@
                         <tr th:each="r : ${watchLater}">
                             <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
                             <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
+                            <td class="text-center">
+                              <form th:action="@{/app/deleteWatchLater/{id}(id=${r.id})}">
+                                <input type="submit" value="Delete" class="btn btn-danger"> 
+                              </form>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -173,6 +186,7 @@
 
         <br><br>
         <h3><a href="/app/user/edit">Edit your Profile</a></h3>
+        <br>
         <h3><a href="/app/user/delete" style="color:#EB0B0B">Delete your Profile</a></h3>
       
 

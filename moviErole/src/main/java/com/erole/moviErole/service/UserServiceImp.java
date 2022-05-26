@@ -127,6 +127,53 @@ public class UserServiceImp implements UserService{
 		return true;
 	}
 	
+	public String borrarString(String id, String lista) {
+		String[] tokens = lista.split(";");
+		int i = 0;
+		String res2 = "";
+		while (i < tokens.length && !tokens[i].equals(id)) {
+			res2 = res2 + tokens[i] + ";";
+			i++;
+		}
+		
+		if (i < tokens.length) {
+			i++;
+			while (i < tokens.length) {
+				res2 = res2 + tokens[i] + ";";
+				i++;
+			}
+		}
+		return res2;
+	}
+	
+	public boolean deleteMovieFromMyMovies(String id) {
+		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
+		try {
+			String newList = borrarString(id, user.getMyMovies());
+			if (newList.equals("")) {newList = null;}
+			user.setMyMovies(newList);
+		} catch (Exception e) {
+			
+		}
+		System.out.println(user.getMyMovies());
+		userRep.saveAndFlush(user);
+		return true;
+	}
+	
+	public boolean deleteMovieFromWatchLater(String id) {
+		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
+		try {
+			String newList = borrarString(id, user.getWatchLater());
+			if (newList.equals("")) {newList = null;}
+			user.setWatchLater(newList);
+		} catch (Exception e) {
+			
+		}
+		System.out.println(user.getWatchLater());
+		userRep.saveAndFlush(user);
+		return true;
+	}
+	
 	public void deleteUser(User user) {
 		comServ.deleteAllComments(user);
 		user.setRoles(null);

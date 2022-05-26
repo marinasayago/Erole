@@ -142,4 +142,18 @@ public class MainController {
 		userServ.addMovieToMyMovies(id);
 		return "redirect:/app/content/" + id;
 	}
+	
+	@RequestMapping("/app/deleteMyMovies/{id}")
+	public String deleteMovieFromMyMovies(@PathVariable("id") String id) {
+		User user = userServ.searchByUsername(MoviEroleApplication.getLoggedUser());
+		userServ.deleteMovieFromMyMovies(id);
+		return "redirect:/app/user/"+user.getUserName();
+	}
+	
+	@RequestMapping("/app/deleteWatchLater/{id}")
+	public String deleteMovieFromWatchLater(@PathVariable("id") String id) {
+		User user = userServ.searchByUsername(MoviEroleApplication.getLoggedUser());
+		userServ.deleteMovieFromWatchLater(id);
+		return "redirect:/app/user/"+user.getUserName();
+	}
 }

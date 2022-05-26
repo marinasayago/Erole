@@ -50,11 +50,9 @@
       <!-- ========= NAVBAR ========= -->
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/app">Search</a></li>
           <li><a class="nav-link scrollto" href="/app/about">About</a></li>
-          <li><a class="getstarted scrollto" href="/user/login">Login</a></li>
-          <li><a class="getstarted scrollto" href="./add">Get Started</a></li>
+          <li><a class="getstarted scrollto" th:href="@{/app/user/{usr}(usr=${user.userName})}">Return</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -195,29 +193,6 @@
 
 
   <!-- =================================== FOOTER ===================================== -->
-  <footer id="footer">
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Filho da puta agora sim entendo</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-          <div class="col-lg-4">
-          </div>
-
-          <!-- Imagen logo Erole -->
-          <div class="col">
-            <img th:src="@{/img/logonegro.png}" alt="" width="120" height="120">
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </footer>
   <!-- =============================== END FOOTER ================================= -->
 
   <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
