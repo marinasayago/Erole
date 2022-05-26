@@ -13,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.erole.moviErole.MoviEroleApplication;
+import com.erole.moviErole.APIQuery.QueryController;
+import com.erole.moviErole.APIQuery.model.contentQuery.ContentQuery;
 import com.erole.moviErole.model.Role;
 import com.erole.moviErole.model.User;
 import com.erole.moviErole.repository.UserRepository;
@@ -32,6 +34,8 @@ public class UserServiceImp implements UserService{
 	RoleService roleServ;
 	@Autowired
 	CommentService comServ;
+	
+	QueryController queryCont;
 	
 	/**
 	 * Recibe la orden de guardar un usuario en la base de datos.
@@ -91,14 +95,37 @@ public class UserServiceImp implements UserService{
 		return userRep.findByUsername(username);
 	}
 	
+	private String addSorted(String id, String list) {
+		String[] tokens = list.split(";");
+		String res = "";
+		
+		if (tokens[0] == "") {
+			res += id + ";";
+		} else {
+			int i = 0;
+			int length = tokens.length;
+			String title = queryCont.contentQuery(id).getTitle();
+			boolean added = false;
+			while (i < tokens.length) {
+				if (!added && queryCont.contentQuery(tokens[i]).getTitle().compareTo(title) > 0) {
+					res += id + ";";
+					added = true;
+				}
+				res += tokens[i] + ";";
+				i++;
+			}
+			if (!added) {
+				res += id + ";";
+			}
+		}
+		
+		return res;
+	}
+	
 	public boolean addMovieToWatchLater(String id) {
 		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
 		try {
-			String[] ids = user.getWatchLater().split(";");
-			System.out.println("Entro por aqui");
-			for(String s : ids) {
-				if(s.equals(id)) return false;
-			}
+			user.setWatchLater(addSorted(id, user.getWatchLater()));
 			System.out.println("No esta en la lista");
 			user.setWatchLater(user.getWatchLater() + id + ";");
 		} catch (NullPointerException e) {
@@ -113,11 +140,7 @@ public class UserServiceImp implements UserService{
 	public boolean addMovieToMyMovies(String id) {
 		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
 		try {
-			String[] ids = user.getMyMovies().split(";");
-			for(String s : ids) {
-				if(s.equals(id)) return false;
-			}
-			user.setMyMovies(user.getMyMovies() + id + ";");
+			user.setMyMovies(addSorted(id, user.getMyMovies()));
 		} catch (NullPointerException e) {
 			user.setMyMovies(id + ";");
 		}
@@ -127,18 +150,18 @@ public class UserServiceImp implements UserService{
 		return true;
 	}
 	
-	public String borrarString(String id, String lista) {
+	private String removeString(String id, String lista) {
 		String[] tokens = lista.split(";");
-		int i = 0;
+		int i = 0, length = tokens.length;
 		String res2 = "";
-		while (i < tokens.length && !tokens[i].equals(id)) {
+		while (i < length && !tokens[i].equals(id)) {
 			res2 = res2 + tokens[i] + ";";
 			i++;
 		}
 		
-		if (i < tokens.length) {
+		if (i < length) {
 			i++;
-			while (i < tokens.length) {
+			while (i < length) {
 				res2 = res2 + tokens[i] + ";";
 				i++;
 			}
@@ -149,7 +172,7 @@ public class UserServiceImp implements UserService{
 	public boolean deleteMovieFromMyMovies(String id) {
 		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
 		try {
-			String newList = borrarString(id, user.getMyMovies());
+			String newList = removeString(id, user.getMyMovies());
 			if (newList.equals("")) {newList = null;}
 			user.setMyMovies(newList);
 		} catch (Exception e) {
@@ -163,7 +186,7 @@ public class UserServiceImp implements UserService{
 	public boolean deleteMovieFromWatchLater(String id) {
 		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
 		try {
-			String newList = borrarString(id, user.getWatchLater());
+			String newList = removeString(id, user.getWatchLater());
 			if (newList.equals("")) {newList = null;}
 			user.setWatchLater(newList);
 		} catch (Exception e) {
