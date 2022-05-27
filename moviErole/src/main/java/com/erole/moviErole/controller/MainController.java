@@ -112,7 +112,15 @@ public class MainController {
 		return "app/topMovies";
 	}
 	
-	@GetMapping("/app/user/{usr}")
+	
+	/**
+	 * Método para acceder al perfil del propio usuario que está registrado. Esta página tendrá
+	 * más funcionalidades que los perfiles de otros usuarios
+	 * @param username
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/app/myUser/{usr}")
 	public String userProfilePage(@PathVariable("usr") String username, Model model) {
 		User usuario = userServ.searchByUsername(username);
 		model.addAttribute("usr", usuario);
@@ -123,6 +131,27 @@ public class MainController {
 		System.out.println(mm.toString());
 		model.addAttribute("myMovies", mm);
 		return "app/profile";
+	}
+	
+	/**
+	 * Método para entrar en el perfil de otro usuario, donde no tendremos las funcionalidades que sí
+	 * tenemos en nuestro propio perfil (como editarlo o borrar elementos de las listas) 
+	 * @param username
+	 * @param model
+	 * @return
+	 */
+	
+	@GetMapping("app/user/{usr}")
+	public String anotherUserProfilePage(@PathVariable("usr") String username, Model model) {
+		User usuario = userServ.searchByUsername(username);
+		model.addAttribute("usr", usuario);
+		List<ContentQuery> wl = QueryController.getContentList(usuario.getWatchLater());
+		System.out.println(wl.toString());
+		model.addAttribute("watchLater", wl);
+		List<ContentQuery> mm = QueryController.getContentList(usuario.getMyMovies());
+		System.out.println(mm.toString());
+		model.addAttribute("myMovies", mm);
+		return "app/otherProfile";
 	}
 	
 	@RequestMapping("/app/about")

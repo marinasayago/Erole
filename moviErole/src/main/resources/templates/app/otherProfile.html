@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <div id="message"></div>
+
+  <title th:text="${usr.userName}"></title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet" type="text/css">
+  <!-- Ajustar a pantalla -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+  <!-- Iconos de Github -->
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+  <link href="http://fonts.cdnfonts.com/css/afterglow" rel="stylesheet">
+
+
+  <!--Comprobar campos-->
+
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.7.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+      <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a><p>&nbsp;&nbsp;&nbsp;
+      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1></p>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="/app">Search</a></li>
+          <li><a class="nav-link scrollto" href="/app/about">About</a></li>
+          <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
+          <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
+          <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="25" height="25"></a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
+      <div class="row">
+
+        <div th:if="${param.edit}">
+          <div class="alert alert-info" style="font-size: 20px;">Changes successfully saved!</div>
+        </div>
+
+        <div class="col-lg-1">
+
+        </div>
+
+        <div class="col-lg-8">
+          <h1 th:text="@{{name} {surname}(name=${usr.Name}, surname=${usr.Surname})}" style="color:whitesmoke; font-size: 75px;"></h1>
+          <h2 th:text="@{{username}(username=${usr.userName})}" style="color:rgb(200, 200, 200); font-size: 30px;"></h2>
+        </div>
+        
+        <div class="col-lg-2">
+          <img th:src="@{{img}(img=${usr.img})}" width="140" height="140" class="circular_square">
+        </div>
+          
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ====== Main Page ======-->
+    <section class="inner-page" style="background-color:rgb(222, 222, 222);">
+      <div class="container">
+
+
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div>
+              <h3><label for="birthday">Birthday: </label>
+                <span th:text="${usr.birthdate}"></span>
+              </h3>
+            </div>
+            <br>
+            <div>
+              <h3>
+                <div class="card">
+                  <div class="card-body" style="background-color:whitesmoke">
+                    <div>
+                      <h6><span th:text="${usr.bio}" style="font-size: 20px;"></span></h6>
+                    </div>
+                  </div>
+                </div>
+              </h3>
+            </div>
+
+          
+          <br>
+    
+              <h3>MyMovies</h3>
+              <div class="table-responsive">
+                <table class="table table-dark table-striped table-hover align-middle px-5">
+                    <!-- Etiquetas de las columnas -->
+                    <thead>
+                        <tr>
+                            <td class="text-center">Title</td>
+                            <td class="text-center">Cover</td>
+                        </tr>
+                    </thead>
+                    <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
+                    <!-- Con un for-each vamos iterando por los diferentes resultados y mostrando los campos
+                    que nos interesan (en sus respectivas etiquetas) -->
+                    <tbody>
+                        <tr th:each="r : ${myMovies}">
+                            <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
+                            <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+              <br>
+              <h3>Watch Later</h3>
+              <div class="table-responsive">
+                <table class="table table-dark table-striped table-hover align-middle">
+                    <!-- Etiquetas de las columnas -->
+                    <thead>
+                        <tr>
+                            <td class="text-center">Title</td>
+                            <td class="text-center">Cover</td>
+                        </tr>
+                    </thead>
+                    <!-- Cuerpo de la tabla (resultados de la búsqueda) -->
+                    <!-- Con un for-each vamos iterando por los diferentes resultados y mostrando los campos
+                    que nos interesan (en sus respectivas etiquetas) -->
+                    <tbody>
+                        <tr th:each="r : ${watchLater}">
+                            <td class="text-center"><a th:href="@{/app/content/{id}(id=${r.id})}" th:text="${r.title}"></a></td>
+                            <td class="text-center me-3"><a th:href="@{/app/content/{id}(id=${r.id})}"><img th:src=${r.image} width="80" height="120"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+          </div>
+        </div>
+
+        <br><br>
+      
+
+      <!-- ====== Listas de contenido ====== -->
+    
+
+    </section>
+
+    
+
+
+  <!-- Vendor JS Files -->
+  <script th:src="@{/vendor/aos/aos.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
+  <script th:src="@{/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+  <script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{/vendor/waypoints/noframework.waypoints.js}"></script>
+  <script th:src="@{/vendor/php-email-form/validate.js}"></script>
+
+
+  <!-- Template Main JS File -->
+  <script th:src="@{/js/main.js}"></script>
+
+
+</body>
+
+</html>
