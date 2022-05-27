@@ -79,7 +79,7 @@ public class UserController {
 	@RequestMapping("/user/edit")
 	public String saveChanges(User user) {
 		userServ.save(user);
-		return "redirect:/app/user/"+user.getUserName()+"?edit";
+		return "redirect:/app/myUser";
 	}
 	
 	@RequestMapping("/app/user/delete")

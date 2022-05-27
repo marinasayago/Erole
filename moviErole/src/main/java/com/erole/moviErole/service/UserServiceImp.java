@@ -98,36 +98,41 @@ public class UserServiceImp implements UserService{
 	private String addSorted(String id, String list) {
 		String[] tokens = list.split(";");
 		String res = "";
+		boolean found = false;
 		
 		if (tokens[0] == "") {
 			res += id + ";";
 		} else {
 			int i = 0;
-			int length = tokens.length;
-			String title = queryCont.contentQuery(id).getTitle();
+			ContentQuery content = queryCont.contentQuery(id);
 			boolean added = false;
-			while (i < tokens.length) {
-				if (!added && queryCont.contentQuery(tokens[i]).getTitle().compareTo(title) > 0) {
+			while (i < tokens.length && !found) {
+				if (id.compareTo(tokens[i]) == 0) {
+					found = true;
+					break;
+				}
+				
+				if (!added && queryCont.contentQuery(tokens[i]).getTitle().compareTo(content.getTitle()) >= 0) {
 					res += id + ";";
 					added = true;
 				}
+				
 				res += tokens[i] + ";";
 				i++;
 			}
-			if (!added) {
+			
+			if (!added && !found) {
 				res += id + ";";
 			}
 		}
 		
-		return res;
+		return found? list : res;
 	}
 	
 	public boolean addMovieToWatchLater(String id) {
 		User user = searchByUsername(MoviEroleApplication.getLoggedUser());
 		try {
 			user.setWatchLater(addSorted(id, user.getWatchLater()));
-			System.out.println("No esta en la lista");
-			user.setWatchLater(user.getWatchLater() + id + ";");
 		} catch (NullPointerException e) {
 			user.setWatchLater(id + ";");
 		}

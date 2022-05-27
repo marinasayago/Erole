@@ -120,9 +120,9 @@ public class MainController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/app/myUser/{usr}")
-	public String userProfilePage(@PathVariable("usr") String username, Model model) {
-		User usuario = userServ.searchByUsername(username);
+	@GetMapping("/app/myUser")
+	public String userProfilePage(Model model) {
+		User usuario = userServ.searchByUsername(MoviEroleApplication.getLoggedUser());
 		model.addAttribute("usr", usuario);
 		List<ContentQuery> wl = QueryController.getContentList(usuario.getWatchLater());
 		System.out.println(wl.toString());
@@ -145,6 +145,8 @@ public class MainController {
 	public String anotherUserProfilePage(@PathVariable("usr") String username, Model model) {
 		User usuario = userServ.searchByUsername(username);
 		model.addAttribute("usr", usuario);
+		User loggedUser = userServ.searchByUsername(MoviEroleApplication.getLoggedUser());
+		model.addAttribute("loggedUser", loggedUser);
 		List<ContentQuery> wl = QueryController.getContentList(usuario.getWatchLater());
 		System.out.println(wl.toString());
 		model.addAttribute("watchLater", wl);
@@ -174,15 +176,13 @@ public class MainController {
 	
 	@RequestMapping("/app/deleteMyMovies/{id}")
 	public String deleteMovieFromMyMovies(@PathVariable("id") String id) {
-		User user = userServ.searchByUsername(MoviEroleApplication.getLoggedUser());
 		userServ.deleteMovieFromMyMovies(id);
-		return "redirect:/app/user/"+user.getUserName();
+		return "redirect:/app/myUser";
 	}
 	
 	@RequestMapping("/app/deleteWatchLater/{id}")
 	public String deleteMovieFromWatchLater(@PathVariable("id") String id) {
-		User user = userServ.searchByUsername(MoviEroleApplication.getLoggedUser());
 		userServ.deleteMovieFromWatchLater(id);
-		return "redirect:/app/user/"+user.getUserName();
+		return "redirect:/app/myUser";
 	}
 }
