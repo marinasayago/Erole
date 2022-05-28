@@ -185,4 +185,10 @@ public class MainController {
 		userServ.deleteMovieFromWatchLater(id);
 		return "redirect:/app/myUser";
 	}
+	
+	@RequestMapping("/app/deleteComment/{id}")
+	public String deleteComment(@PathVariable("id") String id) {
+		commentServ.deleteComment(Integer.parseInt(id));
+		return "redirect:/app";
+	}
 }

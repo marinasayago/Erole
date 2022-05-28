@@ -247,10 +247,15 @@
             <!-- Contenido de la tabla -->
             <tbody>
               <tr th:each="c : ${commentList}">
-                <td class="text-center">
+                <td class="text-center" style="width:15%">
                   <a th:text="${c.user.userName}" th:href="@{/app/user/{user}(user=${c.user.userName})}"></a></td>
-                <td class="text-center" th:text="${c.rating}"></td></a>
-                <td class="text-start" th:text="${c.text}"></td>
+                <td class="text-center" th:text="${c.rating}" style="width:5%"></a></td>
+                <td class="text-start" th:text="${c.text}" style="width:70%"></td>
+                <td class="text-start" style="width:10%">
+                  <form th:action="@{/app/deleteComment/{id}(id=${c.id})}">
+                    <input type="hidden" value="Delete" class="btn btn-dangr" style="color:red"> 
+                  </form>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -262,8 +267,11 @@
             for (var i = 0; i < rowLength; i += 1) {
               var row = table.rows[i];
               var a = row.cells[0].firstChild.nextSibling;
+              var b = row.cells[3].firstChild.nextSibling;
+              console.log(b);
               if (a.outerText == document.getElementById("kiko").value) {
                 a.href = "/app/myUser";
+                b.firstElementChild.type = "submit";
               }
             }
           </script>
