@@ -257,16 +257,12 @@
 
           <script>
             var table = document.getElementById("tabla");
-
             var rowLength = table.rows.length;
 
             for (var i = 0; i < rowLength; i += 1) {
               var row = table.rows[i];
               var a = row.cells[0].firstChild.nextSibling;
-              console.log(a.outerText);
-              console.log(document.getElementById("kiko").value);
               if (a.outerText == document.getElementById("kiko").value) {
-                console.log(row.cells[0].firstChild);
                 a.href = "/app/myUser";
               }
             }
