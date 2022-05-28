@@ -48,8 +48,10 @@
   <!-- ================================== HEADER ==================================== -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-      <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a><p>&nbsp;&nbsp;&nbsp;
-      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1></p>
+      <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a>
+      <p>&nbsp;&nbsp;&nbsp;
+      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1>
+      </p>
       <!-- ========= NAVBAR ========= -->
       <nav id="navbar" class="navbar">
         <ul>
@@ -58,7 +60,8 @@
           <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
           <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
           <li><a th:href="@{/app/myUser}" th:text="${loggedUser.userName}" style="color:#73c5eb"></a></li>
-          <li><a th:href="@{/app/myUser}"><img th:src="@{{img}(img=${loggedUser.img})}" width="40" height="40" class="circular_square"></a></li>
+          <li><a th:href="@{/app/myUser}"><img th:src="@{{img}(img=${loggedUser.img})}" width="40" height="40"
+                class="circular_square"></a></li>
           <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="25" height="25"></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -93,7 +96,7 @@
         <div class="row gy-4">
 
           <div class="col-lg-8">
-            
+
             <!-- Título -->
             <div>
               <h3><label for="title">Title: </label>
@@ -215,7 +218,7 @@
             </div>
           </div>
 
-          
+
           <div class="col-lg-4">
             <!-- Imagen de la carátula -->
             <div class="image">
@@ -225,7 +228,8 @@
             <br>
             <!-- Botones para añadir a listas de contenido -->
             <form th:action="@{/app/myMovies/{id}(id=${result.id})}">
-              <input type="submit" value="Add to MyMovies" class="btn btn-primary"> <!-- Antes estaba puesto btn-success -->
+              <input type="submit" value="Add to MyMovies" class="btn btn-primary">
+              <!-- Antes estaba puesto btn-success -->
             </form>
             <br>
             <form th:action="@{/app/watchLater/{id}(id=${result.id})}">
@@ -236,18 +240,38 @@
           <!-- ======= COMMENTS ======= -->
           <h2>Comments:</h2>
 
+          <input type="hidden" th:value="${loggedUser.userName}" id="kiko">
           <!-- ========= TABLE ========= -->
-          <table class="table table-light table-hover  table-responsive">
+          <table class="table table-light table-hover  table-responsive" id="tabla">
             <!-- Etiquetas de las columnas -->
             <!-- Contenido de la tabla -->
             <tbody>
               <tr th:each="c : ${commentList}">
-                <td> <a th:href="@{/app/user/{usr}(usr=${c.user.userName})}" class="text-center" th:text="${c.user.userName}"></a></td>
+                <td class="text-center">
+                  <a th:text="${c.user.userName}" th:href="@{/app/user/{user}(user=${c.user.userName})}"></a></td>
                 <td class="text-center" th:text="${c.rating}"></td></a>
                 <td class="text-start" th:text="${c.text}"></td>
               </tr>
             </tbody>
           </table>
+
+          <script>
+            var table = document.getElementById("tabla");
+
+            var rowLength = table.rows.length;
+
+            for (var i = 0; i < rowLength; i += 1) {
+              var row = table.rows[i];
+              var a = row.cells[0].firstChild.nextSibling;
+              console.log(a.outerText);
+              console.log(document.getElementById("kiko").value);
+              if (a.outerText == document.getElementById("kiko").value) {
+                console.log(row.cells[0].firstChild);
+                a.href = "/app/myUser";
+              }
+            }
+          </script>
+
           <!-- ========= TABLE ========= -->
 
           <h3>Add a comment:</h3>
@@ -325,28 +349,28 @@
   <!-- ================================== END MAIN ==================================== -->
 
 
-    <!-- =================================== SCRIPT ===================================== -->
-    <!-- Controla que la puntuación se encuentre entre 0 y 10 -->
-    <!-- Si la puntuación introducida no está en el rango se pone automáticamente la 
+  <!-- =================================== SCRIPT ===================================== -->
+  <!-- Controla que la puntuación se encuentre entre 0 y 10 -->
+  <!-- Si la puntuación introducida no está en el rango se pone automáticamente la 
     puntuación válida más cercana -->
-    <script>
-      const validateRating = (val) => {
-        if (val < 0) {
-          document.getElementById("ratingForm").value = 0;
-        } else if (val > 10) {
-          document.getElementById("ratingForm").value = 10
-        }
-  
+  <script>
+    const validateRating = (val) => {
+      if (val < 0) {
+        document.getElementById("ratingForm").value = 0;
+      } else if (val > 10) {
+        document.getElementById("ratingForm").value = 10
       }
-    </script>
-    <!-- ================================ FIN SCRIPT ===================================== -->
 
-    <!-- =================================== SCRIPT ===================================== -->
-    <!-- Script para obtener el usuario que está registrado en ese momento a partir de su ID -->
-    <script>
-      console.log(document.getElementById("pito").value)
-    </script>
-    <!-- ================================ FIN SCRIPT ===================================== -->
+    }
+  </script>
+  <!-- ================================ FIN SCRIPT ===================================== -->
+
+  <!-- =================================== SCRIPT ===================================== -->
+  <!-- Script para obtener el usuario que está registrado en ese momento a partir de su ID -->
+  <script>
+    console.log(document.getElementById("pito").value)
+  </script>
+  <!-- ================================ FIN SCRIPT ===================================== -->
 
 
   <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
