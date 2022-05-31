@@ -186,9 +186,10 @@ public class MainController {
 		return "redirect:/app/myUser";
 	}
 	
-	@RequestMapping("/app/deleteComment/{id}")
-	public String deleteComment(@PathVariable("id") String id) {
-		commentServ.deleteComment(Integer.parseInt(id));
-		return "redirect:/app";
+	@RequestMapping("/app/deleteComment/{idCont}/{idComen}")
+	public String deleteComment(@PathVariable("idCont") String idCont, 
+			@PathVariable("idComen") String idComen) {
+		commentServ.deleteComment(Integer.parseInt(idComen));
+		return "redirect:/app/content/" + idCont;
 	}
 }

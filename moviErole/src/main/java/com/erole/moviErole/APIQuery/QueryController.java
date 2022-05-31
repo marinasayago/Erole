@@ -171,6 +171,9 @@ public class QueryController {
 		String id = obj.optString("id");
 		String title = obj.optString("title");
 		String originalTitle = obj.optString("originalTitle");
+		if (originalTitle == null || originalTitle == "") {
+			originalTitle = title;
+		}
 		String type = obj.optString("type");
 		String year = obj.optString("year");
 		String image = obj.optString("image");

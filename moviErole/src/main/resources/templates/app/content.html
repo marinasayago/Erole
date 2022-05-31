@@ -11,6 +11,7 @@
   <div id="message"></div>
 
   <title th:text="${result.title}"></title>
+  <link rel="shortcut icon" th:href="@{/img/logoblanco2.ico}" type="image/x-icon" />
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -99,6 +100,7 @@
 
             <!-- Título -->
             <div>
+              <input type="hidden" th:value="${result.title}" id="movieTitle">
               <h3><label for="title">Title: </label>
                 <span th:text="${result.title}"></span>
               </h3>
@@ -131,8 +133,9 @@
 
             <!-- Título original -->
             <div>
+              <input type="hidden" th:value="${result.originalTitle}" id="origTitle">
               <h5><label for="originalTitle">Original Title: </label>
-                <span th:text="${result.originalTitle}"></span>
+                <span id="spanOrigTitle" th:text="${result.originalTitle}"></span>
               </h5>
             </div>
 
@@ -252,7 +255,7 @@
                 <td class="text-center" th:text="${c.rating}" style="width:5%"></a></td>
                 <td class="text-start" th:text="${c.text}" style="width:70%"></td>
                 <td class="text-start" style="width:10%">
-                  <form th:action="@{/app/deleteComment/{id}(id=${c.id})}">
+                  <form th:action="@{/app/deleteComment/{idCont}/{idComen}(idCont=${result.id}, idComen=${c.id})}">
                     <input type="hidden" value="Delete" class="btn btn-dangr" style="color:red"> 
                   </form>
                 </td>
@@ -268,7 +271,6 @@
               var row = table.rows[i];
               var a = row.cells[0].firstChild.nextSibling;
               var b = row.cells[3].firstChild.nextSibling;
-              console.log(b);
               if (a.outerText == document.getElementById("kiko").value) {
                 a.href = "/app/myUser";
                 b.firstElementChild.type = "submit";

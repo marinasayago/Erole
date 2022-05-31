@@ -46,12 +46,21 @@ public class UserServiceImp implements UserService{
 	 * @return -> la entidad almacenada.
 	 */
 	public User save(User u) {
+		if(u == null) {
+			System.out.println("holaaaa\n\nholaaaa");
+		}
 		Role role = roleServ.searchByName("USER");
 		if(role == null) { role = new Role("USER"); } 
 		u.setPassword(passEncoder.encode(u.getPassword()));
 		u.setRoles(Arrays.asList(role));
 		if(u.getImg() == null || u.getImg().equals("")) {
 			u.setImg(u.DEFAULTIMG);
+		}
+		if (u.getMyMovies() == null || u.getMyMovies().equals("") ) {
+			u.setMyMovies(null);
+		}
+		if (u.getWatchLater() == null || u.getWatchLater().equals("")) {
+			u.setWatchLater(null);
 		}
 		return userRep.saveAndFlush(u);
 	}

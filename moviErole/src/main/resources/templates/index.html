@@ -10,6 +10,7 @@ registrarse (Get Started) y posteriormente entrar con tu usuario (Login) -->
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>MoviErole</title>
+  <link rel="shortcut icon" th:href="@{/img/logoblanco2.ico}" type="image/x-icon" />
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -106,6 +107,10 @@ registrarse (Get Started) y posteriormente entrar con tu usuario (Login) -->
 
   <div th:if="${param.delete}">
 		<div class="alert alert-info">You've successfully deleted your account</div>
+	</div>
+
+  <div th:if="${param.editedit}">
+		<div class="alert alert-info">You've successfully modified your profile</div>
 	</div>
 
   <!-- =================================== FOOTER ===================================== -->
