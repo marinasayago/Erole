@@ -22,6 +22,8 @@ import com.erole.moviErole.service.CommentService;
 import com.erole.moviErole.model.User;
 import com.erole.moviErole.service.UserServiceImp;
 
+import dataStructures.Tuple2;
+
 /**
  * Esta clase servira para gestionar las peticiones del usuario en el navegador que se realicen dentro de la pagina ppal,
  *  es decir, cuando el usuario introduzca una direccion en el navegador, se buscara en este metodo si hay alguna
@@ -68,7 +70,9 @@ public class MainController {
 		ContentQuery result = QueryController.contentQuery(id);
 		model.addAttribute("result", result);
 		model.addAttribute("newComment", new Comment(null, id, null, 0));
-		model.addAttribute("commentList", commentServ.getCommentsFromContent(id));
+		Tuple2<List<Comment>, Double> tuple = commentServ.getCommentsFromContent(id);
+		model.addAttribute("commentList", tuple._1());
+		model.addAttribute("averageRating", tuple._2());
 		model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
 
 		return "app/content";

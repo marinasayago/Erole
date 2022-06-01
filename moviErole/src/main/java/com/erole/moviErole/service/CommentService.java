@@ -11,6 +11,8 @@ import com.erole.moviErole.model.Comment;
 import com.erole.moviErole.model.User;
 import com.erole.moviErole.repository.CommentRepository;
 
+import dataStructures.Tuple2;
+
 @Service
 public class CommentService {
 	@Autowired
@@ -18,12 +20,29 @@ public class CommentService {
 	@Autowired
 	UserServiceImp userServ;
 	
-	public List<Comment> getCommentsFromContent(String id){
+	public Tuple2<List<Comment>, Double>  getCommentsFromContent(String id){
 		List<Comment> comments = new LinkedList<Comment>();
+		Double averageRating = 0.0;
+		int numComments = 0;
 		for(Comment c : commentRep.findAll()) {
-			if(c.getContentId().equals(id)) comments.add(c);
+			if(c.getContentId().equals(id)) {
+				comments.add(c);
+				averageRating += c.getRating();
+				numComments++;
+			}
+			
 		}
-		return comments;
+		
+		Tuple2<List<Comment>, Double> result;
+		if (comments.isEmpty()) {
+			result = new Tuple2<>(comments, null);
+		} else {
+			Double rating = averageRating/numComments;
+			
+			result = new Tuple2<>(comments, Math.round(rating*100.0)/100.0);
+		}
+		
+		return result;
 	}
 	
 	public void saveComment(Comment comment) {
