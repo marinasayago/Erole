@@ -76,6 +76,10 @@
     </section>
     <!-- ======= END BREADCRUMBS ======= -->
 
+    <div th:if="${param.repeated}">
+      <div class="alert alert-danger">Error. Some fields already in use. Try Again</div>
+    </div>
+
     <!-- ======= INNER PAGE ======= -->
     <section class="inner-page">
       <div class="container">

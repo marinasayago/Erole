@@ -46,9 +46,6 @@ public class UserServiceImp implements UserService{
 	 * @return -> la entidad almacenada.
 	 */
 	public User save(User u) {
-		if(u == null) {
-			System.out.println("holaaaa\n\nholaaaa");
-		}
 		Role role = roleServ.searchByName("USER");
 		if(role == null) { role = new Role("USER"); } 
 		u.setPassword(passEncoder.encode(u.getPassword()));
@@ -62,7 +59,17 @@ public class UserServiceImp implements UserService{
 		if (u.getWatchLater() == null || u.getWatchLater().equals("")) {
 			u.setWatchLater(null);
 		}
-		return userRep.saveAndFlush(u);
+		
+		boolean repeated = false;
+		for(User user : userRep.findAll()) {
+			if((user.getEmail().equals(u.getEmail()) || user.getUserName().equals(u.getUserName())) && user.getId() != u.getId()) {
+				repeated = true;
+				break;
+			}
+		}
+		
+		if(repeated) return null;
+		else return userRep.saveAndFlush(u);
 	}
 	
 	/**

@@ -44,8 +44,8 @@ public class UserController {
 	 */
 	@PostMapping("/user/add")
 	public String saveUser(User user) {
-		userServ.save(user);
-		return "redirect:/?registration";
+		if(userServ.save(user) == null) return "redirect:/user/add?repeated";
+		else return "redirect:/?registration";
 	}
 	
 	/**
@@ -78,8 +78,8 @@ public class UserController {
 	
 	@RequestMapping("/user/edit")
 	public String saveChanges(User user) {
-		userServ.save(user);
-		return "redirect:/logout?editedit";
+		if(userServ.save(user) != null) return "redirect:/logout?edit";
+		else return "redirect:/app/myUser?error";
 	}
 	
 	@RequestMapping("/app/user/delete")
