@@ -50,14 +50,18 @@ public class MainController {
 	@GetMapping("/app/query")
 	public String doQuery(Query query, Model model) throws UnsupportedEncodingException{
 		List<Result> result = QueryController.makeTitleQuery(query);
-		if(result == null) {
+		if(result.toString().equals("[]")) {
+			model.addAttribute("lista", result);
+			model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
 			System.out.println("ERROR AL HACER LA BUSQUEDA EN LA API");
+			return "/app/searchError";
 		}else {
 			System.out.println(result.toString());
 			model.addAttribute("lista", result);
 			model.addAttribute("loggedUser", userServ.searchByUsername(MoviEroleApplication.getLoggedUser()));
+			return "/app/searchResult";
+
 		}
-		return "/app/searchResult";
 	}
 	
 	/**

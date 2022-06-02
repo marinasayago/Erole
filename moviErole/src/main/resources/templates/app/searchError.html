@@ -1,0 +1,85 @@
+<!-- ============================== SEARCH RESULT ================================= -->
+<!-- Resultados de la búsqueda realizados en 'index.html' -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Search Result</title>
+    <link rel="shortcut icon" th:href="@{/img/logoblanco2.ico}" type="image/x-icon" />
+    <script type="text/javascript">
+    </script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet" type="text/css">
+    <!-- Ajustar a pantalla -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+    <!-- Iconos de Github -->
+    <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+
+</head>
+
+<body>
+    <!-- ================================== HEADER ==================================== -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+            <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a><p>&nbsp;&nbsp;&nbsp;
+            <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1></p>
+            <!-- ========= NAVBAR ========= -->
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="/app">Search</a></li>
+                    <li><a class="nav-link scrollto" href="#">About</a></li>
+                    <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
+                    <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
+                    <li><a th:href="@{/app/myUser}" th:text="${loggedUser.userName}" style="color:#73c5eb"></a></li>
+                    <li><a th:href="@{/app/myUser}"><img th:src="@{{img}(img=${loggedUser.img})}" width="40" height="40" class="circular_square"></a></li>
+                    <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="25" height="25"></a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- ======= END NAVBAR ======= -->
+        </div>
+    </header>
+    <!-- ================================ END HEADER ================================== -->
+
+    <!-- =================================== HERO ===================================== -->
+
+    <!-- Sección pre-tabla -->
+    <section id="hero2" class="d-flex align-items-center">
+        <div class="container">
+            <h1>Search Result</h1>
+        </div>
+    </section>
+
+    <!-- Tabla donde se muestran los resultados de la búsqueda -->
+    <!-- ========= TABLE ========= -->
+    <div class="table-responsive"  >
+        <table class="table table-dark table-striped table-hover align-middle">
+            <div class="container">
+                <td id = "hero2" class = "text-center" style="font-size: x-large;">Sorry. We didn't find any results...</td>
+            </div>
+        </table>
+    </div>
+    <!-- ======= END TABLE ======= -->
+
+    <!-- ================================== END HERO ==================================== -->
+    
+</body>
+
+</html>
