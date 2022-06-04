@@ -18,7 +18,10 @@ public class MoviEroleApplication {
 		if (principal instanceof UserDetails) {
 		  userDetails = (UserDetails) principal;
 		}
-		String userName = userDetails.getUsername();
+		String userName = null;
+		if (userDetails != null) {
+			userName = userDetails.getUsername();
+		}
 		return userName;
 	}
 }
