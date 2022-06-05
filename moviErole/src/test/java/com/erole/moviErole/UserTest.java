@@ -48,8 +48,7 @@ class UserTest {
 		roles.add(rol);
 		user = new User("email", "userName", "password", "name", "surname", date,
 				"bio", roles, "watchLater", "myMovies");
-		/*String email, String userName, String password, String name, String surname, Date birthdate,
-			String bio, Collection<Role> roles, String watchLater, String myMovies*/
+
 		assertEquals(false, user.getEmail().isEmpty());
 		assertEquals(false, user.getName().isEmpty());
 		assertEquals(false, user.getPassword().isEmpty());

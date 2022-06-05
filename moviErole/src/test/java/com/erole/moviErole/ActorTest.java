@@ -33,8 +33,7 @@ class ActorTest {
 	@Test //Tras insertar datos, el actor contiene información
 	void contieneInformacion() {
 		actor = new Actor("id", "image", "name", "asCharacter");
-		/*public User(String email, String userName, String password, String name, String surname, Date birthdate,
-				String bio, Collection<Role> roles)*/
+		
 		assertEquals(false, actor.getId().isEmpty());
 		assertEquals(false, actor.getImage().isEmpty());
 		assertEquals(false, actor.getName().isEmpty());
